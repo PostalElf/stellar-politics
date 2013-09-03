@@ -1,0 +1,169 @@
+﻿Option Explicit On
+
+Public Class frmSearch
+    Dim starmap As starmap = ghostLoadStarmap()
+    Dim goodsList As List(Of String)
+    Dim planetList As List(Of planet)
+    Dim comboboxlist As New List(Of ComboBox)
+    Public selectedPlanet As planet
+
+    Private Sub frmSearch_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        initialiseFrmSearch()
+    End Sub
+
+    Private Sub initialiseFrmSearch()
+        'populate comboboxes
+        If goodsList Is Nothing Then goodsList = New List(Of String)
+        repopGoodsList()
+        For Each good In goodsList
+            cmbSupply.Items.Add(good)
+            cmbDemand.Items.Add(good)
+        Next
+        For Each star In starmap.stars
+            cmbStar.Items.Add(star.name)
+        Next
+        For i As Integer = 1 To 5
+            cmbCities.Items.Add(i)
+        Next
+        For i As Integer = 1 To planetSuffixDictionary.Count Step 1
+            cmbSuffix.Items.Add(planetSuffixDictionary(i))
+        Next
+        'cmbGovernment and cmbPrefix are all added manually
+
+
+        ' add all the comboboxes into comboboxlist
+        For Each control As Control In Me.Controls
+            If (TypeOf control Is ComboBox) Then comboboxlist.Add(control)
+        Next
+    End Sub
+    Private Sub repopGoodsList()
+        For Each item In defaultSystemSupply
+            goodsList.Add(item)
+        Next
+        goodsList.Add("None")
+    End Sub
+
+    Private Sub runSearch()
+        ' if no control is selected then exit sub
+        If allIsEmpty(comboboxlist) = True Then Exit Sub
+
+        If planetList Is Nothing Then
+            planetList = New List(Of planet)
+        Else
+            planetList.Clear()
+        End If
+
+        For Each star As star In starmap.stars
+            For Each planet As planet In star.planets
+                'every planet that meets the search criteria goes into planetList
+                'if nothing is selected for a particular criteria the function automatically returns True
+                If isStar(planet.starName) = True AndAlso _
+                    isSupply(planet.supply) = True AndAlso _
+                    isDemand(planet.demand) = True AndAlso _
+                    isCities(planet.size) = True AndAlso _
+                    isGovernment(planet.government) = True AndAlso _
+                    isPrefix(planet.prefix) = True AndAlso _
+                    isSuffix(planet.suffix) = True Then planetList.Add(planet)
+            Next
+        Next
+
+        For Each planet In planetList
+            Dim n As Integer = DataGridView1.Rows.Add()
+            Dim str As String = ""
+            DataGridView1.Rows.Item(n).Cells(0).Value = planet.starName & " " & romanNumeralDictionary(planet.number)
+            DataGridView1.Rows.Item(n).Cells(1).Value = planet.size
+            DataGridView1.Rows.Item(n).Cells(2).Value = planetTypeShortformDictionary(planet.prefix)
+            DataGridView1.Rows.Item(n).Cells(3).Value = planetTypeShortformDictionary(planet.suffix)
+            For Each supply As String In planet.supply
+                str = str & supply & " "
+            Next
+            DataGridView1.Rows.Item(n).Cells(4).Value = str
+            str = ""
+            For Each demand As String In planet.demand
+                str = str & demand & " "
+            Next
+            DataGridView1.Rows.Item(n).Cells(5).Value = str
+        Next
+    End Sub
+    Private Function allIsEmpty(comboboxlist As List(Of ComboBox)) As Boolean
+        allIsEmpty = True
+        For Each cmb As ComboBox In comboboxlist
+            If cmb.SelectedItem <> Nothing Then allIsEmpty = False
+        Next
+    End Function
+    Private Function isStar(ByVal starName As String) As Boolean
+        If cmbStar.SelectedItem = Nothing Then
+            Return True
+        Else
+            If cmbStar.SelectedItem.ToString = starName Then Return True Else Return False
+        End If
+    End Function
+    Private Function isCities(ByVal cities As Integer) As Boolean
+        If cmbCities.SelectedItem = Nothing Then
+            Return True
+        Else
+            If Convert.ToInt32(cmbCities.SelectedItem.ToString) = cities Then Return True Else Return False
+        End If
+    End Function
+    Private Function isSupply(ByVal supply As List(Of String)) As Boolean
+        If cmbSupply.SelectedItem = Nothing Then
+            Return True
+        Else
+            Dim str As String = cmbSupply.SelectedItem.ToString
+            For Each good As String In supply
+                If good = str Then Return True
+            Next
+            Return False
+        End If
+    End Function
+    Private Function isDemand(ByVal demand As List(Of String)) As Boolean
+        If cmbDemand.SelectedItem = Nothing Then
+            Return True
+        Else
+            Dim str As String = cmbDemand.SelectedItem.ToString
+            For Each good As String In demand
+                If good = str Then Return True
+            Next
+            Return False
+        End If
+    End Function
+    Private Function isGovernment(ByVal government As String) As Boolean
+        If cmbGovernment.SelectedItem = Nothing Then
+            Return True
+        Else
+            If cmbGovernment.SelectedItem.ToString = government Then Return True Else Return False
+        End If
+    End Function
+    Private Function isPrefix(ByVal prefix As String) As Boolean
+        If cmbPrefix.SelectedItem = Nothing Then
+            Return True
+        Else
+            If cmbPrefix.SelectedItem.ToString = prefix Then Return True Else Return False
+        End If
+    End Function
+    Private Function isSuffix(ByVal suffix As String) As Boolean
+        If cmbSuffix.SelectedItem = Nothing Then
+            Return True
+        Else
+            If cmbSuffix.SelectedItem.ToString = suffix Then Return True Else Return False
+        End If
+    End Function
+
+
+    Private Sub ComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbSupply.SelectedIndexChanged, _
+                                                                                                        cmbDemand.SelectedIndexChanged, _
+                                                                                                        cmbCities.SelectedIndexChanged, _
+                                                                                                        cmbStar.SelectedIndexChanged, _
+                                                                                                        cmbPrefix.SelectedIndexChanged, _
+                                                                                                        cmbSuffix.SelectedIndexChanged, _
+                                                                                                        cmbGovernment.SelectedIndexChanged
+        DataGridView1.Rows.Clear()
+        runSearch()
+    End Sub
+    Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
+        If e.RowIndex = -1 Then Return
+
+        selectedPlanet = planetList(e.RowIndex)
+        Me.DialogResult = Windows.Forms.DialogResult.OK
+    End Sub
+End Class

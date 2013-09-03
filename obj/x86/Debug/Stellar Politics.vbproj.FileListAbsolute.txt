@@ -1,0 +1,16 @@
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\bin\Debug\Stellar Politics.exe
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\bin\Debug\Stellar Politics.pdb
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\bin\Debug\Stellar Politics.xml
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar_Politics.Form1.resources
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar_Politics.Resources.resources
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.exe
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.xml
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.pdb
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar_Politics.frmSearch.resources
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\bin\Debug\Stellar Politics.exe.manifest
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\bin\Debug\Stellar Politics.application
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.exe.manifest
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.application
