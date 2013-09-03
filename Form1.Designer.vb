@@ -56,6 +56,7 @@ Partial Class Form1
         Me.Size5GalaxyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -328,6 +329,7 @@ Partial Class Form1
         'LoadToolStripMenuItem
         '
         Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
+        Me.LoadToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
         Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LoadToolStripMenuItem.Text = "&Load"
         '
@@ -335,7 +337,7 @@ Partial Class Form1
         '
         Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Size1GalaxyToolStripMenuItem, Me.Size2GalaxyToolStripMenuItem, Me.Size3GalaxyToolStripMenuItem, Me.Size4GalaxyToolStripMenuItem, Me.Size5GalaxyToolStripMenuItem})
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'Size1GalaxyToolStripMenuItem
@@ -370,7 +372,7 @@ Partial Class Form1
         '
         'ToolsToolStripMenuItem
         '
-        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchToolStripMenuItem})
+        Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SearchToolStripMenuItem, Me.DistanceToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
         Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
@@ -378,8 +380,16 @@ Partial Class Form1
         'SearchToolStripMenuItem
         '
         Me.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem"
-        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SearchToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SearchToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.SearchToolStripMenuItem.Text = "&Search"
+        '
+        'DistanceToolStripMenuItem
+        '
+        Me.DistanceToolStripMenuItem.Name = "DistanceToolStripMenuItem"
+        Me.DistanceToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
+        Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
         'Form1
         '
@@ -437,5 +447,6 @@ Partial Class Form1
     Friend WithEvents picPlanetForward As System.Windows.Forms.Panel
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DistanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -1,4 +1,6 @@
-﻿Module starmapFunctions
+﻿Imports System.Math
+
+Module starmapFunctions
     Public starNameList As New List(Of String)
     Public defaultSystemSupply As New List(Of String)
     Public systemSupply As New List(Of String)
@@ -25,7 +27,7 @@
         If systemPlanetLocationList.Count = 0 Then repopSystemPlanetLocationList()
         If systemXYDictionary Is Nothing Then systemXYDictionary = New Dictionary(Of Integer, Point)
         If systemXYDictionary.Count = 0 Then repopSystemXYDictionary()
-        If systemXY Is Nothing Then repopsystemXY()
+        If systemXY Is Nothing Then repopSystemXY()
         If systemSupply Is Nothing Then systemSupply = New List(Of String)
         If systemSupply.Count = 0 Then repopSystemSupply()
     End Sub
@@ -212,6 +214,20 @@
         planetTypeShortformDictionary.Add("Volcanic", "VLC")
         planetTypeShortformDictionary.Add("Gaseous", "GAS")
     End Sub
+
+
+    'calculators
+    Public Function calculateDistanceBetween(ByVal Point1 As Point, ByVal Point2 As Point) As Integer
+        'use pythogaras theorem to get distance between two points
+
+        Dim x1 As Integer = Point1.X
+        Dim x2 As Integer = Point2.X
+        Dim y1 As Integer = Point1.Y
+        Dim y2 As Integer = Point2.Y
+
+        Return Sqrt((Abs(x2 - x1) ^ 2) + (Abs(y2 - y1) ^ 2))
+    End Function
+
 
     'crawlers search for certain data
 

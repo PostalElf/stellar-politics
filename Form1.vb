@@ -194,4 +194,8 @@
 
         frmSearch.Dispose()
     End Sub
+    Private Sub DistanceToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DistanceToolStripMenuItem.Click
+        frmDistance.ShowDialog(Me)
+        frmDistance.Dispose()
+    End Sub
 End Class
