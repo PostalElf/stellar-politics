@@ -194,19 +194,12 @@ Module starmapFunctions
     End Sub
     Private Sub repopDefaultSystemSupply()
         'defaultSystemSupply holds the entire list of supplies
+        'must always be called AFTER repopPlanetSuffixDictionary as supplylist is dependent on that
 
-        defaultSystemSupply.Add("Metal")
-        defaultSystemSupply.Add("Chemicals")
-        defaultSystemSupply.Add("Weapons")
-        defaultSystemSupply.Add("Electronics")
-        defaultSystemSupply.Add("Blueprints")
-        defaultSystemSupply.Add("Savants")
-        defaultSystemSupply.Add("Azoth")
-        defaultSystemSupply.Add("Slaves")
-        defaultSystemSupply.Add("Food")
-        defaultSystemSupply.Add("Plants")
-        defaultSystemSupply.Add("Media")
-        defaultSystemSupply.Add("Art")
+        defaultSystemSupply.Clear()
+        For Each entry As KeyValuePair(Of String, String) In planetPrefixDictionary
+            If defaultSystemSupply.Contains(entry.Key) = False Then defaultSystemSupply.Add(entry.Key)
+        Next
     End Sub
     Public Sub repopSystemSupply()
         'systemSupply holds a running list of supplies that is removed every time a planet is added with that supply
