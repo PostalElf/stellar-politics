@@ -197,11 +197,11 @@ Module starmapFunctions
 
         defaultSystemSupply.Add("Metal")
         defaultSystemSupply.Add("Chemicals")
-        defaultSystemSupply.Add("Fabricators")
+        defaultSystemSupply.Add("Weapons")
         defaultSystemSupply.Add("Electronics")
         defaultSystemSupply.Add("Blueprints")
         defaultSystemSupply.Add("Savants")
-        defaultSystemSupply.Add("Weapons")
+        defaultSystemSupply.Add("Azoth")
         defaultSystemSupply.Add("Slaves")
         defaultSystemSupply.Add("Food")
         defaultSystemSupply.Add("Plants")
