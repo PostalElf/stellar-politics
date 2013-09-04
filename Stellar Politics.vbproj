@@ -171,30 +171,6 @@
     <None Include="Stellar Politics_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\planetBarren.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetDesert.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetGaseous.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetOcean.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetSprawl.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetVolcanic.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetWasteland.PNG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\planetEden.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\starWhiteYellow.PNG" />
   </ItemGroup>
   <ItemGroup>

@@ -151,30 +151,6 @@
   <data name="galaxy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\galaxy.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planetBarren" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetBarren.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetDesert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetDesert.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetEden" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetEden.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetGaseous" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetGaseous.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetOcean" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetOcean.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetSprawl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetSprawl.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetVolcanic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetVolcanic.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetWasteland" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetWasteland.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="starBGBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\starBGBlue.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

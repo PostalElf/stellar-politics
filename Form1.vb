@@ -31,10 +31,11 @@
         For Each planet In star.planets
             Dim planetLoc As New Panel
             planetLoc.Location = systemPlanetXYDictionary(planet.location)
-            Dim bgimgstr As String = "planet" & planet.suffix
+            Dim bgimgstr As String = "bigplanet" & planet.suffix
             planetLoc.BackgroundImage = My.Resources.ResourceManager.GetObject(bgimgstr)
             planetLoc.BackColor = Color.Transparent
             planetLoc.Size = New Size(40, 40)
+            planetLoc.BackgroundImageLayout = ImageLayout.Stretch
             planetLoc.Visible = True
             planetLoc.Tag = getPlanetLocTag(index, planet.number - 1)       ' planet.number - 1 because stars() is a 0-based list
 

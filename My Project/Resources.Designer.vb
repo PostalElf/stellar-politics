@@ -137,62 +137,6 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property planetBarren() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetBarren", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetDesert() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetDesert", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetEden() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetEden", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetGaseous() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetGaseous", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetOcean() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetOcean", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetSprawl() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetSprawl", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetVolcanic() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetVolcanic", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property planetWasteland() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("planetWasteland", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
         Friend ReadOnly Property starBGBlue() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("starBGBlue", resourceCulture)
