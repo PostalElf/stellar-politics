@@ -1,410 +1,700 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <starmap>
-  <star name="Dardanos" location="13" type="Blue">
-    <planet starName="Dardanos" number="1" location="8">
-      <size>3</size>
-      <prefix>Research</prefix>
+  <star name="Nikephoros" location="15" type="BlueWhite">
+    <planet starName="Nikephoros" number="1" location="3">
+      <size>4</size>
+      <prefix>Tourist</prefix>
       <suffix>Volcanic</suffix>
       <habitation>Orbital Ring</habitation>
-      <government>Anarchy</government>
-      <supply>Blueprints</supply>
+      <government>Democracy</government>
+      <supply>None</supply>
+      <demand>Savants</demand>
       <demand>Electronics</demand>
     </planet>
-    <planet starName="Dardanos" number="2" location="3">
+    <planet starName="Nikephoros" number="2" location="2">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Anarchy</government>
+      <supply>Metal</supply>
+      <demand>Plants</demand>
+    </planet>
+    <planet starName="Nikephoros" number="3" location="5">
+      <size>3</size>
+      <prefix>Cultural</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Oligarchy</government>
+      <supply>Art</supply>
+      <demand>Slaves</demand>
+    </planet>
+  </star>
+  <star name="Dardanos" location="27" type="BlueWhite">
+    <planet starName="Dardanos" number="1" location="6">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Oligarchy</government>
+      <supply>Slaves</supply>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Dardanos" number="2" location="7">
+      <size>2</size>
+      <prefix>Industrial</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
+      <supply>Electronics</supply>
+      <demand>Savants</demand>
+    </planet>
+    <planet starName="Dardanos" number="3" location="4">
+      <size>4</size>
+      <prefix>Research</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Oligarchy</government>
+      <supply>Savants</supply>
+      <demand>Metal</demand>
+    </planet>
+    <planet starName="Dardanos" number="4" location="8">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Anarchy</government>
+      <supply>Plants</supply>
+      <demand>Blueprints</demand>
+    </planet>
+  </star>
+  <star name="Glaukos" location="5" type="Blue">
+    <planet starName="Glaukos" number="1" location="6">
+      <size>3</size>
+      <prefix>Industrial</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Anarchy</government>
+      <supply>Fabricators</supply>
+      <demand>Slaves</demand>
+    </planet>
+    <planet starName="Glaukos" number="2" location="0">
+      <size>4</size>
+      <prefix>Cultural</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>Media</supply>
+      <demand>Blueprints</demand>
+    </planet>
+    <planet starName="Glaukos" number="3" location="8">
+      <size>2</size>
+      <prefix>Mining</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>Chemicals</supply>
+      <demand>Blueprints</demand>
+    </planet>
+  </star>
+  <star name="Iacchus" location="13" type="BlueWhite">
+    <planet starName="Iacchus" number="1" location="3">
+      <size>1</size>
+      <prefix>Prison</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>Weapons</supply>
+      <demand>Electronics</demand>
+    </planet>
+    <planet starName="Iacchus" number="2" location="1">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>Blueprints</supply>
+      <demand>Food</demand>
+    </planet>
+    <planet starName="Iacchus" number="3" location="5">
       <size>3</size>
       <prefix>Agrarian</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Autocracy</government>
-      <supply>Food</supply>
-      <demand>Electronics</demand>
-    </planet>
-    <planet starName="Dardanos" number="3" location="5">
-      <size>3</size>
-      <prefix>Prison</prefix>
       <suffix>Sprawl</suffix>
       <habitation>Cubecities</habitation>
       <government>Democracy</government>
-      <supply>Slaves</supply>
-      <demand>Electronics</demand>
-    </planet>
-  </star>
-  <star name="Medeia" location="13" type="WhiteYellow">
-    <planet starName="Medeia" number="1" location="7">
-      <size>2</size>
-      <prefix>Tourist</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
-      <supply>None</supply>
-      <demand>Slaves</demand>
+      <supply>Food</supply>
       <demand>Weapons</demand>
     </planet>
-    <planet starName="Medeia" number="2" location="8">
+    <planet starName="Iacchus" number="4" location="2">
       <size>1</size>
-      <prefix>Agrarian</prefix>
+      <prefix>Commercial</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Democracy</government>
+      <supply>Chemicals</supply>
+      <demand>Savants</demand>
+    </planet>
+  </star>
+  <star name="Adrastos" location="9" type="OrangeRed">
+    <planet starName="Adrastos" number="1" location="8">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>Blueprints</supply>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Adrastos" number="2" location="7">
+      <size>2</size>
+      <prefix>Prison</prefix>
       <suffix>Ocean</suffix>
       <habitation>Undersea Domes</habitation>
       <government>Democracy</government>
-      <supply>Plants</supply>
-      <demand>Slaves</demand>
+      <supply>Weapons</supply>
+      <demand>Savants</demand>
     </planet>
-    <planet starName="Medeia" number="3" location="5">
-      <size>3</size>
-      <prefix>Research</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Oligarchy</government>
-      <supply>Savants</supply>
-      <demand>Slaves</demand>
-    </planet>
-    <planet starName="Medeia" number="4" location="6">
+    <planet starName="Adrastos" number="3" location="5">
       <size>1</size>
       <prefix>Mining</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Autocracy</government>
       <supply>Chemicals</supply>
       <demand>Weapons</demand>
     </planet>
   </star>
-  <star name="Harmonia" location="22" type="OrangeRed">
-    <planet starName="Harmonia" number="1" location="7">
-      <size>4</size>
+  <star name="Medeia" location="13" type="BlueWhite">
+    <planet starName="Medeia" number="1" location="0">
+      <size>3</size>
       <prefix>Industrial</prefix>
       <suffix>Ocean</suffix>
       <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>Electronics</supply>
-      <demand>Media</demand>
-    </planet>
-    <planet starName="Harmonia" number="2" location="3">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
       <government>Oligarchy</government>
-      <supply>Art</supply>
-      <demand>Fabricators</demand>
+      <supply>Electronics</supply>
+      <demand>Blueprints</demand>
     </planet>
-  </star>
-  <star name="Castor" location="29" type="Blue">
-    <planet starName="Castor" number="1" location="3">
+    <planet starName="Medeia" number="2" location="1">
       <size>1</size>
       <prefix>Prison</prefix>
       <suffix>Desert</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
-      <supply>Weapons</supply>
-      <demand>Fabricators</demand>
+      <habitation>Cubecities</habitation>
+      <government>Democracy</government>
+      <supply>Slaves</supply>
+      <demand>Media</demand>
     </planet>
-    <planet starName="Castor" number="2" location="7">
-      <size>3</size>
+    <planet starName="Medeia" number="3" location="5">
+      <size>4</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Autocracy</government>
+      <supply>Plants</supply>
+      <demand>Savants</demand>
+    </planet>
+  </star>
+  <star name="Lachesis" location="30" type="WhiteYellow">
+    <planet starName="Lachesis" number="1" location="3">
+      <size>4</size>
       <prefix>Mining</prefix>
-      <suffix>Eden</suffix>
+      <suffix>Ocean</suffix>
       <habitation>Undersea Domes</habitation>
       <government>Autocracy</government>
       <supply>Metal</supply>
-      <demand>Weapons</demand>
+      <demand>Blueprints</demand>
     </planet>
-    <planet starName="Castor" number="3" location="8">
-      <size>4</size>
-      <prefix>Industrial</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Autocracy</government>
-      <supply>Fabricators</supply>
-      <demand>Media</demand>
-    </planet>
-    <planet starName="Castor" number="4" location="1">
-      <size>1</size>
+    <planet starName="Lachesis" number="2" location="7">
+      <size>3</size>
       <prefix>Cultural</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Democracy</government>
+      <suffix>Gaseous</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
       <supply>Media</supply>
       <demand>Slaves</demand>
     </planet>
   </star>
-  <star name="Kalliope" location="12" type="WhiteYellow">
-    <planet starName="Kalliope" number="1" location="0">
-      <size>4</size>
-      <prefix>Commercial</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Oligarchy</government>
-      <supply>Food</supply>
-      <demand>Electronics</demand>
-    </planet>
-    <planet starName="Kalliope" number="2" location="4">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Orbital Ring</habitation>
+  <star name="Kalliope" location="11" type="Blue">
+    <planet starName="Kalliope" number="1" location="6">
+      <size>5</size>
+      <prefix>Cultural</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
       <government>Democracy</government>
-      <supply>Slaves</supply>
+      <supply>Art</supply>
       <demand>Food</demand>
     </planet>
-    <planet starName="Kalliope" number="3" location="3">
+    <planet starName="Kalliope" number="2" location="1">
+      <size>1</size>
+      <prefix>Industrial</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
+      <supply>Fabricators</supply>
+      <demand>Slaves</demand>
+    </planet>
+    <planet starName="Kalliope" number="3" location="4">
       <size>1</size>
       <prefix>Research</prefix>
       <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Autocracy</government>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
       <supply>Savants</supply>
       <demand>Food</demand>
+    </planet>
+    <planet starName="Kalliope" number="4" location="8">
+      <size>2</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
+      <supply>Food</supply>
+      <demand>Blueprints</demand>
+    </planet>
+  </star>
+  <star name="Cephalus" location="33" type="WhiteYellow">
+    <planet starName="Cephalus" number="1" location="5">
+      <size>3</size>
+      <prefix>Tourist</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>None</supply>
+      <demand>Food</demand>
+      <demand>Fabricators</demand>
+    </planet>
+    <planet starName="Cephalus" number="2" location="7">
+      <size>2</size>
+      <prefix>Commercial</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>Savants</supply>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Cephalus" number="3" location="6">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Anarchy</government>
+      <supply>Slaves</supply>
+      <demand>Food</demand>
+    </planet>
+  </star>
+  <star name="Harmonia" location="16" type="Blue">
+    <planet starName="Harmonia" number="1" location="6">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Democracy</government>
+      <supply>Savants</supply>
+      <demand>Weapons</demand>
+    </planet>
+    <planet starName="Harmonia" number="2" location="1">
+      <size>5</size>
+      <prefix>Prison</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>Weapons</supply>
+      <demand>Plants</demand>
+    </planet>
+    <planet starName="Harmonia" number="3" location="4">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
+      <supply>Chemicals</supply>
+      <demand>Blueprints</demand>
+    </planet>
+  </star>
+  <star name="Elipis" location="22" type="OrangeRed">
+    <planet starName="Elipis" number="1" location="8">
+      <size>2</size>
+      <prefix>Tourist</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
+      <supply>None</supply>
+      <demand>Weapons</demand>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Elipis" number="2" location="1">
+      <size>2</size>
+      <prefix>Industrial</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Oligarchy</government>
+      <supply>Fabricators</supply>
+      <demand>Weapons</demand>
+    </planet>
+    <planet starName="Elipis" number="3" location="0">
+      <size>2</size>
+      <prefix>Cultural</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Anarchy</government>
+      <supply>Art</supply>
+      <demand>Weapons</demand>
+    </planet>
+  </star>
+  <star name="Acantha" location="24" type="BlueWhite">
+    <planet starName="Acantha" number="1" location="2">
+      <size>4</size>
+      <prefix>Mining</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Anarchy</government>
+      <supply>Metal</supply>
+      <demand>Weapons</demand>
+    </planet>
+    <planet starName="Acantha" number="2" location="6">
+      <size>4</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>Food</supply>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Acantha" number="3" location="0">
+      <size>1</size>
+      <prefix>Research</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>Blueprints</supply>
+      <demand>Fabricators</demand>
+    </planet>
+  </star>
+  <star name="Oinone" location="14" type="Red">
+    <planet starName="Oinone" number="1" location="3">
+      <size>5</size>
+      <prefix>Cultural</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Anarchy</government>
+      <supply>Media</supply>
+      <demand>Slaves</demand>
+    </planet>
+    <planet starName="Oinone" number="2" location="1">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Oligarchy</government>
+      <supply>Plants</supply>
+      <demand>Media</demand>
+    </planet>
+  </star>
+  <star name="Castor" location="20" type="Red">
+    <planet starName="Castor" number="1" location="7">
+      <size>3</size>
+      <prefix>Industrial</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>Electronics</supply>
+      <demand>Food</demand>
+    </planet>
+    <planet starName="Castor" number="2" location="6">
+      <size>2</size>
+      <prefix>Commercial</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>Media</supply>
+      <demand>Plants</demand>
+    </planet>
+    <planet starName="Castor" number="3" location="5">
+      <size>1</size>
+      <prefix>Prison</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
+      <supply>Slaves</supply>
+      <demand>Media</demand>
+    </planet>
+  </star>
+  <star name="Pallas" location="24" type="WhiteYellow">
+    <planet starName="Pallas" number="1" location="2">
+      <size>4</size>
+      <prefix>Cultural</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Oligarchy</government>
+      <supply>Art</supply>
+      <demand>Chemicals</demand>
+    </planet>
+    <planet starName="Pallas" number="2" location="3">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Anarchy</government>
+      <supply>Chemicals</supply>
+      <demand>Fabricators</demand>
+    </planet>
+    <planet starName="Pallas" number="3" location="5">
+      <size>1</size>
+      <prefix>Research</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Anarchy</government>
+      <supply>Savants</supply>
+      <demand>Metal</demand>
+    </planet>
+  </star>
+  <star name="Iacchus" location="6" type="BlueWhite">
+    <planet starName="Iacchus" number="1" location="1">
+      <size>1</size>
+      <prefix>Research</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>Blueprints</supply>
+      <demand>Plants</demand>
+    </planet>
+    <planet starName="Iacchus" number="2" location="4">
+      <size>5</size>
+      <prefix>Tourist</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>None</supply>
+      <demand>Blueprints</demand>
+      <demand>Slaves</demand>
+    </planet>
+    <planet starName="Iacchus" number="3" location="8">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Democracy</government>
+      <supply>Metal</supply>
+      <demand>Fabricators</demand>
+    </planet>
+    <planet starName="Iacchus" number="4" location="3">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Democracy</government>
+      <supply>Food</supply>
+      <demand>Metal</demand>
+    </planet>
+    <planet starName="Iacchus" number="5" location="2">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>Plants</supply>
+      <demand>Blueprints</demand>
+    </planet>
+  </star>
+  <star name="Acantha" location="11" type="Blue">
+    <planet starName="Acantha" number="1" location="4">
+      <size>2</size>
+      <prefix>Industrial</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>Fabricators</supply>
+      <demand>Weapons</demand>
+    </planet>
+    <planet starName="Acantha" number="2" location="0">
+      <size>5</size>
+      <prefix>Prison</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Anarchy</government>
+      <supply>Weapons</supply>
+      <demand>Electronics</demand>
+    </planet>
+    <planet starName="Acantha" number="3" location="7">
+      <size>2</size>
+      <prefix>Cultural</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Oligarchy</government>
+      <supply>Media</supply>
+      <demand>Chemicals</demand>
+    </planet>
+  </star>
+  <star name="Kalliope" location="19" type="Blue">
+    <planet starName="Kalliope" number="1" location="8">
+      <size>3</size>
+      <prefix>Industrial</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>Electronics</supply>
+      <demand>Blueprints</demand>
+    </planet>
+    <planet starName="Kalliope" number="2" location="3">
+      <size>4</size>
+      <prefix>Commercial</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Anarchy</government>
+      <supply>Plants</supply>
+      <demand>Savants</demand>
+    </planet>
+    <planet starName="Kalliope" number="3" location="7">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Anarchy</government>
+      <supply>Food</supply>
+      <demand>Blueprints</demand>
     </planet>
     <planet starName="Kalliope" number="4" location="5">
       <size>1</size>
-      <prefix>Research</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Oligarchy</government>
-      <supply>Blueprints</supply>
-      <demand>Metal</demand>
-    </planet>
-  </star>
-  <star name="Elipis" location="20" type="BlueWhite">
-    <planet starName="Elipis" number="1" location="3">
-      <size>3</size>
-      <prefix>Industrial</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Oligarchy</government>
-      <supply>Electronics</supply>
-      <demand>Metal</demand>
-    </planet>
-    <planet starName="Elipis" number="2" location="5">
-      <size>5</size>
-      <prefix>Cultural</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
-      <supply>Media</supply>
-      <demand>Chemicals</demand>
-    </planet>
-  </star>
-  <star name="Nikephoros" location="24" type="WhiteYellow">
-    <planet starName="Nikephoros" number="1" location="7">
-      <size>3</size>
-      <prefix>Mining</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Oligarchy</government>
-      <supply>Chemicals</supply>
-      <demand>Electronics</demand>
-    </planet>
-    <planet starName="Nikephoros" number="2" location="1">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Oligarchy</government>
-      <supply>Art</supply>
-      <demand>Metal</demand>
-    </planet>
-    <planet starName="Nikephoros" number="3" location="6">
-      <size>2</size>
-      <prefix>Mining</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Oligarchy</government>
-      <supply>Metal</supply>
-      <demand>Electronics</demand>
-    </planet>
-  </star>
-  <star name="Adrastos" location="7" type="WhiteYellow">
-    <planet starName="Adrastos" number="1" location="3">
-      <size>3</size>
-      <prefix>Tourist</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Anarchy</government>
-      <supply>None</supply>
-      <demand>Chemicals</demand>
-      <demand>Savants</demand>
-    </planet>
-    <planet starName="Adrastos" number="2" location="8">
-      <size>3</size>
       <prefix>Agrarian</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Oligarchy</government>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
       <supply>Plants</supply>
       <demand>Weapons</demand>
     </planet>
-    <planet starName="Adrastos" number="3" location="1">
-      <size>1</size>
+  </star>
+  <star name="Harmonia" location="22" type="Blue">
+    <planet starName="Harmonia" number="1" location="0">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Oligarchy</government>
+      <supply>Chemicals</supply>
+      <demand>Blueprints</demand>
+    </planet>
+    <planet starName="Harmonia" number="2" location="1">
+      <size>4</size>
       <prefix>Industrial</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Hivecities</habitation>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
       <government>Oligarchy</government>
       <supply>Fabricators</supply>
-      <demand>Food</demand>
+      <demand>Media</demand>
     </planet>
-  </star>
-  <star name="Cephalus" location="7" type="Blue">
-    <planet starName="Cephalus" number="1" location="2">
-      <size>3</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
-      <supply>Food</supply>
+    <planet starName="Harmonia" number="3" location="5">
+      <size>1</size>
+      <prefix>Industrial</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
+      <supply>Electronics</supply>
       <demand>Slaves</demand>
     </planet>
-    <planet starName="Cephalus" number="2" location="7">
-      <size>5</size>
-      <prefix>Prison</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Autocracy</government>
-      <supply>Weapons</supply>
-      <demand>Blueprints</demand>
-    </planet>
-    <planet starName="Cephalus" number="3" location="4">
-      <size>1</size>
-      <prefix>Commercial</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>Electronics</supply>
-      <demand>Blueprints</demand>
-    </planet>
-  </star>
-  <star name="Lachesis" location="22" type="BlueWhite">
-    <planet starName="Lachesis" number="1" location="0">
-      <size>1</size>
-      <prefix>Mining</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Democracy</government>
-      <supply>Chemicals</supply>
-      <demand>Fabricators</demand>
-    </planet>
-    <planet starName="Lachesis" number="2" location="4">
-      <size>5</size>
-      <prefix>Research</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>Savants</supply>
-      <demand>Chemicals</demand>
-    </planet>
-    <planet starName="Lachesis" number="3" location="5">
+    <planet starName="Harmonia" number="4" location="8">
       <size>1</size>
       <prefix>Cultural</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Cubecities</habitation>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Oligarchy</government>
+      <supply>Media</supply>
+      <demand>Weapons</demand>
+    </planet>
+  </star>
+  <star name="Adrastos" location="18" type="WhiteYellow">
+    <planet starName="Adrastos" number="1" location="6">
+      <size>3</size>
+      <prefix>Prison</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
       <government>Autocracy</government>
-      <supply>Art</supply>
+      <supply>Slaves</supply>
       <demand>Electronics</demand>
     </planet>
-    <planet starName="Lachesis" number="4" location="1">
-      <size>1</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Democracy</government>
-      <supply>Food</supply>
-      <demand>Weapons</demand>
-    </planet>
-  </star>
-  <star name="Oinone" location="22" type="Red">
-    <planet starName="Oinone" number="1" location="8">
-      <size>3</size>
-      <prefix>Mining</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Democracy</government>
-      <supply>Metal</supply>
-      <demand>Weapons</demand>
-    </planet>
-    <planet starName="Oinone" number="2" location="3">
-      <size>3</size>
-      <prefix>Tourist</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Autocracy</government>
-      <supply>None</supply>
-      <demand>Plants</demand>
-      <demand>Savants</demand>
-    </planet>
-  </star>
-  <star name="Iacchus" location="34" type="WhiteYellow">
-    <planet starName="Iacchus" number="1" location="5">
-      <size>3</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Democracy</government>
-      <supply>Plants</supply>
-      <demand>Savants</demand>
-    </planet>
-    <planet starName="Iacchus" number="2" location="1">
+    <planet starName="Adrastos" number="2" location="4">
       <size>2</size>
       <prefix>Research</prefix>
       <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
+      <habitation>Hivecities</habitation>
       <government>Oligarchy</government>
       <supply>Blueprints</supply>
-      <demand>Fabricators</demand>
+      <demand>Food</demand>
     </planet>
-    <planet starName="Iacchus" number="3" location="6">
-      <size>1</size>
-      <prefix>Prison</prefix>
+    <planet starName="Adrastos" number="3" location="1">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Autocracy</government>
+      <supply>Savants</supply>
+      <demand>Weapons</demand>
+    </planet>
+  </star>
+  <star name="Elipis" location="14" type="WhiteYellow">
+    <planet starName="Elipis" number="1" location="6">
+      <size>2</size>
+      <prefix>Cultural</prefix>
       <suffix>Sprawl</suffix>
       <habitation>Hivecities</habitation>
       <government>Autocracy</government>
-      <supply>Slaves</supply>
-      <demand>Chemicals</demand>
+      <supply>Art</supply>
+      <demand>Fabricators</demand>
     </planet>
-    <planet starName="Iacchus" number="4" location="4">
-      <size>1</size>
-      <prefix>Industrial</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Anarchy</government>
-      <supply>Fabricators</supply>
-      <demand>Media</demand>
-    </planet>
-  </star>
-  <star name="Glaukos" location="15" type="WhiteYellow">
-    <planet starName="Glaukos" number="1" location="7">
-      <size>3</size>
-      <prefix>Industrial</prefix>
+    <planet starName="Elipis" number="2" location="0">
+      <size>2</size>
+      <prefix>Prison</prefix>
       <suffix>Barren</suffix>
       <habitation>Hivecities</habitation>
       <government>Autocracy</government>
-      <supply>Electronics</supply>
+      <supply>Weapons</supply>
+      <demand>Fabricators</demand>
+    </planet>
+    <planet starName="Elipis" number="3" location="2">
+      <size>3</size>
+      <prefix>Tourist</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Anarchy</government>
+      <supply>None</supply>
+      <demand>Savants</demand>
+      <demand>Fabricators</demand>
+    </planet>
+    <planet starName="Elipis" number="4" location="8">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>Metal</supply>
       <demand>Media</demand>
     </planet>
-    <planet starName="Glaukos" number="2" location="6">
-      <size>2</size>
-      <prefix>Prison</prefix>
+  </star>
+  <star name="Lachesis" location="20" type="Blue">
+    <planet starName="Lachesis" number="1" location="6">
+      <size>5</size>
+      <prefix>Commercial</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Anarchy</government>
+      <supply>Savants</supply>
+      <demand>Electronics</demand>
+    </planet>
+    <planet starName="Lachesis" number="2" location="4">
+      <size>3</size>
+      <prefix>Cultural</prefix>
       <suffix>Sprawl</suffix>
       <habitation>Hivecities</habitation>
       <government>Democracy</government>
-      <supply>Weapons</supply>
-      <demand>Blueprints</demand>
-    </planet>
-    <planet starName="Glaukos" number="3" location="3">
-      <size>1</size>
-      <prefix>Cultural</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
       <supply>Media</supply>
-      <demand>Chemicals</demand>
+      <demand>Fabricators</demand>
     </planet>
-    <planet starName="Glaukos" number="4" location="1">
+    <planet starName="Lachesis" number="3" location="2">
       <size>1</size>
-      <prefix>Commercial</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Oligarchy</government>
+      <prefix>Mining</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
       <supply>Chemicals</supply>
-      <demand>Weapons</demand>
+      <demand>Food</demand>
     </planet>
   </star>
 </starmap>

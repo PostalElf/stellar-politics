@@ -10,12 +10,14 @@ Module starmapFunctions
     Public systemXY As New List(Of Integer)
     Public planetSuffixDictionary As New Dictionary(Of Integer, String)
     Public planetPrefixDictionary As New Dictionary(Of String, String)
+    Public planetGovernmentDictionary As New Dictionary(Of String, Integer)
     Public romanNumeralDictionary As New Dictionary(Of Integer, String)
     Public planetTypeShortformDictionary As New Dictionary(Of String, String)
 
     Public Sub initialiseStarmapFunctions()
         If planetSuffixDictionary.Count = 0 Then repopPlanetSuffixDictionary()
         If planetPrefixDictionary.Count = 0 Then repopPlanetPrefixDictionary()
+        If planetGovernmentDictionary.Count = 0 Then repopPlanetGovernmentDictionary()
         If romanNumeralDictionary.Count = 0 Then repopRomanNumeralDictionary()
         If planetTypeShortformDictionary.Count = 0 Then repopPlanetTypeShortformDictionary()
         If starNameList Is Nothing Then starNameList = New List(Of String)
@@ -180,6 +182,15 @@ Module starmapFunctions
         Next x
         systemSupply.Add("Tourist")         'Supply nothing, import +1
         systemSupply.Add("Commercial")      'Supply random item
+    End Sub
+    Private Sub repopPlanetGovernmentDictionary()
+        ' holds types of governments (key) and probabilities (value)
+        ' if they do not add up to 100 then the roll will be based on total; they should add up to 100 though
+
+        planetGovernmentDictionary.Add("Autocracy", 30)
+        planetGovernmentDictionary.Add("Oligarchy", 30)
+        planetGovernmentDictionary.Add("Democracy", 23)
+        planetGovernmentDictionary.Add("Anarchy", 17)
     End Sub
     Private Sub repopRomanNumeralDictionary()
         romanNumeralDictionary.Add(1, "I")

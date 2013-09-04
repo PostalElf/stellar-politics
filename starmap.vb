@@ -154,12 +154,20 @@ Public Class starmap
         Return planetSuffixDictionary.Item(x)
     End Function
     Private Function randomPlanetGovernment() As String
-        Select Case Int(Rnd() * 13) + 1
-            Case 1 To 4 : Return "Autocracy"    ' 30%
-            Case 5 To 8 : Return "Oligarchy"    ' 30%
-            Case 9 To 11 : Return "Democracy"   ' 23%
-            Case Else : Return "Anarchy"        ' 15%
-        End Select
+        Dim totalPercentage As Integer = 0
+        For Each government As KeyValuePair(Of String, Integer) In planetGovernmentDictionary
+            totalPercentage += government.Value
+        Next
+
+        Dim x As Integer = Int(Rnd() * totalPercentage) + 1
+        Dim currentPercentage As Integer = 0
+        For Each government As KeyValuePair(Of String, Integer) In planetGovernmentDictionary
+            currentPercentage += government.Value
+            If x <= currentPercentage Then Return government.Key
+        Next
+
+        ' If nothing gets caught then just return last key
+        Return planetGovernmentDictionary.Last.Key
     End Function
     Private Function randomPlanetHabitation(ByVal planetSuffix As String) As String
         Dim x As Integer = Int(Rnd() * 100 + 1)
