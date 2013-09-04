@@ -113,11 +113,11 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
-        Dim starmap As New starmap
-
+        starmap = Nothing
         starmap.generateStarmap(galaxySize)
-        starmap = xmlGhost.ghostLoadStarmap()
+        starmap = ghostLoadStarmap()
         displayStarmap(starmap)
+        ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Sub loadGalaxy()
         Dim starmap As starmap = ghostLoadStarmap()
