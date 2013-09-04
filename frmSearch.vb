@@ -20,7 +20,7 @@ Public Class frmSearch
             cmbDemand.Items.Add(good)
         Next
         For Each star In starmap.stars
-            cmbStar.Items.Add(star.name)
+            If star.type <> "Blackhole" Then cmbStar.Items.Add(star.name)
         Next
         For i As Integer = 1 To 5
             cmbCities.Items.Add(i)

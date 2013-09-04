@@ -30,18 +30,27 @@ Public Class starmap
     End Sub
     Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef galaxySize As Integer)
         Dim starName As String = randomStarName()
+        Dim blackholes As Integer = Int(galaxySize / 2)
 
         xwrt.WriteStartElement("star")
         xwrt.WriteAttributeString("name", starName)
         xwrt.WriteAttributeString("location", randomStarXY())
 
-        Dim planetNumber As Integer = 1
-        Dim starSize As Integer = Int(Rnd() * 4) + 6    'measures total planetSize in star
-        xwrt.WriteAttributeString("type", randomStarType(starSize))
-        While starSize > 0
-            generatePlanet(xwrt, galaxySize, starSize, planetNumber, starName)
-        End While
-        repopSystemPlanetLocationList()
+        If blackholes > 0 AndAlso Int(Rnd() * 100 + 1) > 86 Then
+            ' Generate blackhole (10% chance)
+            ' Can generate a maximum number of blackholes = galaxySize/2 (rounded down)
+            xwrt.WriteAttributeString("type", "Blackhole")
+            blackholes -= 1
+        Else
+            ' Generate normal star
+            Dim planetNumber As Integer = 1
+            Dim starSize As Integer = Int(Rnd() * 4) + 6    'measures total planetSize in star
+            xwrt.WriteAttributeString("type", randomStarType(starSize))
+            While starSize > 0
+                generatePlanet(xwrt, galaxySize, starSize, planetNumber, starName)
+            End While
+            repopSystemPlanetLocationList()
+        End If
 
         xwrt.WriteEndElement()
     End Sub

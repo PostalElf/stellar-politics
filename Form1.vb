@@ -16,10 +16,16 @@
             starLoc.BackColor = Color.Transparent
             starLoc.Size = New Size(30, 30)
             starLoc.Tag = counter
-            Tooltip2.SetToolTip(starLoc, star.name & vbCrLf & _
-                                        "Planets: " & starSize & vbCrLf & _
-                                        "Population: " & starPopSize)
-            AddHandler starLoc.Click, AddressOf starLocClick
+            If star.type = "Blackhole" Then
+                Tooltip2.SetToolTip(starLoc, star.name & " (Blackhole)")
+                ' Blackhole does not have addHandler so clicking on it does nothing
+            Else
+                Tooltip2.SetToolTip(starLoc, star.name & vbCrLf & _
+                                            "Planets: " & starSize & vbCrLf & _
+                                            "Population: " & starPopSize)
+                AddHandler starLoc.Click, AddressOf starLocClick
+            End If
+
 
             TabPage1.Controls.Add(starLoc)
             counter += 1
