@@ -1,4 +1,5 @@
 ﻿Public Class Form1
+    Dim starmap As starmap
 
     Private Sub displayStarmap(starmap As starmap)
         Dim counter As Integer = 0
@@ -17,7 +18,7 @@
             starLoc.BackColor = Color.Transparent
             starLoc.Size = New Size(30, 30)
             starLoc.Tag = counter
-            ToolTip2.SetToolTip(starLoc, star.name & vbCrLf & _
+            Tooltip2.SetToolTip(starLoc, star.name & vbCrLf & _
                                         "Planets: " & starSize & vbCrLf & _
                                         "Population: " & starPopSize)
             AddHandler starLoc.Click, AddressOf starLocClick
@@ -61,7 +62,7 @@
                     str = str & good & " "
                 Next
             End If
-            ToolTip2.SetToolTip(planetLoc, str)
+            Tooltip2.SetToolTip(planetLoc, str)
             AddHandler planetLoc.Click, AddressOf planetLocClick
             TabPage2.Controls.Add(planetLoc)
         Next
@@ -119,7 +120,8 @@
         displayStarmap(starmap)
     End Sub
     Private Sub loadGalaxy()
-        displayStarmap(xmlGhost.ghostLoadStarmap())
+        Dim starmap As starmap = ghostLoadStarmap()
+        displayStarmap(starmap)
         ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Function getPlanetLocTag(ByVal index As Integer, planetNumber As Integer) As String

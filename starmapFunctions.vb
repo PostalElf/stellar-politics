@@ -1,4 +1,5 @@
 ﻿Imports System.Math
+Imports System.IO
 
 Module starmapFunctions
     Public starNameList As New List(Of String)
@@ -86,6 +87,60 @@ Module starmapFunctions
             systemXY.Add(i)
         Next
     End Sub
+    Private Function repopDefaultStarnameList() As List(Of String)
+        Dim defaultNameList As New List(Of String)
+
+        defaultNameList.Add("Wotan")
+        defaultNameList.Add("Froh")
+        defaultNameList.Add("Sleipnir")
+        defaultNameList.Add("Sleipnir")
+        defaultNameList.Add("Erda")
+        defaultNameList.Add("Nibelung")
+        defaultNameList.Add("Fricka")
+        defaultNameList.Add("Freia")
+        defaultNameList.Add("Donner")
+        defaultNameList.Add("Loge")
+
+        defaultNameList.Add("Themis")
+        defaultNameList.Add("Hyperion")
+        defaultNameList.Add("Coeus")
+        defaultNameList.Add("Cronus")
+        defaultNameList.Add("Crius")
+        defaultNameList.Add("Iapetus")
+        defaultNameList.Add("Mnemosyne")
+        defaultNameList.Add("Tethys")
+        defaultNameList.Add("Theia")
+        defaultNameList.Add("Phoebe")
+
+        defaultNameList.Add("Enlil")
+        defaultNameList.Add("Ninlil")
+        defaultNameList.Add("Dilmun")
+        defaultNameList.Add("Nanna")
+        defaultNameList.Add("Ningal")
+        defaultNameList.Add("Inanna")
+        defaultNameList.Add("Utu")
+        defaultNameList.Add("Anu")
+        defaultNameList.Add("Ninhursag")
+        defaultNameList.Add("Enki")
+
+        Return defaultNameList
+    End Function
+    Public Sub repopStarNameList()
+        'names are removed from starNameList as they are assigned to stars
+        'must have at least 30 entries; if not repop with own stuff
+        If system.IO.file.exists("starnames.txt") = False Then file.create("starnames.txt").dispose()
+
+        Using txtr As streamreader = New StreamReader("starnames.txt")
+            starnamelist.add(txtr.readline)
+        End Using
+
+        If starnamelist.count < 30 Then
+            Dim defaultStarnameList As List(Of String) = repopDefaultStarnameList()
+            For i = 1 To (30 - starnamelist.count)
+                starNameList.Add(defaultStarnameList(i))
+            Next i
+        End If
+    End Sub
     Private Sub repopSystemPlanetXYDictionary()
         'holds the X and Y coordinates of the planet in the star screen
         'are not removed when added to a star! Remove entry from systemplanetlocationlist instead
@@ -111,25 +166,6 @@ Module starmapFunctions
             systemPlanetLocationList.Add(i)
         Next
     End Sub
-    Public Sub repopStarNameList()
-        ' names are removed from starNameList as they are assigned to stars
-
-        starNameList.Add("Acantha")
-        starNameList.Add("Adrastos")
-        starNameList.Add("Castor")
-        starNameList.Add("Cephalus")
-        starNameList.Add("Dardanos")
-        starNameList.Add("Elipis")
-        starNameList.Add("Glaukos")
-        starNameList.Add("Harmonia")
-        starNameList.Add("Iacchus")
-        starNameList.Add("Kalliope")
-        starNameList.Add("Lachesis")
-        starNameList.Add("Medeia")
-        starNameList.Add("Nikephoros")
-        starNameList.Add("Oinone")
-        starNameList.Add("Pallas")
-    End Sub
     Private Sub repopPlanetSuffixDictionary()
         planetSuffixDictionary.Add(1, "Sprawl")
         planetSuffixDictionary.Add(2, "Wasteland")
@@ -145,11 +181,11 @@ Module starmapFunctions
 
         planetPrefixDictionary.Add("Metal", "Mining")
         planetPrefixDictionary.Add("Chemicals", "Mining")
-        planetPrefixDictionary.Add("Fabricators", "Industrial")
+        planetPrefixDictionary.Add("Weapons", "Industrial")
         planetPrefixDictionary.Add("Electronics", "Industrial")
         planetPrefixDictionary.Add("Blueprints", "Research")
         planetPrefixDictionary.Add("Savants", "Research")
-        planetPrefixDictionary.Add("Weapons", "Prison")
+        planetPrefixDictionary.Add("Azoth", "Prison")
         planetPrefixDictionary.Add("Slaves", "Prison")
         planetPrefixDictionary.Add("Food", "Agrarian")
         planetPrefixDictionary.Add("Plants", "Agrarian")
