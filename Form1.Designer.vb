@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
@@ -316,7 +317,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(565, 24)
-        Me.MenuStrip1.TabIndex = 5
+        Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
@@ -337,37 +338,37 @@ Partial Class Form1
         '
         Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Size1GalaxyToolStripMenuItem, Me.Size2GalaxyToolStripMenuItem, Me.Size3GalaxyToolStripMenuItem, Me.Size4GalaxyToolStripMenuItem, Me.Size5GalaxyToolStripMenuItem})
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'Size1GalaxyToolStripMenuItem
         '
         Me.Size1GalaxyToolStripMenuItem.Name = "Size1GalaxyToolStripMenuItem"
-        Me.Size1GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.Size1GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Size1GalaxyToolStripMenuItem.Text = "Size &1 Galaxy"
         '
         'Size2GalaxyToolStripMenuItem
         '
         Me.Size2GalaxyToolStripMenuItem.Name = "Size2GalaxyToolStripMenuItem"
-        Me.Size2GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.Size2GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Size2GalaxyToolStripMenuItem.Text = "Size &2 Galaxy"
         '
         'Size3GalaxyToolStripMenuItem
         '
         Me.Size3GalaxyToolStripMenuItem.Name = "Size3GalaxyToolStripMenuItem"
-        Me.Size3GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.Size3GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Size3GalaxyToolStripMenuItem.Text = "Size &3 Galaxy"
         '
         'Size4GalaxyToolStripMenuItem
         '
         Me.Size4GalaxyToolStripMenuItem.Name = "Size4GalaxyToolStripMenuItem"
-        Me.Size4GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.Size4GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Size4GalaxyToolStripMenuItem.Text = "Size &4 Galaxy"
         '
         'Size5GalaxyToolStripMenuItem
         '
         Me.Size5GalaxyToolStripMenuItem.Name = "Size5GalaxyToolStripMenuItem"
-        Me.Size5GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.Size5GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.Size5GalaxyToolStripMenuItem.Text = "Size &5 Galaxy"
         '
         'ToolsToolStripMenuItem
@@ -399,10 +400,10 @@ Partial Class Form1
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.Name = "Form1"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Galaxy Generator"
         Me.TabControl1.ResumeLayout(False)

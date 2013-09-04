@@ -10,7 +10,7 @@ Public Class starmap
 
     ' generators create stars and planets and writes them into starmap.xml
     Public Sub generateStarmap(Optional ByRef galaxySize = 1)
-        ' create a new starmap and write it to starmap.xml
+        ' create a new starmap and write it to starmap.xml; this function DOES NOT load starmap into memory
         ' galaxySize = min number of times systemSupply will be repopped
 
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)

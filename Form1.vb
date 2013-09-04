@@ -1,6 +1,4 @@
 ﻿Public Class Form1
-    Dim starmap As starmap
-
     Private Sub displayStarmap(starmap As starmap)
         Dim counter As Integer = 0
 
@@ -113,14 +111,16 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
-        starmap = Nothing
+        Dim starmap As New starmap
         starmap.generateStarmap(galaxySize)
         starmap = ghostLoadStarmap()
         displayStarmap(starmap)
+
         ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Sub loadGalaxy()
-        Dim starmap As starmap = ghostLoadStarmap()
+        Dim starmap As New starmap
+        starmap = ghostLoadStarmap()
         displayStarmap(starmap)
         ToolsToolStripMenuItem.Enabled = True
     End Sub
