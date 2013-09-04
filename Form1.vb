@@ -18,14 +18,12 @@
             starLoc.Tag = counter
             If star.type = "Blackhole" Then
                 Tooltip2.SetToolTip(starLoc, star.name & " (Blackhole)")
-                ' Blackhole does not have addHandler so clicking on it does nothing
             Else
                 Tooltip2.SetToolTip(starLoc, star.name & vbCrLf & _
                                             "Planets: " & starSize & vbCrLf & _
                                             "Population: " & starPopSize)
-                AddHandler starLoc.Click, AddressOf starLocClick
             End If
-
+            AddHandler starLoc.Click, AddressOf starLocClick
 
             TabPage1.Controls.Add(starLoc)
             counter += 1
@@ -34,43 +32,48 @@
     Private Sub displayStar(ByRef star As star, ByVal index As Integer)
         refreshTabPage2()
 
-        For Each planet In star.planets
-            Dim planetLoc As New Panel
-            planetLoc.Location = systemPlanetXYDictionary(planet.location)
-            Dim bgimgstr As String = "bigplanet" & planet.suffix
-            planetLoc.BackgroundImage = My.Resources.ResourceManager.GetObject(bgimgstr)
-            planetLoc.BackColor = Color.Transparent
-            planetLoc.Size = New Size(40, 40)
-            planetLoc.BackgroundImageLayout = ImageLayout.Stretch
-            planetLoc.Visible = True
-            planetLoc.Tag = getPlanetLocTag(index, planet.number - 1)       ' planet.number - 1 because stars() is a 0-based list
+        If star.type = "Blackhole" Then
 
-            Dim str As String = planet.starName & " " & romanNumeralDictionary(planet.number) & vbCrLf & _
-                                "Type: " & planet.prefix & " " & planet.suffix & vbCrLf & _
-                                "Habitation: " & planet.habitation & vbCrLf & _
-                                "Cities: " & planet.size & vbCrLf & _
-                                "Government: " & planet.government & vbCrLf & _
-                                vbCrLf
-            str = str & "Supply: "
-            If planet.supply.Count = 0 OrElse planet.supply(0) = "None" Then
-                str = str & "None" & vbCrLf
-            Else
-                For Each good In planet.supply
-                    str = str & good & " "
-                Next
-            End If
-            str = str & vbCrLf & "Demand: "
-            If planet.demand.Count = 0 OrElse planet.demand(0) = "None" Then
-                str = str & "None" & vbCrLf
-            Else
-                For Each good In planet.demand
-                    str = str & good & " "
-                Next
-            End If
-            Tooltip2.SetToolTip(planetLoc, str)
-            AddHandler planetLoc.Click, AddressOf planetLocClick
-            TabPage2.Controls.Add(planetLoc)
-        Next
+        Else
+            For Each planet In star.planets
+                Dim planetLoc As New Panel
+                planetLoc.Location = systemPlanetXYDictionary(planet.location)
+                Dim bgimgstr As String = "bigplanet" & planet.suffix
+                planetLoc.BackgroundImage = My.Resources.ResourceManager.GetObject(bgimgstr)
+                planetLoc.BackColor = Color.Transparent
+                planetLoc.Size = New Size(40, 40)
+                planetLoc.BackgroundImageLayout = ImageLayout.Stretch
+                planetLoc.Visible = True
+                planetLoc.Tag = getPlanetLocTag(index, planet.number - 1)       ' planet.number - 1 because stars() is a 0-based list
+
+                Dim str As String = planet.starName & " " & romanNumeralDictionary(planet.number) & vbCrLf & _
+                                    "Type: " & planet.prefix & " " & planet.suffix & vbCrLf & _
+                                    "Habitation: " & planet.habitation & vbCrLf & _
+                                    "Cities: " & planet.size & vbCrLf & _
+                                    "Government: " & planet.government & vbCrLf & _
+                                    vbCrLf
+                str = str & "Supply: "
+                If planet.supply.Count = 0 OrElse planet.supply(0) = "None" Then
+                    str = str & "None" & vbCrLf
+                Else
+                    For Each good In planet.supply
+                        str = str & good & " "
+                    Next
+                End If
+                str = str & vbCrLf & "Demand: "
+                If planet.demand.Count = 0 OrElse planet.demand(0) = "None" Then
+                    str = str & "None" & vbCrLf
+                Else
+                    For Each good In planet.demand
+                        str = str & good & " "
+                    Next
+                End If
+                Tooltip2.SetToolTip(planetLoc, str)
+                AddHandler planetLoc.Click, AddressOf planetLocClick
+                TabPage2.Controls.Add(planetLoc)
+            Next
+
+        End If
 
         Dim starbgstr As String = "starBG" & star.type
         TabPage2.BackgroundImage = My.Resources.ResourceManager.GetObject(starbgstr)

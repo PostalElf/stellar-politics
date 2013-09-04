@@ -257,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Mini-3-Globe.ico" />
+    <None Include="Resources\starBGBlackhole.JPG" />
     <None Include="Resources\starBlackhole.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
