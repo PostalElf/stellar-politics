@@ -54,17 +54,19 @@ Public Class frmSearch
         End If
 
         For Each star As star In starmap.stars
-            For Each planet As planet In star.planets
-                'every planet that meets the search criteria goes into planetList
-                'if nothing is selected for a particular criteria the function automatically returns True
-                If isStar(planet.starName) = True AndAlso _
-                    isSupply(planet.supply) = True AndAlso _
-                    isDemand(planet.demand) = True AndAlso _
-                    isCities(planet.size) = True AndAlso _
-                    isGovernment(planet.government) = True AndAlso _
-                    isPrefix(planet.prefix) = True AndAlso _
-                    isSuffix(planet.suffix) = True Then planetList.Add(planet)
-            Next
+            If star.type <> "Blackhole" Then
+                For Each planet As planet In star.planets
+                    'every planet that meets the search criteria goes into planetList
+                    'if nothing is selected for a particular criteria the function automatically returns True
+                    If isStar(planet.starName) = True AndAlso _
+                        isSupply(planet.supply) = True AndAlso _
+                        isDemand(planet.demand) = True AndAlso _
+                        isCities(planet.size) = True AndAlso _
+                        isGovernment(planet.government) = True AndAlso _
+                        isPrefix(planet.prefix) = True AndAlso _
+                        isSuffix(planet.suffix) = True Then planetList.Add(planet)
+                Next
+            End If
         Next
 
         For Each planet In planetList
@@ -160,7 +162,7 @@ Public Class frmSearch
         DataGridView1.Rows.Clear()
         runSearch()
     End Sub
-    Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
+    Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         If e.RowIndex = -1 Then Return
 
         selectedPlanet = planetList(e.RowIndex)

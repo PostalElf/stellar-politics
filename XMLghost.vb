@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Xml
+Imports System.Xml.XPath
 Imports System.Text
 
 Public Module xmlGhost
@@ -30,7 +31,6 @@ Public Module xmlGhost
         xr.Close()
         Return starmap
     End Function
-
     Private Function ghostLoadStar(ByRef xr As XmlReader) As star
         Dim star As New star
         star.name = xr.GetAttribute("name")
@@ -48,7 +48,6 @@ Public Module xmlGhost
 
         Return star
     End Function
-
     Private Function ghostLoadPlanet(ByRef xr As XmlReader) As planet
         Dim planet As New planet
 
@@ -72,6 +71,28 @@ Public Module xmlGhost
         End While
 
         Return planet
+    End Function
+
+    'ghostInfoLoaders read XML files ending with info and return the appropriate information in string
+    Function ghostInfoLoad(ByVal filename As String, ByVal rootElement As String, ByVal childElement As String) As String
+        'the info XML file should not be more complex than /filename/rootElement/childElement/
+        'eg. within planetinfo.xml, /planetinfo/prefix/cultural
+
+        Dim xsettings As New XmlReaderSettings
+        xsettings.IgnoreWhitespace = True
+        xsettings.IgnoreComments = True
+        Dim xr As XmlReader = XmlReader.Create(filename & ".xml", xsettings)
+        Dim tempStr As String = ""
+        While xr.Read()
+            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = rootElement Then
+                xr.ReadToDescendant(childElement.ToLower)
+                tempStr = xr.ReadString         ' use tempStr so as to be able to close the xmlreader
+            End If
+        End While
+
+        xr.Close()
+        tempStr = tempStr.Replace("|", "")
+        Return tempStr
     End Function
 
     '-----------

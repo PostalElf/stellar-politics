@@ -58,6 +58,7 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
@@ -331,44 +332,44 @@ Partial Class Form1
         '
         Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
         Me.LoadToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.LoadToolStripMenuItem.Text = "&Load"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Size1GalaxyToolStripMenuItem, Me.Size2GalaxyToolStripMenuItem, Me.Size3GalaxyToolStripMenuItem, Me.Size4GalaxyToolStripMenuItem, Me.Size5GalaxyToolStripMenuItem})
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'Size1GalaxyToolStripMenuItem
         '
         Me.Size1GalaxyToolStripMenuItem.Name = "Size1GalaxyToolStripMenuItem"
-        Me.Size1GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Size1GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.Size1GalaxyToolStripMenuItem.Text = "Size &1 Galaxy"
         '
         'Size2GalaxyToolStripMenuItem
         '
         Me.Size2GalaxyToolStripMenuItem.Name = "Size2GalaxyToolStripMenuItem"
-        Me.Size2GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Size2GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.Size2GalaxyToolStripMenuItem.Text = "Size &2 Galaxy"
         '
         'Size3GalaxyToolStripMenuItem
         '
         Me.Size3GalaxyToolStripMenuItem.Name = "Size3GalaxyToolStripMenuItem"
-        Me.Size3GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Size3GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.Size3GalaxyToolStripMenuItem.Text = "Size &3 Galaxy"
         '
         'Size4GalaxyToolStripMenuItem
         '
         Me.Size4GalaxyToolStripMenuItem.Name = "Size4GalaxyToolStripMenuItem"
-        Me.Size4GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Size4GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.Size4GalaxyToolStripMenuItem.Text = "Size &4 Galaxy"
         '
         'Size5GalaxyToolStripMenuItem
         '
         Me.Size5GalaxyToolStripMenuItem.Name = "Size5GalaxyToolStripMenuItem"
-        Me.Size5GalaxyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.Size5GalaxyToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.Size5GalaxyToolStripMenuItem.Text = "Size &5 Galaxy"
         '
         'ToolsToolStripMenuItem
@@ -391,6 +392,12 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
+        '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutoPopDelay = 6000
+        Me.ToolTip1.InitialDelay = 5
+        Me.ToolTip1.ReshowDelay = 5
         '
         'Form1
         '
@@ -449,5 +456,6 @@ Partial Class Form1
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DistanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
 
 End Class

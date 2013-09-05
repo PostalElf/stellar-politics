@@ -84,10 +84,18 @@
         Dim str As String = "bigplanet" & planet.suffix
         picPlanetType.BackgroundImage = My.Resources.ResourceManager.GetObject(str)
         lblPlanetName.Text = planet.starName & " " & romanNumeralDictionary(planet.number)
-        lblSize.Text = planet.size
+        lblSize.Text = planetSizeDictionary(planet.size)
         lblGovernment.Text = planet.government
+        'ToolTip1.SetToolTip(lblGovernment, ghostInfoLoad("planetinfo", "government", planet.government))
         lblHabitation.Text = planet.habitation
+        'ToolTip1.SetToolTip(lblHabitation, ghostInfoLoad("planetinfo", "habitation", planet.habitation))
         lblType.Text = planet.prefix & " " & planet.suffix
+        str = ghostInfoLoad("planetinfo", "prefix", planet.prefix) & _
+                            vbCrLf & vbCrLf & _
+                            "---" & _
+                            vbCrLf & vbCrLf & _
+        ghostInfoLoad("planetinfo", "suffix", planet.suffix)
+        ToolTip1.SetToolTip(lblType, str)
 
         lblSupply.Text = ""
         For Each supply In planet.supply

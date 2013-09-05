@@ -9,6 +9,7 @@ Module starmapFunctions
     Public systemPlanetXYDictionary As New Dictionary(Of Integer, Point)
     Public systemPlanetLocationList As New List(Of Integer)
     Public systemXY As New List(Of Integer)
+    Public planetSizeDictionary As New Dictionary(Of Integer, String)
     Public planetSuffixDictionary As New Dictionary(Of Integer, String)
     Public planetPrefixDictionary As New Dictionary(Of String, String)
     Public planetGovernmentDictionary As New Dictionary(Of String, Integer)
@@ -25,6 +26,7 @@ Module starmapFunctions
         If starNameList.Count = 0 Then repopStarNameList()
         If defaultSystemSupply Is Nothing Then defaultSystemSupply = New List(Of String)
         If defaultSystemSupply.Count = 0 Then repopDefaultSystemSupply()
+        If planetSizeDictionary.Count = 0 Then repopPlanetSizeDictionary()
         If systemPlanetXYDictionary.Count = 0 Then repopSystemPlanetXYDictionary()
         If systemPlanetLocationList Is Nothing Then systemPlanetLocationList = New List(Of Integer)
         If systemPlanetLocationList.Count = 0 Then repopSystemPlanetLocationList()
@@ -140,6 +142,15 @@ Module starmapFunctions
                 starNameList.Add(defaultStarnameList(i))
             Next i
         End If
+    End Sub
+    Private Sub repopPlanetSizeDictionary()
+        'translates size into description
+
+        planetSizeDictionary.Add(1, "Tiny")
+        planetSizeDictionary.Add(2, "Small")
+        planetSizeDictionary.Add(3, "Medium")
+        planetSizeDictionary.Add(4, "Large")
+        planetSizeDictionary.Add(5, "Massive")
     End Sub
     Private Sub repopSystemPlanetXYDictionary()
         'holds the X and Y coordinates of the planet in the star screen
@@ -270,5 +281,4 @@ Module starmapFunctions
 
 
     'crawlers search for certain data
-
 End Module
