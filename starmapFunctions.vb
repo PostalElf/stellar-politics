@@ -92,6 +92,8 @@ Module starmapFunctions
     Private Function repopDefaultStarnameList() As List(Of String)
         Dim defaultNameList As New List(Of String)
 
+        defaultNameList.Add("Nyx")  ' empty entry to escape index 0
+
         defaultNameList.Add("Wotan")
         defaultNameList.Add("Froh")
         defaultNameList.Add("Sleipnir")
@@ -133,7 +135,7 @@ Module starmapFunctions
         If system.IO.file.exists("starnames.txt") = False Then file.create("starnames.txt").dispose()
 
         Using txtr As streamreader = New StreamReader("starnames.txt")
-            starnamelist.add(txtr.readline)
+            If txtr.ReadLine <> Nothing Then starNameList.Add(txtr.ReadLine)
         End Using
 
         If starnamelist.count < 30 Then

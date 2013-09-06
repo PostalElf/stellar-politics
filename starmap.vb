@@ -36,8 +36,8 @@ Public Class starmap
         xwrt.WriteAttributeString("name", starName)
         xwrt.WriteAttributeString("location", randomStarXY())
 
-        If blackholes > 0 AndAlso Int(Rnd() * 100 + 1) > 86 Then
-            ' Generate blackhole (10% chance)
+        If blackholes > 0 AndAlso Form1.BlackholesToolStripMenuItem.Checked = True AndAlso Int(Rnd() * 100 + 1) > 86 Then
+            ' Generate blackhole (10% chance) if menu is ticked
             ' Can generate a maximum number of blackholes = galaxySize/2 (rounded down)
             xwrt.WriteAttributeString("type", "Blackhole")
             blackholes -= 1
@@ -102,6 +102,7 @@ Public Class starmap
         Next
         xwrt.WriteEndElement()
     End Sub
+
     Private Function randomStarName() As String
         Dim x As Integer = Int(Rnd() * (starNameList.Count - 1))
         randomStarName = starNameList.Item(x)

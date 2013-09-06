@@ -211,6 +211,9 @@
         frmDistance.ShowDialog(Me)
         frmDistance.Dispose()
     End Sub
+    Private Sub BlackholesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BlackholesToolStripMenuItem.Click
+        If BlackholesToolStripMenuItem.Checked = False Then BlackholesToolStripMenuItem.Checked = True Else BlackholesToolStripMenuItem.Checked = False
+    End Sub
 
     Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click
         Dim currentControl As Label = sender
@@ -218,4 +221,5 @@
         lblDescription.Text = ghostInfoLoad("planetinfo", currentControlName, currentControl.Text)
         TabControl1.SelectTab(3)
     End Sub
+
 End Class
