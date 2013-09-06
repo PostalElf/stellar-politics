@@ -159,7 +159,7 @@
         If good = "None" Then Exit Sub ' exit if there's nothing to display
 
         Dim picY As Integer
-        If type = "demand" Then picY = 165 Else picY = 132
+        If type = "demand" Then picY = 168 Else picY = 135
 
         Dim goodPic As New Panel
 
@@ -217,12 +217,6 @@
     Private Sub LoadToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles LoadToolStripMenuItem.Click
         loadGalaxy()
     End Sub
-    Private Sub picPlanetType_Click(sender As Object, e As System.EventArgs) Handles picPlanetType.Click
-        TabControl1.SelectTab(1)
-    End Sub
-    Private Sub picPlanetForward_Click(sender As Object, e As System.EventArgs) Handles picPlanetForward.Click
-        TabControl1.SelectTab(3)
-    End Sub
     Private Sub SearchToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SearchToolStripMenuItem.Click
         If frmSearch.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             displayPlanet(frmSearch.selectedPlanet)
@@ -239,6 +233,15 @@
     End Sub
     Private Sub BlackholesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BlackholesToolStripMenuItem.Click
         If BlackholesToolStripMenuItem.Checked = False Then BlackholesToolStripMenuItem.Checked = True Else BlackholesToolStripMenuItem.Checked = False
+    End Sub
+    Private Sub picPlanetType_Click(sender As Object, e As System.EventArgs) Handles picPlanetType.Click
+        TabControl1.SelectTab(1)
+    End Sub
+    Private Sub picPlanetForward_Click(sender As Object, e As System.EventArgs) Handles picPlanetForward.Click
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Sub picDescription_Click(sender As Object, e As System.EventArgs) Handles picDescription.Click
+        TabControl1.SelectTab(2)
     End Sub
 
     Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click

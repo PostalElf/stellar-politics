@@ -269,7 +269,7 @@ Partial Class Form1
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(13, 173)
+        Me.Label8.Location = New System.Drawing.Point(13, 176)
         Me.Label8.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(50, 13)
@@ -280,7 +280,7 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(21, 140)
+        Me.Label6.Location = New System.Drawing.Point(21, 143)
         Me.Label6.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(42, 13)
