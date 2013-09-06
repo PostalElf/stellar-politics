@@ -86,17 +86,10 @@
         lblPlanetName.Text = planet.starName & " " & romanNumeralDictionary(planet.number)
         lblSize.Text = planetSizeDictionary(planet.size)
         lblGovernment.Text = planet.government
-        'ToolTip1.SetToolTip(lblGovernment, ghostInfoLoad("planetinfo", "government", planet.government))
         lblHabitation.Text = planet.habitation
-        'ToolTip1.SetToolTip(lblHabitation, ghostInfoLoad("planetinfo", "habitation", planet.habitation))
-        lblType.Text = planet.prefix & " " & planet.suffix
-        str = ghostInfoLoad("planetinfo", "prefix", planet.prefix) & _
-                            vbCrLf & vbCrLf & _
-                            "---" & _
-                            vbCrLf & vbCrLf & _
-        ghostInfoLoad("planetinfo", "suffix", planet.suffix)
-        ToolTip1.SetToolTip(lblType, str)
-
+        lblPrefix.Text = planet.prefix
+        lblSuffix.Location = New Point(lblPrefix.Location.X + lblPrefix.Size.Width - 3, lblPrefix.Location.Y)
+        lblSuffix.Text = planet.suffix
         lblSupply.Text = ""
         For Each supply In planet.supply
             lblSupply.Text = lblSupply.Text & supply & " "
@@ -119,7 +112,9 @@
     Private Sub refreshTabPage3()
         lblPlanetName.Text = "Planet Name"
         lblSize.Text = "     "
-        lblType.Text = "     "
+        lblPrefix.Text = "     "
+        lblSuffix.Text = "     "
+        lblDescription.Text = ""
         lblHabitation.Text = "     "
         lblGovernment.Text = "     "
         picPlanetType.BackgroundImage = Nothing
@@ -177,8 +172,6 @@
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         initialiseStarmapFunctions()
         ToolsToolStripMenuItem.Enabled = False
-
-        'loadGalaxy()
     End Sub
     Private Sub Size1GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size1GalaxyToolStripMenuItem.Click
         newGalaxy(1)
@@ -217,5 +210,12 @@
     Private Sub DistanceToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DistanceToolStripMenuItem.Click
         frmDistance.ShowDialog(Me)
         frmDistance.Dispose()
+    End Sub
+
+    Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click
+        Dim currentControl As Label = sender
+        Dim currentControlName As String = currentControl.Name.Remove(0, 3)
+        lblDescription.Text = ghostInfoLoad("planetinfo", currentControlName, currentControl.Text)
+        TabControl1.SelectTab(3)
     End Sub
 End Class

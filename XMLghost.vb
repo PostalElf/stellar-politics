@@ -84,14 +84,14 @@ Public Module xmlGhost
         Dim xr As XmlReader = XmlReader.Create(filename & ".xml", xsettings)
         Dim tempStr As String = ""
         While xr.Read()
-            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = rootElement Then
-                xr.ReadToDescendant(childElement.ToLower)
+            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = rootElement.ToLower Then
+                Dim newChild As String = childElement.Replace(" ", "")      ' remove the spaces
+                xr.ReadToDescendant(newChild.ToLower)
                 tempStr = xr.ReadString         ' use tempStr so as to be able to close the xmlreader
             End If
         End While
 
         xr.Close()
-        tempStr = tempStr.Replace("|", "")
         Return tempStr
     End Function
 

@@ -28,6 +28,7 @@ Partial Class Form1
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.lblSuffix = New System.Windows.Forms.Label()
         Me.picPlanetForward = New System.Windows.Forms.Panel()
         Me.lblDemand = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -36,7 +37,7 @@ Partial Class Form1
         Me.picPlanetType = New System.Windows.Forms.Panel()
         Me.lblGovernment = New System.Windows.Forms.Label()
         Me.lblHabitation = New System.Windows.Forms.Label()
-        Me.lblType = New System.Windows.Forms.Label()
+        Me.lblPrefix = New System.Windows.Forms.Label()
         Me.lblSize = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -44,6 +45,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblPlanetName = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.lblDescription = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Tooltip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -58,9 +60,9 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -109,6 +111,7 @@ Partial Class Form1
         Me.TabPage3.BackColor = System.Drawing.Color.Black
         Me.TabPage3.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.binaryStarBG
         Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage3.Controls.Add(Me.lblSuffix)
         Me.TabPage3.Controls.Add(Me.picPlanetForward)
         Me.TabPage3.Controls.Add(Me.lblDemand)
         Me.TabPage3.Controls.Add(Me.Label8)
@@ -117,7 +120,7 @@ Partial Class Form1
         Me.TabPage3.Controls.Add(Me.picPlanetType)
         Me.TabPage3.Controls.Add(Me.lblGovernment)
         Me.TabPage3.Controls.Add(Me.lblHabitation)
-        Me.TabPage3.Controls.Add(Me.lblType)
+        Me.TabPage3.Controls.Add(Me.lblPrefix)
         Me.TabPage3.Controls.Add(Me.lblSize)
         Me.TabPage3.Controls.Add(Me.Label3)
         Me.TabPage3.Controls.Add(Me.Label4)
@@ -130,6 +133,16 @@ Partial Class Form1
         Me.TabPage3.Size = New System.Drawing.Size(514, 373)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Planet"
+        '
+        'lblSuffix
+        '
+        Me.lblSuffix.AutoSize = True
+        Me.lblSuffix.Location = New System.Drawing.Point(220, 65)
+        Me.lblSuffix.Margin = New System.Windows.Forms.Padding(0, 3, 0, 3)
+        Me.lblSuffix.Name = "lblSuffix"
+        Me.lblSuffix.Size = New System.Drawing.Size(22, 13)
+        Me.lblSuffix.TabIndex = 17
+        Me.lblSuffix.Text = "     "
         '
         'picPlanetForward
         '
@@ -209,15 +222,15 @@ Partial Class Form1
         Me.lblHabitation.TabIndex = 8
         Me.lblHabitation.Text = "     "
         '
-        'lblType
+        'lblPrefix
         '
-        Me.lblType.AutoSize = True
-        Me.lblType.Location = New System.Drawing.Point(192, 65)
-        Me.lblType.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.lblType.Name = "lblType"
-        Me.lblType.Size = New System.Drawing.Size(22, 13)
-        Me.lblType.TabIndex = 7
-        Me.lblType.Text = "     "
+        Me.lblPrefix.AutoSize = True
+        Me.lblPrefix.Location = New System.Drawing.Point(192, 65)
+        Me.lblPrefix.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
+        Me.lblPrefix.Name = "lblPrefix"
+        Me.lblPrefix.Size = New System.Drawing.Size(22, 13)
+        Me.lblPrefix.TabIndex = 7
+        Me.lblPrefix.Text = "     "
         '
         'lblSize
         '
@@ -265,12 +278,12 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(158, 46)
+        Me.Label1.Location = New System.Drawing.Point(163, 46)
         Me.Label1.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(35, 13)
+        Me.Label1.Size = New System.Drawing.Size(30, 13)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Cities:"
+        Me.Label1.Text = "Size:"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'lblPlanetName
@@ -287,12 +300,22 @@ Partial Class Form1
         '
         Me.TabPage4.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.detailsBG
         Me.TabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage4.Controls.Add(Me.lblDescription)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Size = New System.Drawing.Size(514, 373)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Details"
         Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'lblDescription
+        '
+        Me.lblDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescription.ForeColor = System.Drawing.Color.White
+        Me.lblDescription.Location = New System.Drawing.Point(140, 59)
+        Me.lblDescription.Name = "lblDescription"
+        Me.lblDescription.Size = New System.Drawing.Size(357, 288)
+        Me.lblDescription.TabIndex = 17
         '
         'Label5
         '
@@ -393,12 +416,6 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
-        'ToolTip1
-        '
-        Me.ToolTip1.AutoPopDelay = 6000
-        Me.ToolTip1.InitialDelay = 5
-        Me.ToolTip1.ReshowDelay = 5
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -416,6 +433,7 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        Me.TabPage4.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -434,7 +452,7 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lblGovernment As System.Windows.Forms.Label
     Friend WithEvents lblHabitation As System.Windows.Forms.Label
-    Friend WithEvents lblType As System.Windows.Forms.Label
+    Friend WithEvents lblPrefix As System.Windows.Forms.Label
     Friend WithEvents lblSize As System.Windows.Forms.Label
     Friend WithEvents picPlanetType As System.Windows.Forms.Panel
     Friend WithEvents lblSupply As System.Windows.Forms.Label
@@ -456,6 +474,7 @@ Partial Class Form1
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DistanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents lblSuffix As System.Windows.Forms.Label
+    Friend WithEvents lblDescription As System.Windows.Forms.Label
 
 End Class
