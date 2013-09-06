@@ -205,7 +205,7 @@ Module starmapFunctions
     End Sub
     Private Sub repopDefaultSystemSupply()
         'defaultSystemSupply holds the entire list of supplies
-        'must always be called AFTER repopPlanetSuffixDictionary as supplylist is dependent on that
+        'must always be called AFTER repopPlanetPrefixDictionary as supplylist is dependent on that
 
         defaultSystemSupply.Clear()
         For Each entry As KeyValuePair(Of String, String) In planetPrefixDictionary
