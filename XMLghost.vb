@@ -86,7 +86,8 @@ Public Module xmlGhost
         While xr.Read()
             If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = rootElement.ToLower Then
                 Dim newChild As String = childElement.Replace(" ", "")      ' remove the spaces
-                xr.ReadToDescendant(newChild.ToLower)
+                newChild = newChild.ToLower
+                xr.ReadToDescendant(newChild)
                 tempStr = xr.ReadString         ' use tempStr so as to be able to close the xmlreader
             End If
         End While

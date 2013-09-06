@@ -86,6 +86,7 @@ Partial Class frmSearch
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colName, Me.colCities, Me.colPrefix, Me.colSuffix, Me.colSupply, Me.colDemand})
         Me.DataGridView1.Location = New System.Drawing.Point(12, 145)

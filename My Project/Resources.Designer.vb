@@ -137,6 +137,97 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property icoArt() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoArt", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoAzoth() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoAzoth", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoBlueprints() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoBlueprints", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoChemicals() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoChemicals", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoElectronics() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoElectronics", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoFood() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoFood", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoMedia() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoMedia", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoMetal() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoMetal", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoPlants() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoPlants", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoSavants() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoSavants", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoSlaves() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoSlaves", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoWeapons() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoWeapons", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property icoWorld() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoWorld", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property starBGBlackhole() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("starBGBlackhole", resourceCulture)

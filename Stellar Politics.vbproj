@@ -257,6 +257,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Mini-3-Globe.ico" />
+    <None Include="Resources\icoMetal.png" />
+    <None Include="Resources\icoMedia.png" />
+    <None Include="Resources\icoFood.PNG" />
+    <None Include="Resources\icoElectronics.PNG" />
+    <None Include="Resources\icoChemicals.PNG" />
+    <None Include="Resources\icoBlueprints.png" />
+    <None Include="Resources\icoAzoth.png" />
+    <None Include="Resources\icoArt.PNG" />
+    <None Include="Resources\icoWorld.PNG" />
+    <None Include="Resources\icoWeapons.PNG" />
+    <None Include="Resources\icoSlaves.PNG" />
+    <None Include="Resources\icoSavants.PNG" />
+    <None Include="Resources\icoPlants.PNG" />
     <None Include="Resources\starBGBlackhole.JPG" />
     <None Include="Resources\starBlackhole.png" />
   </ItemGroup>

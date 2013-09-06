@@ -151,6 +151,45 @@
   <data name="galaxy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\galaxy.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icoArt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoArt.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoAzoth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoAzoth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoBlueprints" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoBlueprints.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoChemicals" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoChemicals.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoElectronics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoElectronics.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoFood" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoFood.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoMedia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoMedia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoMetal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoMetal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoPlants" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoPlants.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoSavants" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoSavants.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoSlaves" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoSlaves.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoWeapons" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoWeapons.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icoWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icoWorld.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="starBGBlackhole" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\starBGBlackhole.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

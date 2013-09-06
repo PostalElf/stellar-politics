@@ -90,13 +90,13 @@
         lblPrefix.Text = planet.prefix
         lblSuffix.Location = New Point(lblPrefix.Location.X + lblPrefix.Size.Width - 3, lblPrefix.Location.Y)
         lblSuffix.Text = planet.suffix
-        lblSupply.Text = ""
+        Dim counter As Integer = 0
         For Each supply In planet.supply
-            lblSupply.Text = lblSupply.Text & supply & " "
+            addGoodsPic(supply, counter, "supply")
         Next
-        lblDemand.Text = ""
+        counter = 0
         For Each demand In planet.demand
-            lblDemand.Text = lblDemand.Text & demand & " "
+            addGoodsPic(demand, counter, "demand")
         Next
     End Sub
     Private Sub refreshTabPage2()
@@ -118,6 +118,14 @@
         lblHabitation.Text = "     "
         lblGovernment.Text = "     "
         picPlanetType.BackgroundImage = Nothing
+        For Each ctrl As Control In TabPage3.Controls
+            If (TypeOf ctrl Is Panel) = True Then   ' shortcircuit all non-panels
+                'clear all goodPics (aka supply and demand icons)
+                'ignore certain panels (prefix pic)
+
+                If ctrl.Name <> "picPlanetType" AndAlso ctrl.Name <> "picPlanetForward" Then TabPage3.Controls.Remove(ctrl)
+            End If
+        Next
     End Sub
 
     Private Sub newGalaxy(ByVal galaxySize As Integer)
@@ -147,6 +155,23 @@
             If planetNumber < 10 Then getPlanetLocTag = index & "," & "0" & planetNumber Else getPlanetLocTag = index & "," & planetNumber
         End If
     End Function
+    Private Sub addGoodsPic(ByVal good As String, ByVal counter As Integer, ByVal type As String)
+        If good = "None" Then Exit Sub ' exit if there's nothing to display
+
+        Dim picY As Integer
+        If type = "demand" Then picY = 165 Else picY = 132
+
+        Dim goodPic As New Panel
+
+        goodPic.Size = New Size(30, 30)
+        goodPic.Location = New Point((64 + counter * 30), picY)
+        goodPic.BackgroundImageLayout = ImageLayout.Stretch
+        goodPic.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & good)
+        goodPic.Tag = good
+        AddHandler goodPic.Click, AddressOf goodPic_Click
+        Tooltip2.SetToolTip(goodPic, good)
+        TabPage3.Controls.Add(goodPic)
+    End Sub
 
     Private Sub starLocClick(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim index As Integer = Convert.ToInt32(DirectCast(sender, Panel).Tag)
@@ -162,6 +187,7 @@
         Dim planetNumber As Integer = Convert.ToInt32(Mid(planetLocTag, 4, 2))
         Dim planet As planet = ghostLoadStarmap.stars(index).planets(planetNumber)
 
+        refreshTabPage3()
         displayPlanet(planet)
         TabControl1.SelectTab(2)
     End Sub
@@ -219,7 +245,26 @@
         Dim currentControl As Label = sender
         Dim currentControlName As String = currentControl.Name.Remove(0, 3)
         lblDescription.Text = ghostInfoLoad("planetinfo", currentControlName, currentControl.Text)
+
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject(getPicDescription(currentControlName))
+
         TabControl1.SelectTab(3)
     End Sub
+    Private Sub goodPic_Click(sender As System.Object, e As System.EventArgs)
+        Dim currentControl As Panel = sender
+        lblDescription.Text = ghostInfoLoad("planetinfo", "goods", currentControl.Tag)
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & currentControl.Tag)
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Function getPicDescription(currentControlName As String) As String
+        Select Case currentControlName
+            Case "Size" : Return "icoWorld"
+            Case "Prefix" : Return "icoWorld"
+            Case "Suffix" : Return "icoWorld"
+            Case "Habitation" : Return "icoWorld"
+            Case "Government" : Return "icoWorld"
+            Case Else : Return "ico" & currentControlName
+        End Select
+    End Function
 
 End Class
