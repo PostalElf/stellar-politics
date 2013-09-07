@@ -2,6 +2,7 @@
 
 Public Class starmap
     Public stars As List(Of star)
+    Public md5Hash As String
 
     Sub New()
         Randomize()
@@ -10,7 +11,9 @@ Public Class starmap
 
     ' generators create stars and planets and writes them into starmap.xml
     Public Sub generateStarmap(Optional ByRef galaxySize = 1)
-        ' create a new starmap and write it to starmap.xml; this function DOES NOT load starmap into memory
+        ' create a new starmap and write it to starmap.xml
+        ' also writes the hashdata for starmap.xml into hashStarmap.txt
+        ' this function DOES NOT load starmap into memory
         ' galaxySize = min number of times systemSupply will be repopped
 
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
@@ -27,6 +30,11 @@ Public Class starmap
         xwrt.WriteEndDocument()
         xwrt.Close()
         xwrt = Nothing
+
+        'store starmap hash into hashstarmap.txt
+        Dim txtFxn As New sharedHashFunctions
+        txtFxn.addHashFile("starmap")
+        txtFxn = Nothing
     End Sub
     Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef galaxySize As Integer)
         Dim starName As String = randomStarName()

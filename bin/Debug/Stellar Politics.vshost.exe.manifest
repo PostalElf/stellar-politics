@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Stellar Politics.exe" size="1214464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Stellar Politics.exe" size="1216000">
       <assemblyIdentity name="Stellar Politics" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>F7JyvQVjDV08LDKgh6vy497U3vA=</dsig:DigestValue>
+        <dsig:DigestValue>mPUQtUjCK1qMME9juLUtQ76sMwc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

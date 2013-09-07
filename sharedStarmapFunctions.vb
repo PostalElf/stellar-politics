@@ -1,7 +1,7 @@
 ﻿Imports System.Math
 Imports System.IO
 
-Module starmapFunctions
+Module sharedStarmapFunctions
     Public starNameList As New List(Of String)
     Public defaultSystemSupply As New List(Of String)
     Public systemSupply As New List(Of String)

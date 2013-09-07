@@ -140,8 +140,20 @@
         ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Sub loadGalaxy()
+        ' check if hash matches
+        Dim hashFxn As New sharedHashFunctions
+        If hashFxn.checkHash("starmap") = False Then
+            MsgBox("starmap.xml corrupted!  Generate a new starmap.", MsgBoxStyle.Critical, "Error!")
+            hashFxn = Nothing
+            Me.Close()
+        End If
+        hashFxn = Nothing
+
+        ' load starmap into object
         Dim starmap As New starmap
         starmap = ghostLoadStarmap()
+
+        ' display starmap in form and perform menu activations
         displayStarmap(starmap)
         ToolsToolStripMenuItem.Enabled = True
     End Sub
