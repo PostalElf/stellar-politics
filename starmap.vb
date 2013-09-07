@@ -2,7 +2,6 @@
 
 Public Class starmap
     Public stars As List(Of star)
-    Public md5Hash As String
 
     Sub New()
         Randomize()

@@ -140,22 +140,23 @@
         ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Sub loadGalaxy()
-        ' check if hash matches
+        ' check hash
         Dim hashFxn As New sharedHashFunctions
         If hashFxn.checkHash("starmap") = False Then
             MsgBox("starmap.xml corrupted!  Generate a new starmap.", MsgBoxStyle.Critical, "Error!")
             hashFxn = Nothing
             Me.Close()
+        Else
+            hashFxn = Nothing
+
+            ' load starmap into object
+            Dim starmap As New starmap
+            starmap = ghostLoadStarmap()
+
+            ' display starmap in form and perform menu activations
+            displayStarmap(starmap)
+            ToolsToolStripMenuItem.Enabled = True
         End If
-        hashFxn = Nothing
-
-        ' load starmap into object
-        Dim starmap As New starmap
-        starmap = ghostLoadStarmap()
-
-        ' display starmap in form and perform menu activations
-        displayStarmap(starmap)
-        ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Function getPlanetLocTag(ByVal index As Integer, planetNumber As Integer) As String
         'stores both planetNumber as well as index of current star in starmap.stars()

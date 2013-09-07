@@ -78,6 +78,14 @@ Public Module xmlGhost
         'the info XML file should not be more complex than /filename/rootElement/childElement/
         'eg. within planetinfo.xml, /planetinfo/prefix/cultural
 
+        If System.IO.File.Exists(filename & ".xml") = False Then
+            MsgBox("A file is missing!  Please redownload the package " & vbCrLf & _
+                   "and extract all the files into the same folder. Do" & vbCrLf & _
+                   "not edit any of the files in the folder manually.", MsgBoxStyle.Critical, "Missing File")
+            Form1.Close()
+            Return Nothing
+        End If
+
         Dim xsettings As New XmlReaderSettings
         xsettings.IgnoreWhitespace = True
         xsettings.IgnoreComments = True

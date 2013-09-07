@@ -55,8 +55,10 @@ Public Class sharedHashFunctions
         Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
 
         Dim hash1 As String = readWholeFile(hashFilename)
+        If hash1 = Nothing Then Return Nothing
         hash1 = hash1.Replace(vbCrLf, "")       ' remove any linebreaks
         Dim hash2 As String = generateHash(readWholeFile(xmlFilename))
+        If hash2 = Nothing Then Return Nothing
 
         If hash1 = hash2 Then Return True Else Return False
     End Function
