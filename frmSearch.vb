@@ -19,12 +19,15 @@ Public Class frmSearch
             cmbSupply.Items.Add(good)
             cmbDemand.Items.Add(good)
         Next
+        cmbStar.Items.Add("")
         For Each star In starmap.stars
             If star.type <> "Blackhole" Then cmbStar.Items.Add(star.name)
         Next
+        cmbCities.Items.Add("")
         For i As Integer = 1 To 5
             cmbCities.Items.Add(i)
         Next
+        cmbSuffix.Items.Add("")
         For i As Integer = 1 To planetSuffixDictionary.Count Step 1
             cmbSuffix.Items.Add(planetSuffixDictionary(i))
         Next
@@ -37,6 +40,7 @@ Public Class frmSearch
         Next
     End Sub
     Private Sub repopGoodsList()
+        goodsList.Add("")
         For Each item In defaultSystemSupply
             goodsList.Add(item)
         Next
@@ -64,7 +68,8 @@ Public Class frmSearch
                         isCities(planet.size) = True AndAlso _
                         isGovernment(planet.government) = True AndAlso _
                         isPrefix(planet.prefix) = True AndAlso _
-                        isSuffix(planet.suffix) = True Then planetList.Add(planet)
+                        isSuffix(planet.suffix) = True AndAlso _
+                        isAgent(planet.stationedAgents) = True Then planetList.Add(planet)
                 Next
             End If
         Next
@@ -150,7 +155,29 @@ Public Class frmSearch
             If cmbSuffix.SelectedItem.ToString = suffix Then Return True Else Return False
         End If
     End Function
+    Private Function isAgent(ByVal stationedAgents As List(Of String)) As Boolean
+        If cmbAgents.SelectedItem = Nothing Then Return True
 
+        Select Case cmbAgents.SelectedIndex
+            Case 1
+                ' no agents
+                If stationedAgents.Item(0) = "000" Then Return True Else Return False
+
+            Case 2
+                'at least 1
+                If stationedAgents.Count > 1 Then Return True Else Return False
+
+            Case 3
+                'more than 1
+                If stationedAgents.Count > 2 Then Return True Else Return False
+
+            Case Else
+                'bugcatch
+                Return False
+        End Select
+
+        Return False
+    End Function
 
     Private Sub ComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbSupply.SelectedIndexChanged, _
                                                                                                         cmbDemand.SelectedIndexChanged, _
@@ -158,7 +185,8 @@ Public Class frmSearch
                                                                                                         cmbStar.SelectedIndexChanged, _
                                                                                                         cmbPrefix.SelectedIndexChanged, _
                                                                                                         cmbSuffix.SelectedIndexChanged, _
-                                                                                                        cmbGovernment.SelectedIndexChanged
+                                                                                                        cmbGovernment.SelectedIndexChanged, _
+                                                                                                        cmbAgents.SelectedIndexChanged
         DataGridView1.Rows.Clear()
         runSearch()
     End Sub

@@ -43,13 +43,15 @@ Partial Class frmSearch
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbGovernment = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.cmbAgents = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(245, 19)
+        Me.Label1.Location = New System.Drawing.Point(248, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(42, 13)
         Me.Label1.TabIndex = 0
@@ -59,7 +61,7 @@ Partial Class frmSearch
         '
         Me.cmbSupply.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSupply.FormattingEnabled = True
-        Me.cmbSupply.Location = New System.Drawing.Point(293, 16)
+        Me.cmbSupply.Location = New System.Drawing.Point(296, 16)
         Me.cmbSupply.Name = "cmbSupply"
         Me.cmbSupply.Size = New System.Drawing.Size(132, 21)
         Me.cmbSupply.TabIndex = 1
@@ -68,7 +70,7 @@ Partial Class frmSearch
         '
         Me.cmbDemand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDemand.FormattingEnabled = True
-        Me.cmbDemand.Location = New System.Drawing.Point(293, 45)
+        Me.cmbDemand.Location = New System.Drawing.Point(296, 45)
         Me.cmbDemand.Name = "cmbDemand"
         Me.cmbDemand.Size = New System.Drawing.Size(132, 21)
         Me.cmbDemand.TabIndex = 5
@@ -76,7 +78,7 @@ Partial Class frmSearch
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(237, 48)
+        Me.Label2.Location = New System.Drawing.Point(240, 48)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 4
@@ -191,7 +193,7 @@ Partial Class frmSearch
         '
         Me.cmbPrefix.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbPrefix.FormattingEnabled = True
-        Me.cmbPrefix.Items.AddRange(New Object() {"Mining", "Industrial", "Research", "Prison", "Agrarian", "Cultural", "Tourist", "Commercial"})
+        Me.cmbPrefix.Items.AddRange(New Object() {"", "Mining", "Industrial", "Research", "Prison", "Agrarian", "Cultural", "Tourist", "Commercial"})
         Me.cmbPrefix.Location = New System.Drawing.Point(67, 72)
         Me.cmbPrefix.Name = "cmbPrefix"
         Me.cmbPrefix.Size = New System.Drawing.Size(132, 21)
@@ -228,8 +230,8 @@ Partial Class frmSearch
         '
         Me.cmbGovernment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbGovernment.FormattingEnabled = True
-        Me.cmbGovernment.Items.AddRange(New Object() {"Autocracy", "Oligarchy", "Democracy", "Anarchy"})
-        Me.cmbGovernment.Location = New System.Drawing.Point(293, 72)
+        Me.cmbGovernment.Items.AddRange(New Object() {"", "Autocracy", "Oligarchy", "Democracy", "Anarchy"})
+        Me.cmbGovernment.Location = New System.Drawing.Point(296, 72)
         Me.cmbGovernment.Name = "cmbGovernment"
         Me.cmbGovernment.Size = New System.Drawing.Size(132, 21)
         Me.cmbGovernment.TabIndex = 16
@@ -237,17 +239,38 @@ Partial Class frmSearch
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(219, 75)
+        Me.Label7.Location = New System.Drawing.Point(222, 75)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(68, 13)
         Me.Label7.TabIndex = 15
         Me.Label7.Text = "Government:"
+        '
+        'cmbAgents
+        '
+        Me.cmbAgents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbAgents.FormattingEnabled = True
+        Me.cmbAgents.Items.AddRange(New Object() {"", "None", "At least 1", "More than 1"})
+        Me.cmbAgents.Location = New System.Drawing.Point(296, 99)
+        Me.cmbAgents.Name = "cmbAgents"
+        Me.cmbAgents.Size = New System.Drawing.Size(132, 21)
+        Me.cmbAgents.TabIndex = 18
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(247, 102)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(43, 13)
+        Me.Label8.TabIndex = 17
+        Me.Label8.Text = "Agents:"
         '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(454, 307)
+        Me.Controls.Add(Me.cmbAgents)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cmbGovernment)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.cmbSuffix)
@@ -293,4 +316,6 @@ Partial Class frmSearch
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents cmbGovernment As System.Windows.Forms.ComboBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents cmbAgents As System.Windows.Forms.ComboBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

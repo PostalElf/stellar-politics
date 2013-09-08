@@ -32,6 +32,7 @@
 
         'menu activations
         ToolsToolStripMenuItem.Enabled = True
+        ManageToolStripMenuItem.Enabled = True
     End Sub
     Private Sub displayStar(ByRef star As star, ByVal index As Integer)
         refreshTabPage2()
@@ -289,6 +290,7 @@
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         initialiseStarmapFunctions()
         ToolsToolStripMenuItem.Enabled = False
+        ManageToolStripMenuItem.Enabled = False
     End Sub
     Private Sub NewToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewToolStripMenuItem.Click
         If frmNew.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -318,5 +320,8 @@
     Private Sub DistanceToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DistanceToolStripMenuItem.Click
         frmDistance.ShowDialog(Me)
         frmDistance.Dispose()
+    End Sub
+    Private Sub AgentsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AgentsToolStripMenuItem.Click
+
     End Sub
 End Class

@@ -7,30 +7,130 @@
     <agent>004</agent>
     <agent>005</agent>
   </homeagents>
-  <star name="Nibelung" location="11" type="WhiteYellow">
-    <planet starName="Nibelung" number="1" location="3">
-      <size>2</size>
-      <prefix>Tourist</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Anarchy</government>
+  <star name="Enlil" location="2" type="OrangeRed">
+    <planet starName="Enlil" number="1" location="3">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Oligarchy</government>
       <supply>
-        <good>None</good>
+        <good>Savants</good>
       </supply>
       <demand>
-        <good>Azoth</good>
-        <good>Slaves</good>
+        <good>Food</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Nibelung" number="2" location="0">
+    <planet starName="Enlil" number="2" location="0">
       <size>3</size>
-      <prefix>Mining</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
+      <prefix>Tourist</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>None</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+        <good>Electronics</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Enlil" number="3" location="7">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Hivecities</habitation>
       <government>Autocracy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+  </star>
+  <star name="Inanna" location="6" type="WhiteYellow">
+    <planet starName="Inanna" number="1" location="8">
+      <size>3</size>
+      <prefix>Prison</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Azoth</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Inanna" number="2" location="5">
+      <size>4</size>
+      <prefix>Prison</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Slaves</good>
+      </supply>
+      <demand>
+        <good>Weapons</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Inanna" number="3" location="2">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Metal</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+  </star>
+  <star name="Ninhursag" location="18" type="Red">
+    <planet starName="Ninhursag" number="1" location="8">
+      <size>5</size>
+      <prefix>Industrial</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Electronics</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Ninhursag" number="2" location="2">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Democracy</government>
       <supply>
         <good>Chemicals</good>
       </supply>
@@ -41,28 +141,48 @@
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Nibelung" number="3" location="7">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Orbital Ring</habitation>
+  </star>
+  <star name="Dilmun" location="33" type="BlueWhite">
+    <planet starName="Dilmun" number="1" location="8">
+      <size>4</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
       <government>Autocracy</government>
       <supply>
-        <good>Media</good>
+        <good>Plants</good>
       </supply>
       <demand>
-        <good>Weapons</good>
+        <good>Slaves</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Nibelung" number="4" location="8">
-      <size>1</size>
+    <planet starName="Dilmun" number="2" location="0">
+      <size>4</size>
+      <prefix>Industrial</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+  </star>
+  <star name="Theia" location="20" type="OrangeRed">
+    <planet starName="Theia" number="1" location="6">
+      <size>5</size>
       <prefix>Research</prefix>
       <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
       <supply>
         <good>Blueprints</good>
       </supply>
@@ -73,48 +193,14 @@
         <agent>000</agent>
       </agents>
     </planet>
-  </star>
-  <star name="Mnemosyne" location="10" type="Blue">
-    <planet starName="Mnemosyne" number="1" location="5">
-      <size>3</size>
-      <prefix>Industrial</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Weapons</good>
-      </supply>
-      <demand>
-        <good>Slaves</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Mnemosyne" number="2" location="2">
-      <size>2</size>
-      <prefix>Prison</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Azoth</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Mnemosyne" number="3" location="0">
+    <planet starName="Theia" number="2" location="7">
       <size>1</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Oligarchy</government>
+      <prefix>Cultural</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
       <supply>
-        <good>Plants</good>
+        <good>Media</good>
       </supply>
       <demand>
         <good>Chemicals</good>
@@ -123,117 +209,67 @@
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Mnemosyne" number="4" location="8">
-      <size>2</size>
-      <prefix>Industrial</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>Electronics</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Mnemosyne" number="5" location="1">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Slaves</good>
-      </supply>
-      <demand>
-        <good>Metal</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
   </star>
-  <star name="Ninhursag" location="8" type="WhiteYellow">
-    <planet starName="Ninhursag" number="1" location="0">
+  <star name="Themis" location="26" type="BlueWhite">
+    <planet starName="Themis" number="1" location="7">
       <size>4</size>
-      <prefix>Mining</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Metal</good>
-      </supply>
-      <demand>
-        <good>Electronics</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Ninhursag" number="2" location="4">
-      <size>2</size>
-      <prefix>Research</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Savants</good>
-      </supply>
-      <demand>
-        <good>Food</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Ninhursag" number="3" location="2">
-      <size>1</size>
       <prefix>Cultural</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
       <government>Autocracy</government>
       <supply>
         <good>Art</good>
       </supply>
       <demand>
-        <good>Electronics</good>
+        <good>Chemicals</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-  </star>
-  <star name="Anu" location="12" type="BlueWhite">
-    <planet starName="Anu" number="1" location="0">
-      <size>3</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Anu" number="2" location="3">
-      <size>5</size>
+    <planet starName="Themis" number="2" location="4">
+      <size>2</size>
       <prefix>Commercial</prefix>
       <suffix>Barren</suffix>
       <habitation>Underground Complex</habitation>
       <government>Autocracy</government>
       <supply>
-        <good>Savants</good>
+        <good>Electronics</good>
       </supply>
       <demand>
-        <good>Chemicals</good>
+        <good>Food</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Themis" number="3" location="0">
+      <size>1</size>
+      <prefix>Industrial</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Electronics</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Themis" number="4" location="1">
+      <size>1</size>
+      <prefix>Cultural</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Media</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
       </demand>
       <agents>
         <agent>000</agent>
