@@ -77,7 +77,8 @@ Public Module xmlGhost
             End While
         End If
 
-        xr.ReadEndElement() ' exit out to /planet
+        ' exit out to /planet; put at the end, after all sub-elements have been read
+        xr.ReadEndElement()
 
         Return planet
     End Function

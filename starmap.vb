@@ -106,14 +106,14 @@ Public Class starmap
         For Each supply As String In planetSupply
             xwrt.WriteElementString("good", supply)
         Next
-        xwrt.WriteEndElement()
+        xwrt.WriteEndElement()  '/supply
         xwrt.WriteStartElement("demand")
         For Each demand As String In planetDemand
             xwrt.WriteElementString("good", demand)
         Next
-        xwrt.WriteEndElement()
+        xwrt.WriteEndElement()  '/demand
 
-        xwrt.WriteEndElement()
+        xwrt.WriteEndElement()  '/planet
     End Sub
 
     Private Function randomStarName() As String
