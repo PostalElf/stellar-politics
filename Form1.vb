@@ -101,6 +101,9 @@
             counter += 1
         Next
     End Sub
+    Private Sub refreshTabPage1()
+        TabPage1.Controls.Clear()
+    End Sub
     Private Sub refreshTabPage2()
         TabPage2.Controls.Clear()
 
@@ -230,6 +233,7 @@
         newGalaxy(5)
     End Sub
     Private Sub LoadToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles LoadToolStripMenuItem.Click
+        refreshTabPage1()
         loadGalaxy()
     End Sub
     Private Sub SearchToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SearchToolStripMenuItem.Click
@@ -285,4 +289,5 @@
             Case Else : Return "ico" & currentControlName
         End Select
     End Function
+
 End Class

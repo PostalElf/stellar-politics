@@ -114,7 +114,37 @@ Public Module xmlGhost
         Return tempStr
     End Function
 
-    'ghostWriters edit certain elements of XML files
+    'ghostWriters update whatever element they are passed into the XML file
+    Sub ghostWriteStar(ByRef star As star)
+        'edits basic star details
+
+        Const filename As String = "starmap.xml"
+
+        Dim xDoc As New XmlDocument
+        xDoc.Load(filename)
+        Dim xpath As String = "/starmap/star[@name='" & star.name & "']"
+        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+
+        If xNode Is Nothing Then
+            'throw error because node is invalid
+        Else
+            Dim xAtt As XmlAttribute = xNode.Attributes("name")
+            xAtt.Value = star.name
+            xAtt = xNode.Attributes("type")
+            xAtt.Value = star.type
+        End If
+
+
+        'save and close
+        xDoc.Save(filename)
+        xDoc = Nothing
+
+
+        'change hash
+        Dim hashFxn As New sharedHashFunctions
+        hashFxn.addHashFile("starmap")
+        hashFxn = Nothing
+    End Sub
     Sub ghostWritePlanetBasic(ByRef planet As planet)
         'edits the basic planet details: size, prefix, suffix, habitation, government
         'does not edit supply or demand
@@ -175,9 +205,10 @@ Public Module xmlGhost
 
         Return Nothing
     End Function
-    Function ghostGrabPlanetFromStarmap(ByRef starmap As starmap, ByVal starName As String, ByVal planetNumber As Integer) As planet
-        'accepts the whole starmap and runs search for a particular planet based on star name and planet number
+    Function ghostGrabPlanetFromFile(ByVal starName As String, ByVal planetNumber As Integer) As planet
+        'ghostLoads starmap and runs search for a particular planet based on star name and planet number
 
+        Dim starmap As starmap = ghostLoadStarmap()
         Dim star As star = ghostGrabStar(starmap, starName)
         Return ghostGrabPlanet(star, planetNumber)
     End Function
