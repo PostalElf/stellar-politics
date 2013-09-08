@@ -90,6 +90,7 @@ Public Class frmSearch
                 str = str & demand & " "
             Next
             DataGridView1.Rows.Item(n).Cells(5).Value = str
+            DataGridView1.Rows.Item(n).Cells(6).Value = realNumberofAgents(planet.stationedAgents)
         Next
     End Sub
     Private Function allIsEmpty(comboboxlist As List(Of ComboBox)) As Boolean
@@ -177,6 +178,13 @@ Public Class frmSearch
         End Select
 
         Return False
+    End Function
+    Private Function realNumberofAgents(ByVal stationedAgents As List(Of String)) As Integer
+        If stationedAgents.Item(0) = "000" Then
+            Return 0
+        Else
+            Return stationedAgents.Count
+        End If
     End Function
 
     Private Sub ComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbSupply.SelectedIndexChanged, _

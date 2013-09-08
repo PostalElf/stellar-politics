@@ -27,12 +27,6 @@ Partial Class frmSearch
         Me.cmbDemand = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colCities = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colPrefix = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSuffix = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colSupply = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.colDemand = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cmbStar = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cmbCities = New System.Windows.Forms.ComboBox()
@@ -45,13 +39,20 @@ Partial Class frmSearch
         Me.Label7 = New System.Windows.Forms.Label()
         Me.cmbAgents = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colCities = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colPrefix = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSuffix = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colSupply = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colDemand = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colAgents = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(248, 19)
+        Me.Label1.Location = New System.Drawing.Point(291, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(42, 13)
         Me.Label1.TabIndex = 0
@@ -61,7 +62,7 @@ Partial Class frmSearch
         '
         Me.cmbSupply.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSupply.FormattingEnabled = True
-        Me.cmbSupply.Location = New System.Drawing.Point(296, 16)
+        Me.cmbSupply.Location = New System.Drawing.Point(339, 16)
         Me.cmbSupply.Name = "cmbSupply"
         Me.cmbSupply.Size = New System.Drawing.Size(132, 21)
         Me.cmbSupply.TabIndex = 1
@@ -70,7 +71,7 @@ Partial Class frmSearch
         '
         Me.cmbDemand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDemand.FormattingEnabled = True
-        Me.cmbDemand.Location = New System.Drawing.Point(296, 45)
+        Me.cmbDemand.Location = New System.Drawing.Point(339, 45)
         Me.cmbDemand.Name = "cmbDemand"
         Me.cmbDemand.Size = New System.Drawing.Size(132, 21)
         Me.cmbDemand.TabIndex = 5
@@ -78,7 +79,7 @@ Partial Class frmSearch
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(240, 48)
+        Me.Label2.Location = New System.Drawing.Point(283, 48)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 4
@@ -90,68 +91,14 @@ Partial Class frmSearch
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colName, Me.colCities, Me.colPrefix, Me.colSuffix, Me.colSupply, Me.colDemand})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colName, Me.colCities, Me.colPrefix, Me.colSuffix, Me.colSupply, Me.colDemand, Me.colAgents})
         Me.DataGridView1.Location = New System.Drawing.Point(12, 145)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(429, 150)
+        Me.DataGridView1.Size = New System.Drawing.Size(480, 150)
         Me.DataGridView1.TabIndex = 6
-        '
-        'colName
-        '
-        Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colName.Frozen = True
-        Me.colName.HeaderText = "Name"
-        Me.colName.MinimumWidth = 100
-        Me.colName.Name = "colName"
-        Me.colName.ReadOnly = True
-        Me.colName.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        '
-        'colCities
-        '
-        Me.colCities.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.colCities.HeaderText = "Cities"
-        Me.colCities.Name = "colCities"
-        Me.colCities.ReadOnly = True
-        Me.colCities.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colCities.Width = 45
-        '
-        'colPrefix
-        '
-        Me.colPrefix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.colPrefix.HeaderText = "Pre."
-        Me.colPrefix.Name = "colPrefix"
-        Me.colPrefix.ReadOnly = True
-        Me.colPrefix.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colPrefix.Width = 40
-        '
-        'colSuffix
-        '
-        Me.colSuffix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.colSuffix.HeaderText = "Suf."
-        Me.colSuffix.Name = "colSuffix"
-        Me.colSuffix.ReadOnly = True
-        Me.colSuffix.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.colSuffix.Width = 40
-        '
-        'colSupply
-        '
-        Me.colSupply.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colSupply.HeaderText = "Supply"
-        Me.colSupply.MinimumWidth = 100
-        Me.colSupply.Name = "colSupply"
-        Me.colSupply.ReadOnly = True
-        Me.colSupply.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        '
-        'colDemand
-        '
-        Me.colDemand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.colDemand.HeaderText = "Demand"
-        Me.colDemand.MinimumWidth = 100
-        Me.colDemand.Name = "colDemand"
-        Me.colDemand.ReadOnly = True
         '
         'cmbStar
         '
@@ -231,7 +178,7 @@ Partial Class frmSearch
         Me.cmbGovernment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbGovernment.FormattingEnabled = True
         Me.cmbGovernment.Items.AddRange(New Object() {"", "Autocracy", "Oligarchy", "Democracy", "Anarchy"})
-        Me.cmbGovernment.Location = New System.Drawing.Point(296, 72)
+        Me.cmbGovernment.Location = New System.Drawing.Point(339, 72)
         Me.cmbGovernment.Name = "cmbGovernment"
         Me.cmbGovernment.Size = New System.Drawing.Size(132, 21)
         Me.cmbGovernment.TabIndex = 16
@@ -239,7 +186,7 @@ Partial Class frmSearch
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(222, 75)
+        Me.Label7.Location = New System.Drawing.Point(265, 75)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(68, 13)
         Me.Label7.TabIndex = 15
@@ -250,7 +197,7 @@ Partial Class frmSearch
         Me.cmbAgents.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbAgents.FormattingEnabled = True
         Me.cmbAgents.Items.AddRange(New Object() {"", "None", "At least 1", "More than 1"})
-        Me.cmbAgents.Location = New System.Drawing.Point(296, 99)
+        Me.cmbAgents.Location = New System.Drawing.Point(339, 99)
         Me.cmbAgents.Name = "cmbAgents"
         Me.cmbAgents.Size = New System.Drawing.Size(132, 21)
         Me.cmbAgents.TabIndex = 18
@@ -258,17 +205,78 @@ Partial Class frmSearch
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(247, 102)
+        Me.Label8.Location = New System.Drawing.Point(290, 102)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(43, 13)
         Me.Label8.TabIndex = 17
         Me.Label8.Text = "Agents:"
         '
+        'colName
+        '
+        Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colName.Frozen = True
+        Me.colName.HeaderText = "Name"
+        Me.colName.MinimumWidth = 100
+        Me.colName.Name = "colName"
+        Me.colName.ReadOnly = True
+        Me.colName.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'colCities
+        '
+        Me.colCities.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.colCities.HeaderText = "Cities"
+        Me.colCities.Name = "colCities"
+        Me.colCities.ReadOnly = True
+        Me.colCities.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colCities.Width = 45
+        '
+        'colPrefix
+        '
+        Me.colPrefix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.colPrefix.HeaderText = "Pre."
+        Me.colPrefix.Name = "colPrefix"
+        Me.colPrefix.ReadOnly = True
+        Me.colPrefix.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colPrefix.Width = 40
+        '
+        'colSuffix
+        '
+        Me.colSuffix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.colSuffix.HeaderText = "Suf."
+        Me.colSuffix.Name = "colSuffix"
+        Me.colSuffix.ReadOnly = True
+        Me.colSuffix.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colSuffix.Width = 40
+        '
+        'colSupply
+        '
+        Me.colSupply.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colSupply.HeaderText = "Supply"
+        Me.colSupply.MinimumWidth = 100
+        Me.colSupply.Name = "colSupply"
+        Me.colSupply.ReadOnly = True
+        Me.colSupply.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        '
+        'colDemand
+        '
+        Me.colDemand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.colDemand.HeaderText = "Demand"
+        Me.colDemand.MinimumWidth = 100
+        Me.colDemand.Name = "colDemand"
+        Me.colDemand.ReadOnly = True
+        '
+        'colAgents
+        '
+        Me.colAgents.HeaderText = "Agents"
+        Me.colAgents.Name = "colAgents"
+        Me.colAgents.ReadOnly = True
+        Me.colAgents.Width = 50
+        '
         'frmSearch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(454, 307)
+        Me.ClientSize = New System.Drawing.Size(507, 307)
         Me.Controls.Add(Me.cmbAgents)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.cmbGovernment)
@@ -302,12 +310,6 @@ Partial Class frmSearch
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents cmbStar As System.Windows.Forms.ComboBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents colName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colCities As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colPrefix As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colSuffix As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colSupply As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents colDemand As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cmbCities As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents cmbPrefix As System.Windows.Forms.ComboBox
@@ -318,4 +320,11 @@ Partial Class frmSearch
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents cmbAgents As System.Windows.Forms.ComboBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents colName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colCities As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colPrefix As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colSuffix As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colSupply As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colDemand As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colAgents As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
