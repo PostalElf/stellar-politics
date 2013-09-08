@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Xml
-Imports System.Xml.XPath
 Imports System.Text
 
 Public Module xmlGhost
@@ -37,14 +36,18 @@ Public Module xmlGhost
         star.location = Convert.ToInt32(xr.GetAttribute("location"))
         star.type = xr.GetAttribute("type")
 
-        ' Read first planet
-        xr.ReadToDescendant("planet")
-        star.planets.Add(ghostLoadPlanet(xr))
-
-        ' Read subsequent planets
-        While xr.ReadToNextSibling("planet") = True
+        If star.type = "Blackhole" Then
+            ' do nothing because blackholes have no planets
+        Else
+            ' Read first planet
+            xr.ReadToDescendant("planet")
             star.planets.Add(ghostLoadPlanet(xr))
-        End While
+
+            ' Read subsequent planets
+            While xr.ReadToNextSibling("planet") = True
+                star.planets.Add(ghostLoadPlanet(xr))
+            End While
+        End If
 
         Return star
     End Function
@@ -59,16 +62,22 @@ Public Module xmlGhost
         If xr.ReadToFollowing("suffix") = True Then planet.suffix = xr.ReadString
         If xr.ReadToFollowing("habitation") = True Then planet.habitation = xr.ReadString
         If xr.ReadToFollowing("government") = True Then planet.government = xr.ReadString
+        If xr.ReadToFollowing("supply") = True Then
+            xr.ReadToDescendant("good")
+            While xr.Name = "good"
+                planet.supply.Add(xr.ReadString)
+                xr.Read()
+            End While
+        End If
+        If xr.ReadToFollowing("demand") = True Then
+            xr.ReadToDescendant("good")
+            While xr.Name = "good"
+                planet.demand.Add(xr.ReadString)
+                xr.Read()
+            End While
+        End If
 
-        xr.Read()
-        While xr.Name = "supply"
-            planet.supply.Add(xr.ReadString)
-            xr.Read()
-        End While
-        While xr.Name = "demand"
-            planet.demand.Add(xr.ReadString)
-            xr.Read()
-        End While
+        xr.ReadEndElement() ' exit out to /planet
 
         Return planet
     End Function
@@ -104,17 +113,71 @@ Public Module xmlGhost
         Return tempStr
     End Function
 
-    '-----------
+    'ghostWriters edit certain elements of XML files
+    Sub ghostWritePlanetBasic(ByRef planet As planet)
+        'edits the basic planet details: size, prefix, suffix, habitation, government
+        'does not edit supply or demand
 
-    'function graveyard
-    Function ghostCountElement(ByVal elementName As String) As Integer
-        Dim counter As Integer = 0
+        Const filename As String = "starmap.xml"
 
-        Dim xr As XmlReader = XmlReader.Create(starmapFilename)
-        While xr.Read()
-            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = elementName Then counter += 1
-        End While
+        Dim xDoc As New XmlDocument
+        xDoc.Load(filename)
+        Dim xpath As String = "/starmap/star[@name='" & planet.starName & "']/planet[@number='" & planet.number & "']"
+        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
 
-        Return counter
+        If xNode Is Nothing Then
+            'throw error because node is invalid
+        Else
+            xNode.ChildNodes(0).InnerText = planet.size
+            xNode.ChildNodes(1).InnerText = planet.prefix
+            xNode.ChildNodes(2).InnerText = planet.suffix
+            xNode.ChildNodes(3).InnerText = planet.habitation
+            xNode.ChildNodes(4).InnerText = planet.government
+        End If
+
+
+        'save and close
+        xDoc.Save(filename)
+        xDoc = Nothing
+
+
+        'change hash
+        Dim hashFxn As New sharedHashFunctions
+        hashFxn.addHashFile("starmap")
+        hashFxn = Nothing
+    End Sub
+    Sub ghostWritePlanetSub(ByRef planet As planet, ByVal typename As String)
+        'edits planet's supply
+
+        Const filename As String = "starmap.xml"
+
+        Dim xDoc As New XmlDocument
+        xDoc.Load(filename)
+        Dim xpath As String = "/starmap/star[@name='" & planet.starName & "']/planet[@number='" & planet.number & "']/" & typename
+        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+
+
+    End Sub
+
+    'ghostGrabbers grab stars and planets based on search criteria
+    Function ghostGrabStar(ByRef starmap As starmap, ByVal starname As String) As star
+        For Each star As star In starmap.stars
+            If star.name = starname Then Return star
+        Next
+
+        Return Nothing
+    End Function
+    Function ghostGrabPlanet(ByRef star As star, ByVal planetNumber As Integer) As planet
+        For Each planet As planet In star.planets
+            If planet.number = planetNumber Then Return planet
+        Next
+
+        Return Nothing
+    End Function
+    Function ghostGrabPlanetFromStarmap(ByRef starmap As starmap, ByVal starName As String, ByVal planetNumber As Integer) As planet
+        'accepts the whole starmap and runs search for a particular planet based on star name and planet number
+
+        Dim star As star = ghostGrabStar(starmap, starName)
+        Return ghostGrabPlanet(star, planetNumber)
     End Function
 End Module

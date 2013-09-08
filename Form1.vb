@@ -93,10 +93,12 @@
         Dim counter As Integer = 0
         For Each supply In planet.supply
             addGoodsPic(supply, counter, "supply")
+            counter += 1
         Next
         counter = 0
         For Each demand In planet.demand
             addGoodsPic(demand, counter, "demand")
+            counter += 1
         Next
     End Sub
     Private Sub refreshTabPage2()
@@ -232,6 +234,7 @@
     End Sub
     Private Sub SearchToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SearchToolStripMenuItem.Click
         If frmSearch.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            refreshTabPage3()
             displayPlanet(frmSearch.selectedPlanet)
             TabControl1.SelectTab(2)
         Else
@@ -282,5 +285,4 @@
             Case Else : Return "ico" & currentControlName
         End Select
     End Function
-
 End Class

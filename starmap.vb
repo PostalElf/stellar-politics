@@ -101,12 +101,18 @@ Public Class starmap
         xwrt.WriteElementString("suffix", planetSuffix)
         xwrt.WriteElementString("habitation", planetHabitation)
         xwrt.WriteElementString("government", planetGovernment)
+
+        xwrt.WriteStartElement("supply")
         For Each supply As String In planetSupply
-            xwrt.WriteElementString("supply", supply)
+            xwrt.WriteElementString("good", supply)
         Next
+        xwrt.WriteEndElement()
+        xwrt.WriteStartElement("demand")
         For Each demand As String In planetDemand
-            xwrt.WriteElementString("demand", demand)
+            xwrt.WriteElementString("good", demand)
         Next
+        xwrt.WriteEndElement()
+
         xwrt.WriteEndElement()
     End Sub
 
