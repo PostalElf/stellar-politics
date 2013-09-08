@@ -105,7 +105,7 @@
             counter += 1
         Next
         counter = 0
-        For Each agent In planet.agents
+        For Each agent As String In planet.stationedAgents
             addGoodsPic(agent, counter, "agent")
             counter += 1
         Next
@@ -238,6 +238,30 @@
     Private Sub buttonBackClickStar(ByVal sender As Object, ByVal e As System.EventArgs)
         TabControl1.SelectTab(0)
     End Sub
+    Private Sub goodPic_Click(sender As System.Object, e As System.EventArgs)
+        Dim currentControl As Panel = sender
+        lblDescription.Text = ghostInfoLoad("planetinfo", "goods", currentControl.Tag)
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & currentControl.Tag)
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Sub agentPic_Click(sender As System.Object, e As System.EventArgs)
+        Dim currentControl As Panel = sender
+
+        'placeholder until agent descriptions come in
+        lblDescription.Text = "Placeholder Text until agentinfo.xml is fully written."
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("icoGenAgent")
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Function getPicDescription(currentControlName As String) As String
+        Select Case currentControlName
+            Case "Size" : Return "icoWorld"
+            Case "Prefix" : Return "icoWorld"
+            Case "Suffix" : Return "icoWorld"
+            Case "Habitation" : Return "icoWorld"
+            Case "Government" : Return "icoWorld"
+            Case Else : Return "ico" & currentControlName
+        End Select
+    End Function
     Private Sub picPlanetType_Click(sender As Object, e As System.EventArgs) Handles picPlanetType.Click
         TabControl1.SelectTab(1)
     End Sub
@@ -246,6 +270,15 @@
     End Sub
     Private Sub picDescription_Click(sender As Object, e As System.EventArgs) Handles picDescription.Click
         TabControl1.SelectTab(2)
+    End Sub
+    Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click
+        Dim currentControl As Label = sender
+        Dim currentControlName As String = currentControl.Name.Remove(0, 3)
+        lblDescription.Text = ghostInfoLoad("planetinfo", currentControlName, currentControl.Text)
+
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject(getPicDescription(currentControlName))
+
+        TabControl1.SelectTab(3)
     End Sub
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -281,39 +314,4 @@
         frmDistance.ShowDialog(Me)
         frmDistance.Dispose()
     End Sub
-
-    Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click
-        Dim currentControl As Label = sender
-        Dim currentControlName As String = currentControl.Name.Remove(0, 3)
-        lblDescription.Text = ghostInfoLoad("planetinfo", currentControlName, currentControl.Text)
-
-        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject(getPicDescription(currentControlName))
-
-        TabControl1.SelectTab(3)
-    End Sub
-    Private Sub goodPic_Click(sender As System.Object, e As System.EventArgs)
-        Dim currentControl As Panel = sender
-        lblDescription.Text = ghostInfoLoad("planetinfo", "goods", currentControl.Tag)
-        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & currentControl.Tag)
-        TabControl1.SelectTab(3)
-    End Sub
-    Private Sub agentPic_Click(sender As System.Object, e As System.EventArgs)
-        Dim currentControl As Panel = sender
-
-        'placeholder until agent descriptions come in
-        lblDescription.Text = "Placeholder Text until agentinfo.xml is fully written."
-        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("icoGenAgent")
-        TabControl1.SelectTab(3)
-    End Sub
-    Private Function getPicDescription(currentControlName As String) As String
-        Select Case currentControlName
-            Case "Size" : Return "icoWorld"
-            Case "Prefix" : Return "icoWorld"
-            Case "Suffix" : Return "icoWorld"
-            Case "Habitation" : Return "icoWorld"
-            Case "Government" : Return "icoWorld"
-            Case Else : Return "ico" & currentControlName
-        End Select
-    End Function
-
 End Class

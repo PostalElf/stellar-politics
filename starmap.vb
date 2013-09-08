@@ -8,12 +8,16 @@ Public Class starmap
         If stars Is Nothing Then stars = New List(Of star)
     End Sub
 
-    ' generators create stars and planets and writes them into starmap.xml
+    'generators create stars and planets and writes them into the appropriate XML file.  
+    'Note: they do NOT load the object into memroy
     Public Sub generateStarmap(ByRef starmapOptions As starmapOptions)
         ' create a new starmap and write it to starmap.xml
         ' also writes the hashdata for starmap.xml into hashStarmap.txt
-        ' this function DOES NOT load starmap into memory
         ' galaxySize = min number of times systemSupply will be repopped
+
+        'generate playerinfo and agents first
+        generatePlayerInfo(starmapOptions)
+        generateAgents(starmapOptions)
 
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
@@ -25,7 +29,7 @@ Public Class starmap
             generateStar(xwrt, starmapOptions)
         End While
 
-        xwrt.WriteEndElement()
+        xwrt.WriteEndElement()  '/starmap
         xwrt.WriteEndDocument()
         xwrt.Close()
         xwrt = Nothing
@@ -33,6 +37,8 @@ Public Class starmap
         'store starmap hash into hashstarmap.txt
         Dim txtFxn As New sharedHashFunctions
         txtFxn.addHashFile("starmap")
+        txtFxn.addHashFile("agents")
+        txtFxn.addHashFile("playerinfo")
         txtFxn = Nothing
     End Sub
     Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef starmapOptions As starmapOptions)
@@ -120,6 +126,52 @@ Public Class starmap
         xwrt.WriteEndElement()  '/agents
 
         xwrt.WriteEndElement()  '/planet
+    End Sub
+    Private Sub generateAgents(ByRef starmapOptions As starmapOptions)
+        'populate home with default agents
+
+        Const agentFilename As String = "agents.xml"
+        Dim playerinfo As New playerinfo
+
+        Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("agents")
+
+        For i As Integer = 1 To 5
+            Dim agent As New agent
+            agent.id = processAgentID(i)
+            agent.name = randomAgentName()
+            agent.type = randomAgentType(playerinfo)
+
+            xwrt.WriteStartElement("agent")
+            xwrt.WriteAttributeString("id", agent.id)
+            xwrt.WriteElementString("name", agent.name)
+            xwrt.WriteElementString("type", agent.type)
+            xwrt.WriteEndElement()  '/agent
+        Next
+
+        xwrt.WriteEndElement()        '/agents
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
+    End Sub
+    Private Sub generatePlayerInfo(ByRef starmapoptions As starmapOptions)
+        Const playerFilename As String = "playerinfo.xml"
+
+        Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("playerinfo")
+
+        xwrt.WriteElementString("faction", starmapoptions.faction)
+
+        xwrt.WriteEndElement()    '/playerinfo
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
     End Sub
 
     Private Function randomStarName() As String
@@ -292,10 +344,71 @@ Public Class starmap
 
         If randomPlanetDemand.Count = 0 Then randomPlanetDemand.Add("None")
     End Function
+    Private Function randomAgentName() As String
+        'check if namelist files exist
+        If System.IO.File.Exists("agentFirstNames.txt") = False OrElse System.IO.File.Exists("agentLastNames.txt") = False Then
+            MsgBox("Error!  File missing.", MsgBoxStyle.Critical, "Error!")
+            Return Nothing
+        End If
+
+        'initialise namelists
+        Dim firstnamelist As New List(Of String)
+        For Each entry In ghostTextList("agentFirstNames.txt")
+            firstnamelist.Add(entry)
+        Next
+        Dim lastnamelist As New List(Of String)
+        For Each entry In ghostTextList("agentLastNames.txt")
+            lastnamelist.Add(entry)
+        Next
+
+        Randomize()
+        Dim x As Integer = Int(Rnd() * (firstnamelist.Count - 1) + 1)
+        Dim y As Integer = Int(Rnd() * (lastnamelist.Count - 1) + 1)
+
+        Return firstnamelist(x) & " " & lastnamelist(y)
+    End Function
+    Public Function randomAgentType(ByVal playerinfo As playerinfo) As String
+        Dim x As Integer = Int(Rnd() * 3 + 1)
+
+        Select Case playerinfo.faction
+            Case "House Illys"
+                Select Case x
+                    Case 1 : Return "Commander"
+                    Case 2 : Return "Diplomat"
+                    Case 3 : Return "Espionage"
+                    Case Else
+                        'bugcatch
+                        Return Nothing
+                End Select
+
+            Case "House Nyos"
+                Select Case x
+                    Case 1 : Return "Commander"
+                    Case 2 : Return "Diplomat"
+                    Case 3 : Return "Espionage"
+                    Case Else
+                        'bugcatch
+                        Return Nothing
+                End Select
+
+            Case "House Sen"
+                Select Case x
+                    Case 1 : Return "Commander"
+                    Case 2 : Return "Diplomat"
+                    Case 3 : Return "Espionage"
+                    Case Else
+                        'bugcatch
+                        Return Nothing
+                End Select
+
+            Case Else
+                'bugcatch
+                Return Nothing
+        End Select
+    End Function
     Private Function determinePlanetPrefix(ByVal planetSupply As String) As String
         If planetSupply = "None" Then Return "Tourist" Else Return planetPrefixDictionary(planetSupply)
     End Function
-
 End Class
 
 
@@ -324,12 +437,12 @@ Public Class planet
     Public supply As List(Of String)
     Public demand As List(Of String)
 
-    Public agents As List(Of String)
+    Public stationedAgents As List(Of String)
 
     Sub New()
         If supply Is Nothing Then supply = New List(Of String)
         If demand Is Nothing Then demand = New List(Of String)
-        If agents Is Nothing Then agents = New List(Of String)
+        If stationedAgents Is Nothing Then stationedAgents = New List(Of String)
     End Sub
 
     Public Sub clearGoods(ByVal type As String)
@@ -358,3 +471,36 @@ Public Class planet
     End Sub
 End Class
 
+
+Public Class agent
+    ' note that this class is not stored inside each planet's StationedAgents
+
+    Public id As String
+    Public name As String
+    Public type As String
+End Class
+
+
+Public Class playerinfo
+    Public faction As String
+
+    Sub New()
+        Const playerinfoFilename As String = "playerinfo.xml"
+
+        Dim xsettings As New XmlReaderSettings
+        xsettings.IgnoreWhitespace = True
+        xsettings.IgnoreComments = True
+        Dim xr As XmlReader = XmlReader.Create(playerinfoFilename, xsettings)
+        While xr.Read()
+            If xr.NodeType = XmlNodeType.Element Then
+                Select Case xr.Name
+                    Case "faction" : faction = xr.ReadString
+                    Case Else
+                        'do nothing
+                End Select
+            End If
+        End While
+
+        xr.Close()
+    End Sub
+End Class

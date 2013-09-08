@@ -13,6 +13,8 @@ Module sharedStarmapFunctions
     Public planetSuffixDictionary As New Dictionary(Of Integer, String)
     Public planetPrefixDictionary As New Dictionary(Of String, String)
     Public planetGovernmentDictionary As New Dictionary(Of String, Integer)
+    Public agentFirstnameList As New List(Of String)
+    Public agentLastnameList As New List(Of String)
     Public romanNumeralDictionary As New Dictionary(Of Integer, String)
     Public planetTypeShortformDictionary As New Dictionary(Of String, String)
 
@@ -132,15 +134,16 @@ Module sharedStarmapFunctions
     Public Sub repopStarNameList()
         'names are removed from starNameList as they are assigned to stars
         'must have at least 30 entries; if not repop with own stuff
-        If system.IO.file.exists("starnames.txt") = False Then file.create("starnames.txt").dispose()
 
-        Using txtr As streamreader = New StreamReader("starnames.txt")
-            If txtr.ReadLine <> Nothing Then starNameList.Add(txtr.ReadLine)
-        End Using
+        'ghosttextlist grabs the entries from starnames.txt and adds them to starnamelist
+        starNameList.Clear()
+        For Each starName As String In ghostTextList("starnames.txt")
+            starNameList.Add(starName)
+        Next
 
-        If starnamelist.count < 30 Then
+        If starNameList.Count < 30 Then
             Dim defaultStarnameList As List(Of String) = repopDefaultStarnameList()
-            For i = 1 To (30 - starnamelist.count)
+            For i = 1 To (30 - starNameList.Count)
                 starNameList.Add(defaultStarnameList(i))
             Next i
         End If
@@ -267,6 +270,20 @@ Module sharedStarmapFunctions
         planetTypeShortformDictionary.Add("Volcanic", "VLC")
         planetTypeShortformDictionary.Add("Gaseous", "GAS")
     End Sub
+
+
+    'processors convert data into an appropriate format
+    Public Function processAgentID(ByVal id As Integer) As String
+        Dim processedID As String
+
+        Select Case id
+            Case 1 To 9 : processedID = "00" & id.ToString
+            Case 10 To 99 : processedID = "0" & id.ToString
+            Case Else : processedID = id
+        End Select
+
+        Return processedID
+    End Function
 
 
     'calculators

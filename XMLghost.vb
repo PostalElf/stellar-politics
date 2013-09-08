@@ -81,7 +81,7 @@ Public Module xmlGhost
         If xr.ReadToFollowing("agents") = True Then
             xr.ReadToDescendant("agent")
             While xr.Name = "agent"
-                planet.agents.Add(xr.ReadString)
+                planet.stationedAgents.Add(xr.ReadString)
                 xr.Read()
             End While
         End If
@@ -221,12 +221,27 @@ Public Module xmlGhost
         Dim star As star = ghostGrabStar(starmap, starName)
         Return ghostGrabPlanet(star, planetNumber)
     End Function
-    Function ghostGrabAgentsFromFile(ByVal starname As String, ByVal planetNumber As Integer) As List(Of String)
+    Function ghostGrabStationedAgentsFromFile(ByVal starname As String, ByVal planetNumber As Integer) As List(Of String)
         'each agent is identified by a unique 3 digit number, eg. 001, 002
         'this function returns a list with all the identifiers
         'agent 000 is always reserved as a null string, eg. no agent
 
         Dim planet As planet = ghostGrabPlanetFromFile(starname, planetNumber)
-        Return planet.agents
+        Return planet.stationedAgents
+    End Function
+
+    'ghostTextList grab and return textfiles in a list
+    Function ghostTextList(ByVal filename As String)
+        Dim textlist As New List(Of String)
+
+        If System.IO.File.Exists(filename) = False Then File.Create(filename).Dispose()
+
+        Using txtr As StreamReader = New StreamReader(filename)
+            While txtr.ReadLine <> Nothing
+                textlist.Add(txtr.ReadLine)
+            End While
+        End Using
+
+        Return textlist
     End Function
 End Module
