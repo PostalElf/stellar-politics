@@ -62,6 +62,7 @@ Public Module xmlGhost
         If xr.ReadToFollowing("suffix") = True Then planet.suffix = xr.ReadString
         If xr.ReadToFollowing("habitation") = True Then planet.habitation = xr.ReadString
         If xr.ReadToFollowing("government") = True Then planet.government = xr.ReadString
+
         If xr.ReadToFollowing("supply") = True Then
             xr.ReadToDescendant("good")
             While xr.Name = "good"
@@ -73,6 +74,14 @@ Public Module xmlGhost
             xr.ReadToDescendant("good")
             While xr.Name = "good"
                 planet.demand.Add(xr.ReadString)
+                xr.Read()
+            End While
+        End If
+
+        If xr.ReadToFollowing("agents") = True Then
+            xr.ReadToDescendant("agent")
+            While xr.Name = "agent"
+                planet.agents.Add(xr.ReadString)
                 xr.Read()
             End While
         End If
@@ -211,5 +220,13 @@ Public Module xmlGhost
         Dim starmap As starmap = ghostLoadStarmap()
         Dim star As star = ghostGrabStar(starmap, starName)
         Return ghostGrabPlanet(star, planetNumber)
+    End Function
+    Function ghostGrabAgentsFromFile(ByVal starname As String, ByVal planetNumber As Integer) As List(Of String)
+        'each agent is identified by a unique 3 digit number, eg. 001, 002
+        'this function returns a list with all the identifiers
+        'agent 000 is always reserved as a null string, eg. no agent
+
+        Dim planet As planet = ghostGrabPlanetFromFile(starname, planetNumber)
+        Return planet.agents
     End Function
 End Module

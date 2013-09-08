@@ -61,6 +61,7 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -112,6 +113,7 @@ Partial Class Form1
         Me.TabPage3.BackColor = System.Drawing.Color.Black
         Me.TabPage3.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.binaryStarBG
         Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage3.Controls.Add(Me.Label7)
         Me.TabPage3.Controls.Add(Me.lblSuffix)
         Me.TabPage3.Controls.Add(Me.picPlanetForward)
         Me.TabPage3.Controls.Add(Me.Label8)
@@ -344,14 +346,14 @@ Partial Class Form1
         '
         Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
         Me.LoadToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LoadToolStripMenuItem.Text = "&Load"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OptionsToolStripMenuItem, Me.Size1GalaxyToolStripMenuItem, Me.Size2GalaxyToolStripMenuItem, Me.Size3GalaxyToolStripMenuItem, Me.Size4GalaxyToolStripMenuItem, Me.Size5GalaxyToolStripMenuItem})
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
         '
         'OptionsToolStripMenuItem
@@ -420,6 +422,17 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(20, 209)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(43, 13)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "Agents:"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -481,5 +494,6 @@ Partial Class Form1
     Friend WithEvents OptionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BlackholesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents picDescription As System.Windows.Forms.Panel
+    Friend WithEvents Label7 As System.Windows.Forms.Label
 
 End Class

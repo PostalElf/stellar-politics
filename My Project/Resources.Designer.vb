@@ -179,6 +179,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property icoGenAgent() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("icoGenAgent", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property icoMedia() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icoMedia", resourceCulture)

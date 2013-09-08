@@ -100,6 +100,11 @@
             addGoodsPic(demand, counter, "demand")
             counter += 1
         Next
+        counter = 0
+        For Each agent In planet.agents
+            addGoodsPic(agent, counter, "agent")
+            counter += 1
+        Next
     End Sub
     Private Sub refreshTabPage1()
         TabPage1.Controls.Clear()
@@ -174,21 +179,41 @@
         End If
     End Function
     Private Sub addGoodsPic(ByVal good As String, ByVal counter As Integer, ByVal type As String)
-        If good = "None" Then Exit Sub ' exit if there's nothing to display
+        If good = "None" OrElse good = "000" Then Exit Sub ' exit if there's nothing to display
 
         Dim picY As Integer
-        If type = "demand" Then picY = 168 Else picY = 135
+        Select Case type
+            Case "supply" : picY = 135
+            Case "demand" : picY = 168
+            Case "agent" : picY = 201
+            Case Else : picY = 135
+        End Select
 
         Dim goodPic As New Panel
 
         goodPic.Size = New Size(30, 30)
         goodPic.Location = New Point((64 + counter * 30), picY)
         goodPic.BackgroundImageLayout = ImageLayout.Stretch
-        goodPic.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & good)
         goodPic.Tag = good
-        AddHandler goodPic.Click, AddressOf goodPic_Click
-        Tooltip2.SetToolTip(goodPic, good)
+        Select Case type
+            Case "agent"
+                addAgentDetails(goodPic, good)
+            Case Else
+                addGoodDetails(goodPic, good)
+        End Select
         TabPage3.Controls.Add(goodPic)
+    End Sub
+    Private Sub addGoodDetails(ByRef goodpic As Panel, ByVal good As String)
+        Tooltip2.SetToolTip(goodpic, good)
+        goodpic.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & good)
+        AddHandler goodpic.Click, AddressOf goodPic_Click
+    End Sub
+    Private Sub addAgentDetails(ByRef goodPic As Panel, ByVal agentNumber As String)
+        'when details for the agents are released, run a dictionary check for correct picture and type
+        'for now use placeholder icoGenAgent for all agents
+        Tooltip2.SetToolTip(goodPic, "Agent " & agentNumber)
+        goodPic.BackgroundImage = My.Resources.ResourceManager.GetObject("icoGenAgent")
+        AddHandler goodPic.Click, AddressOf agentPic_Click
     End Sub
 
     Private Sub starLocClick(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -277,6 +302,14 @@
         Dim currentControl As Panel = sender
         lblDescription.Text = ghostInfoLoad("planetinfo", "goods", currentControl.Tag)
         picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & currentControl.Tag)
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Sub agentPic_Click(sender As System.Object, e As System.EventArgs)
+        Dim currentControl As Panel = sender
+
+        'placeholder until agent descriptions come in
+        lblDescription.Text = "Placeholder Text until agentinfo.xml is fully written."
+        picDescription.BackgroundImage = My.Resources.ResourceManager.GetObject("icoGenAgent")
         TabControl1.SelectTab(3)
     End Sub
     Private Function getPicDescription(currentControlName As String) As String

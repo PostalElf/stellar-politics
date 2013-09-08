@@ -258,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Mini-3-Globe.ico" />
+    <None Include="Resources\icoGenAgent.PNG" />
     <None Include="Resources\icoMetal.png" />
     <None Include="Resources\icoMedia.png" />
     <None Include="Resources\icoFood.PNG" />

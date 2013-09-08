@@ -89,6 +89,8 @@ Public Class starmap
             planetDemand.Add(demand)
         Next
 
+        '------
+
         ' Write into XML
         xwrt.WriteStartElement("planet")
         xwrt.WriteAttributeString("starName", starName)
@@ -112,6 +114,10 @@ Public Class starmap
             xwrt.WriteElementString("good", demand)
         Next
         xwrt.WriteEndElement()  '/demand
+
+        xwrt.WriteStartElement("agents")
+        xwrt.WriteElementString("agent", "000")
+        xwrt.WriteEndElement()  '/agents
 
         xwrt.WriteEndElement()  '/planet
     End Sub
@@ -314,12 +320,41 @@ Public Class planet
     Public suffix As String
     Public habitation As String
     Public government As String
+
     Public supply As List(Of String)
     Public demand As List(Of String)
+
+    Public agents As List(Of String)
 
     Sub New()
         If supply Is Nothing Then supply = New List(Of String)
         If demand Is Nothing Then demand = New List(Of String)
+        If agents Is Nothing Then agents = New List(Of String)
+    End Sub
+
+    Public Sub clearGoods(ByVal type As String)
+        Select Case type.ToLower
+            Case "supply"
+                supply.Clear()
+                supply.Add("None")
+            Case "demand"
+                demand.Clear()
+                demand.Add("None")
+            Case Else
+                ' do nothing because invalid type
+        End Select
+    End Sub
+    Public Sub removeGood(ByVal good As String, ByVal type As String)
+        Select Case type.ToLower
+            Case "supply"
+                supply.Remove(good)
+                If supply.Count = 0 Then clearGoods("supply")
+            Case "demand"
+                demand.Remove(good)
+                If demand.Count = 0 Then clearGoods("demand")
+            Case Else
+                ' do nothing because invalid type
+        End Select
     End Sub
 End Class
 
