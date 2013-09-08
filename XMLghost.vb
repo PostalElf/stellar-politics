@@ -21,6 +21,11 @@ Public Module xmlGhost
         xsettings.IgnoreComments = True
         Dim xr As XmlReader = XmlReader.Create(starmapFilename, xsettings)
         While xr.Read()
+            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "homeagents" Then
+                For Each entry As String In ghostLoadHomeagents(xr)
+                    starmap.homeagentIDs.Add(entry)
+                Next
+            End If
             If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "star" Then
                 Dim star As star = ghostLoadStar(xr)
                 starmap.stars.Add(star)
@@ -91,6 +96,18 @@ Public Module xmlGhost
 
         Return planet
     End Function
+    Private Function ghostLoadHomeagents(ByRef xr As XmlReader) As List(Of String)
+        Dim homeagentlist As New List(Of String)
+
+        If xr.ReadToFollowing("agent") = True Then
+            While xr.Name = "agent"
+                homeagentlist.Add(xr.ReadString)
+                xr.Read()
+            End While
+        End If
+
+        Return homeagentlist
+    End Function
     Public Function ghostLoadAgents() As List(Of agent)
         Dim agentlist As New List(Of agent)
 
@@ -107,6 +124,10 @@ Public Module xmlGhost
                 agent.name = xr.ReadString
                 xr.ReadToFollowing("type")
                 agent.type = xr.ReadString
+                xr.ReadToFollowing("starname")
+                agent.starName = xr.ReadString
+                xr.ReadToFollowing("planetnumber")
+                agent.planetNumber = Convert.ToInt32(xr.ReadString)
 
                 agentlist.Add(agent)
             End If

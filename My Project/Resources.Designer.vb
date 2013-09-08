@@ -137,6 +137,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property greenBG() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("greenBG", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property icoArt() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icoArt", resourceCulture)

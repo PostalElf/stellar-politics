@@ -322,6 +322,10 @@
         frmDistance.Dispose()
     End Sub
     Private Sub AgentsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AgentsToolStripMenuItem.Click
+        If frmAgents.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
+        Else
+
+        End If
     End Sub
 End Class

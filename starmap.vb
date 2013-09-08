@@ -2,10 +2,12 @@
 
 Public Class starmap
     Public stars As List(Of star)
+    Public homeagentIDs As List(Of String)
 
     Sub New()
         Randomize()
         If stars Is Nothing Then stars = New List(Of star)
+        If homeagentIDs Is Nothing Then homeagentIDs = New List(Of String)
     End Sub
 
     'generators create stars and planets and writes them into the appropriate XML file.  Note: they do NOT load the object into memroy
@@ -152,11 +154,15 @@ Public Class starmap
             agent.id = processAgentID(i)
             agent.name = randomAgentName()
             agent.type = randomAgentType(playerinfo)
+            agent.starName = "Oubliette"
+            agent.planetNumber = 0
 
             xwrt.WriteStartElement("agent")
             xwrt.WriteAttributeString("id", agent.id)
             xwrt.WriteElementString("name", agent.name)
             xwrt.WriteElementString("type", agent.type)
+            xwrt.WriteElementString("starname", agent.starName)
+            xwrt.WriteElementString("planetnumber", agent.planetNumber)
             xwrt.WriteEndElement()  '/agent
         Next
 
@@ -487,6 +493,8 @@ Public Class agent
     Public id As String
     Public name As String
     Public type As String
+    Public starName As String
+    Public planetNumber As Integer
 End Class
 
 

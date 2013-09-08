@@ -110,6 +110,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAgents.Designer.vb">
+      <DependentUpon>frmAgents.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgents.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDistance.Designer.vb">
       <DependentUpon>frmDistance.vb</DependentUpon>
     </Compile>
@@ -152,6 +158,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgents.resx">
+      <DependentUpon>frmAgents.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDistance.resx">
       <DependentUpon>frmDistance.vb</DependentUpon>
@@ -268,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Mini-3-Globe.ico" />
+    <None Include="Resources\greenBG.JPG" />
     <None Include="Resources\icoGenAgent.PNG" />
     <None Include="Resources\icoMetal.png" />
     <None Include="Resources\icoMedia.png" />
