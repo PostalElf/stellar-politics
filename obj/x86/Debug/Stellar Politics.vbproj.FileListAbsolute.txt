@@ -15,3 +15,4 @@ C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar 
 C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.exe.manifest
 C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar Politics.application
 C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar_Politics.frmDistance.resources
+C:\Users\Terence\Documents\Visual Studio 2010\Projects\Stellar Politics\Stellar Politics\obj\x86\Debug\Stellar_Politics.frmNew.resources

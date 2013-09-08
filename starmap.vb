@@ -9,7 +9,7 @@ Public Class starmap
     End Sub
 
     ' generators create stars and planets and writes them into starmap.xml
-    Public Sub generateStarmap(Optional ByRef galaxySize = 1)
+    Public Sub generateStarmap(ByRef starmapOptions As starmapOptions)
         ' create a new starmap and write it to starmap.xml
         ' also writes the hashdata for starmap.xml into hashStarmap.txt
         ' this function DOES NOT load starmap into memory
@@ -21,8 +21,8 @@ Public Class starmap
         xwrt.Indentation = 2
         xwrt.WriteStartElement("starmap")
 
-        While galaxySize > 0
-            generateStar(xwrt, galaxySize)
+        While starmapOptions.galaxySize > 0
+            generateStar(xwrt, starmapOptions)
         End While
 
         xwrt.WriteEndElement()
@@ -35,15 +35,15 @@ Public Class starmap
         txtFxn.addHashFile("starmap")
         txtFxn = Nothing
     End Sub
-    Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef galaxySize As Integer)
+    Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef starmapOptions As starmapOptions)
         Dim starName As String = randomStarName()
-        Dim blackholes As Integer = Int(galaxySize / 2)
+        Dim blackholes As Integer = Int(starmapOptions.galaxySize / 2)
 
         xwrt.WriteStartElement("star")
         xwrt.WriteAttributeString("name", starName)
         xwrt.WriteAttributeString("location", randomStarXY())
 
-        If blackholes > 0 AndAlso Form1.BlackholesToolStripMenuItem.Checked = True AndAlso Int(Rnd() * 100 + 1) > 86 Then
+        If blackholes > 0 AndAlso starmapOptions.blackholes = True AndAlso Int(Rnd() * 100 + 1) > 86 Then
             ' Generate blackhole (10% chance) if menu is ticked
             ' Can generate a maximum number of blackholes = galaxySize/2 (rounded down)
             xwrt.WriteAttributeString("type", "Blackhole")
@@ -54,7 +54,7 @@ Public Class starmap
             Dim starSize As Integer = Int(Rnd() * 4) + 6    'measures total planetSize in star
             xwrt.WriteAttributeString("type", randomStarType(starSize))
             While starSize > 0
-                generatePlanet(xwrt, galaxySize, starSize, planetNumber, starName)
+                generatePlanet(xwrt, starmapOptions.galaxySize, starSize, planetNumber, starName)
             End While
             repopSystemPlanetLocationList()
         End If

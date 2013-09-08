@@ -1,5 +1,6 @@
 ﻿Public Class Form1
     Private Sub displayStarmap(starmap As starmap)
+        'display starmap in form and perform menu activations
         Dim counter As Integer = 0
 
         For Each star In starmap.stars
@@ -28,6 +29,9 @@
             TabPage1.Controls.Add(starLoc)
             counter += 1
         Next
+
+        'menu activations
+        ToolsToolStripMenuItem.Enabled = True
     End Sub
     Private Sub displayStar(ByRef star As star, ByVal index As Integer)
         refreshTabPage2()
@@ -138,16 +142,15 @@
         Next
     End Sub
 
-    Private Sub newGalaxy(ByVal galaxySize As Integer)
+    Private Sub newGalaxy(ByRef starmapOptions As starmapOptions)
         'clear tabpage1
         TabPage1.Controls.Clear()
 
         Dim starmap As New starmap
-        starmap.generateStarmap(galaxySize)
+        starmap.generateStarmap(starmapOptions)
         starmap = ghostLoadStarmap()
-        displayStarmap(starmap)
 
-        ToolsToolStripMenuItem.Enabled = True
+        displayStarmap(starmap)
     End Sub
     Private Sub loadGalaxy()
         ' check hash
@@ -163,9 +166,7 @@
             Dim starmap As New starmap
             starmap = ghostLoadStarmap()
 
-            ' display starmap in form and perform menu activations
             displayStarmap(starmap)
-            ToolsToolStripMenuItem.Enabled = True
         End If
     End Sub
     Private Function getPlanetLocTag(ByVal index As Integer, planetNumber As Integer) As String
@@ -237,25 +238,29 @@
     Private Sub buttonBackClickStar(ByVal sender As Object, ByVal e As System.EventArgs)
         TabControl1.SelectTab(0)
     End Sub
+    Private Sub picPlanetType_Click(sender As Object, e As System.EventArgs) Handles picPlanetType.Click
+        TabControl1.SelectTab(1)
+    End Sub
+    Private Sub picPlanetForward_Click(sender As Object, e As System.EventArgs) Handles picPlanetForward.Click
+        TabControl1.SelectTab(3)
+    End Sub
+    Private Sub picDescription_Click(sender As Object, e As System.EventArgs) Handles picDescription.Click
+        TabControl1.SelectTab(2)
+    End Sub
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         initialiseStarmapFunctions()
         ToolsToolStripMenuItem.Enabled = False
     End Sub
-    Private Sub Size1GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size1GalaxyToolStripMenuItem.Click
-        newGalaxy(1)
-    End Sub
-    Private Sub Size2GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size2GalaxyToolStripMenuItem.Click
-        newGalaxy(2)
-    End Sub
-    Private Sub Size3GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size3GalaxyToolStripMenuItem.Click
-        newGalaxy(3)
-    End Sub
-    Private Sub Size4GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size4GalaxyToolStripMenuItem.Click
-        newGalaxy(4)
-    End Sub
-    Private Sub Size5GalaxyToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles Size5GalaxyToolStripMenuItem.Click
-        newGalaxy(5)
+    Private Sub NewToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewToolStripMenuItem.Click
+        If frmNew.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+            newGalaxy(frmNew.starmapOpt)
+        Else
+            'do nothing
+        End If
+
+        frmNew.starmapOpt = Nothing
+        frmNew.Dispose()
     End Sub
     Private Sub LoadToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles LoadToolStripMenuItem.Click
         refreshTabPage1()
@@ -275,18 +280,6 @@
     Private Sub DistanceToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DistanceToolStripMenuItem.Click
         frmDistance.ShowDialog(Me)
         frmDistance.Dispose()
-    End Sub
-    Private Sub BlackholesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BlackholesToolStripMenuItem.Click
-        If BlackholesToolStripMenuItem.Checked = False Then BlackholesToolStripMenuItem.Checked = True Else BlackholesToolStripMenuItem.Checked = False
-    End Sub
-    Private Sub picPlanetType_Click(sender As Object, e As System.EventArgs) Handles picPlanetType.Click
-        TabControl1.SelectTab(1)
-    End Sub
-    Private Sub picPlanetForward_Click(sender As Object, e As System.EventArgs) Handles picPlanetForward.Click
-        TabControl1.SelectTab(3)
-    End Sub
-    Private Sub picDescription_Click(sender As Object, e As System.EventArgs) Handles picDescription.Click
-        TabControl1.SelectTab(2)
     End Sub
 
     Private Sub planetLabel_Click(sender As System.Object, e As System.EventArgs) Handles lblSize.Click, lblPrefix.Click, lblSuffix.Click, lblHabitation.Click, lblGovernment.Click
