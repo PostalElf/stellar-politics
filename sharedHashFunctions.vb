@@ -42,7 +42,7 @@ Public Class sharedHashFunctions
     End Function
 
     Public Sub addHashFile(ByVal type As String)
-        Dim hashFilename As String = "hash" & type & ".txt"
+        Dim hashFilename As String = type & ".hash"
         Dim xmlFilename As String = type & ".xml"
 
         Dim inputString As String = readWholeFile(xmlFilename)
@@ -50,7 +50,7 @@ Public Class sharedHashFunctions
     End Sub
 
     Public Function checkHash(ByVal type As String) As Boolean
-        Dim hashFilename As String = "hash" & type & ".txt"
+        Dim hashFilename As String = type & ".hash"
         Dim xmlFilename As String = type & ".xml"
         Dim comparer As StringComparer = StringComparer.OrdinalIgnoreCase
 
