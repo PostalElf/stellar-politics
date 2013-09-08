@@ -17,4 +17,8 @@
 
         Me.DialogResult = Windows.Forms.DialogResult.OK
     End Sub
+
+    Private Sub frmNew_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        ComboBox1.SelectedIndex = 0
+    End Sub
 End Class

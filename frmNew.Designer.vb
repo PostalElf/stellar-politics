@@ -51,8 +51,11 @@ Partial Class frmNew
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.ReadOnly = True
         Me.NumericUpDown1.Size = New System.Drawing.Size(40, 20)
         Me.NumericUpDown1.TabIndex = 1
+        Me.NumericUpDown1.TabStop = False
+        Me.NumericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.ToolTip1.SetToolTip(Me.NumericUpDown1, "The larger the galaxy, the longer" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the game will take to play out.  If" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "this is y" & _
         "our first game, we suggest" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "you stick to a galaxy size of 1.")
         Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
@@ -62,7 +65,7 @@ Partial Class frmNew
         Me.GroupBox1.Controls.Add(Me.chkBlackholes)
         Me.GroupBox1.Location = New System.Drawing.Point(243, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(142, 146)
+        Me.GroupBox1.Size = New System.Drawing.Size(142, 124)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Options"
@@ -84,7 +87,7 @@ Partial Class frmNew
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(263, 164)
+        Me.Button1.Location = New System.Drawing.Point(258, 158)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(110, 50)
         Me.Button1.TabIndex = 3

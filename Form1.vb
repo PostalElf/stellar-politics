@@ -155,8 +155,13 @@
     Private Sub loadGalaxy()
         ' check hash
         Dim hashFxn As New sharedHashFunctions
-        If hashFxn.checkHash("starmap") = False Then
-            MsgBox("starmap.xml corrupted!  Generate a new starmap.", MsgBoxStyle.Critical, "Error!")
+        If hashFxn.checkHash("starmap") = False OrElse _
+                hashFxn.checkHash("playerinfo") = False OrElse _
+                hashFxn.checkHash("agents") = False Then
+            'hash does not match
+            MsgBox("Files corrupted!  Please generate a new starmap" & vbCrLf & _
+                   "and avoid manually editting any of the files in" & vbCrLf & _
+                   "the folder.", MsgBoxStyle.Critical, "Error!")
             hashFxn = Nothing
             Me.Close()
         Else

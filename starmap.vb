@@ -8,8 +8,7 @@ Public Class starmap
         If stars Is Nothing Then stars = New List(Of star)
     End Sub
 
-    'generators create stars and planets and writes them into the appropriate XML file.  
-    'Note: they do NOT load the object into memroy
+    'generators create stars and planets and writes them into the appropriate XML file.  Note: they do NOT load the object into memroy
     Public Sub generateStarmap(ByRef starmapOptions As starmapOptions)
         ' create a new starmap and write it to starmap.xml
         ' also writes the hashdata for starmap.xml into hashStarmap.txt
@@ -19,12 +18,21 @@ Public Class starmap
         generatePlayerInfo(starmapOptions)
         generateAgents(starmapOptions)
 
+        'initialise xwrt
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
         xwrt.Indentation = 2
         xwrt.WriteStartElement("starmap")
 
+        'put each agent in agents.xml at home
+        xwrt.WriteStartElement("homeagents")
+        For Each agent In ghostLoadAgents()
+            xwrt.WriteElementString("agent", agent.id)
+        Next
+        xwrt.WriteEndElement()  '/homeagents
+
+        'generate the galaxy's stars
         While starmapOptions.galaxySize > 0
             generateStar(xwrt, starmapOptions)
         End While
@@ -474,6 +482,7 @@ End Class
 
 Public Class agent
     ' note that this class is not stored inside each planet's StationedAgents
+    ' stationedAgents only holds the ID, which is then referenced by agents.xml to find out more about the agent in question
 
     Public id As String
     Public name As String

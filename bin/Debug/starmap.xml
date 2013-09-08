@@ -1,213 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <starmap>
-  <star name="Erda" location="26" type="OrangeRed">
-    <planet starName="Erda" number="1" location="3">
+  <homeagents>
+    <agent>001</agent>
+    <agent>002</agent>
+    <agent>003</agent>
+    <agent>004</agent>
+    <agent>005</agent>
+  </homeagents>
+  <star name="Nibelung" location="11" type="WhiteYellow">
+    <planet starName="Nibelung" number="1" location="3">
       <size>2</size>
-      <prefix>Industrial</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Electronics</good>
-      </supply>
-      <demand>
-        <good>Metal</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Erda" number="2" location="7">
-      <size>3</size>
-      <prefix>Cultural</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Media</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Erda" number="3" location="5">
-      <size>1</size>
-      <prefix>Mining</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Chemicals</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-  </star>
-  <star name="Fricka" location="31" type="WhiteYellow">
-    <planet starName="Fricka" number="1" location="6">
-      <size>2</size>
-      <prefix>Industrial</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Weapons</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Fricka" number="2" location="0">
-      <size>4</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Plants</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Fricka" number="3" location="3">
-      <size>2</size>
-      <prefix>Agrarian</prefix>
+      <prefix>Tourist</prefix>
       <suffix>Sprawl</suffix>
       <habitation>Hivecities</habitation>
       <government>Anarchy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Metal</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-  </star>
-  <star name="Phoebe" location="32" type="OrangeRed">
-    <planet starName="Phoebe" number="1" location="2">
-      <size>5</size>
-      <prefix>Research</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Blueprints</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Phoebe" number="2" location="7">
-      <size>1</size>
-      <prefix>Research</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Savants</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-  </star>
-  <star name="Iapetus" location="23" type="BlueWhite">
-    <planet starName="Iapetus" number="1" location="2">
-      <size>1</size>
-      <prefix>Mining</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>Metal</good>
-      </supply>
-      <demand>
-        <good>Blueprints</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Iapetus" number="2" location="4">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Art</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-      <agents>
-        <agent>000</agent>
-      </agents>
-    </planet>
-    <planet starName="Iapetus" number="3" location="5">
-      <size>3</size>
-      <prefix>Tourist</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
       <supply>
         <good>None</good>
       </supply>
       <demand>
-        <good>Blueprints</good>
-        <good>Savants</good>
+        <good>Azoth</good>
+        <good>Slaves</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Iapetus" number="4" location="3">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Desert</suffix>
+    <planet starName="Nibelung" number="2" location="0">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Sprawl</suffix>
       <habitation>Cubecities</habitation>
-      <government>Oligarchy</government>
+      <government>Autocracy</government>
       <supply>
-        <good>Slaves</good>
+        <good>Chemicals</good>
       </supply>
       <demand>
-        <good>Savants</good>
+        <good>Media</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Iapetus" number="5" location="7">
+    <planet starName="Nibelung" number="3" location="7">
+      <size>2</size>
+      <prefix>Cultural</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Media</good>
+      </supply>
+      <demand>
+        <good>Weapons</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Nibelung" number="4" location="8">
       <size>1</size>
-      <prefix>Prison</prefix>
+      <prefix>Research</prefix>
       <suffix>Volcanic</suffix>
       <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
+      <government>Anarchy</government>
       <supply>
-        <good>Azoth</good>
+        <good>Blueprints</good>
       </supply>
       <demand>
         <good>Chemicals</good>
@@ -217,15 +74,79 @@
       </agents>
     </planet>
   </star>
-  <star name="Nanna" location="9" type="Red">
-    <planet starName="Nanna" number="1" location="4">
+  <star name="Mnemosyne" location="10" type="Blue">
+    <planet starName="Mnemosyne" number="1" location="5">
       <size>3</size>
-      <prefix>Commercial</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Democracy</government>
+      <prefix>Industrial</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Mnemosyne" number="2" location="2">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Azoth</good>
+      </supply>
+      <demand>
+        <good>Plants</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Mnemosyne" number="3" location="0">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Oligarchy</government>
       <supply>
         <good>Plants</good>
+      </supply>
+      <demand>
+        <good>Chemicals</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Mnemosyne" number="4" location="8">
+      <size>2</size>
+      <prefix>Industrial</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Electronics</good>
+      </supply>
+      <demand>
+        <good>Plants</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Mnemosyne" number="5" location="1">
+      <size>1</size>
+      <prefix>Prison</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Slaves</good>
       </supply>
       <demand>
         <good>Metal</good>
@@ -234,33 +155,85 @@
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Nanna" number="2" location="8">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Autocracy</government>
+  </star>
+  <star name="Ninhursag" location="8" type="WhiteYellow">
+    <planet starName="Ninhursag" number="1" location="0">
+      <size>4</size>
+      <prefix>Mining</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Oligarchy</government>
       <supply>
-        <good>Azoth</good>
+        <good>Metal</good>
       </supply>
       <demand>
-        <good>Savants</good>
+        <good>Electronics</good>
       </demand>
       <agents>
         <agent>000</agent>
       </agents>
     </planet>
-    <planet starName="Nanna" number="3" location="0">
+    <planet starName="Ninhursag" number="2" location="4">
       <size>2</size>
-      <prefix>Prison</prefix>
+      <prefix>Research</prefix>
       <suffix>Wasteland</suffix>
       <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
+      <government>Oligarchy</government>
       <supply>
-        <good>Slaves</good>
+        <good>Savants</good>
       </supply>
       <demand>
+        <good>Food</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Ninhursag" number="3" location="2">
+      <size>1</size>
+      <prefix>Cultural</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Art</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+  </star>
+  <star name="Anu" location="12" type="BlueWhite">
+    <planet starName="Anu" number="1" location="0">
+      <size>3</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Weapons</good>
+      </demand>
+      <agents>
+        <agent>000</agent>
+      </agents>
+    </planet>
+    <planet starName="Anu" number="2" location="3">
+      <size>5</size>
+      <prefix>Commercial</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Autocracy</government>
+      <supply>
         <good>Savants</good>
+      </supply>
+      <demand>
+        <good>Chemicals</good>
       </demand>
       <agents>
         <agent>000</agent>

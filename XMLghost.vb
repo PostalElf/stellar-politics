@@ -91,6 +91,30 @@ Public Module xmlGhost
 
         Return planet
     End Function
+    Public Function ghostLoadAgents() As List(Of agent)
+        Dim agentlist As New List(Of agent)
+
+        Dim xsettings As New XmlReaderSettings
+        xsettings.IgnoreWhitespace = True
+        xsettings.IgnoreComments = True
+        Dim xr As XmlReader = XmlReader.Create("agents.xml", xsettings)
+        While xr.Read()
+            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "agent" Then
+                Dim agent As New agent
+
+                agent.id = xr.GetAttribute("id")
+                xr.ReadToFollowing("name")
+                agent.name = xr.ReadString
+                xr.ReadToFollowing("type")
+                agent.type = xr.ReadString
+
+                agentlist.Add(agent)
+            End If
+        End While
+        xr.Close()
+
+        Return agentlist
+    End Function
 
     'ghostInfoLoaders read XML files ending with info and return the appropriate information in string
     Function ghostInfoLoad(ByVal filename As String, ByVal rootElement As String, ByVal childElement As String) As String
