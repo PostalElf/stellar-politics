@@ -343,7 +343,7 @@ Public Class starmap
         Dim x As Integer = Int(Rnd() * (supplyList.Count - 1))
         If planetPrefix = "Tourist" Then
             randomPlanetDemand.Add(supplyList(x))
-            supplyList.Remove(x)
+            supplyList.RemoveAt(x)
             x = Int(Rnd() * (supplyList.Count - 1))
             randomPlanetDemand.Add(supplyList(x))
         Else
