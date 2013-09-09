@@ -2,6 +2,7 @@
     Public starmap As New starmap
     Public agentList As New agentList
     Public playerinfo As New playerinfo
+    Public settingDoNotSave As Boolean = False
 
     Private Sub displayStarmap(starmap As starmap)
         'display starmap in form and perform menu activations
@@ -157,7 +158,6 @@
         TabPage1.Controls.Clear()
 
         starmap.generateStarmap(starmapOptions)
-        loadGalaxy()
     End Sub
     Private Sub loadGalaxy()
         ' check hash
@@ -170,6 +170,7 @@
                    "and avoid manually editting any of the files in" & vbCrLf & _
                    "the folder.", MsgBoxStyle.Critical, "Error!")
             hashFxn = Nothing
+            settingDoNotSave = True
             Me.Close()
         Else
             hashFxn = Nothing
@@ -306,7 +307,11 @@
         ManageToolStripMenuItem.Enabled = False
     End Sub
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        ghostWriteAll(starmap, agentList, playerinfo)
+        If settingDoNotSave = True Then
+            ' do nothing
+        Else
+            ghostWriteAll(starmap, agentList, playerinfo)
+        End If
     End Sub
     Private Sub NewToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewToolStripMenuItem.Click
         If frmNew.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -317,6 +322,8 @@
 
         frmNew.starmapOpt = Nothing
         frmNew.Dispose()
+
+        loadGalaxy()
     End Sub
     Private Sub LoadToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles LoadToolStripMenuItem.Click
         refreshTabPage1()
