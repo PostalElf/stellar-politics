@@ -157,7 +157,15 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
+        'generate playerinfo and agents first
+        starmap.generatePlayerInfo(starmapOptions)
+        playerinfo = ghostLoadPlayerinfo()
+        starmap.generateAgents(starmapOptions)
+        agentList = ghostLoadAgentList()
         starmap.generateStarmap(starmapOptions)
+        starmap = ghostLoadStarmap()
+
+        displayStarmap(starmap)
     End Sub
     Private Sub loadGalaxy()
         ' check hash
@@ -322,8 +330,6 @@
 
         frmNew.starmapOpt = Nothing
         frmNew.Dispose()
-
-        loadGalaxy()
     End Sub
     Private Sub LoadToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles LoadToolStripMenuItem.Click
         refreshTabPage1()

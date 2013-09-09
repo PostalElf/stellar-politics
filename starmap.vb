@@ -15,10 +15,6 @@ Public Class starmap
         ' also writes the hashdata for starmap.xml into hashStarmap.txt
         ' galaxySize = min number of times systemSupply will be repopped
 
-        'generate playerinfo and agents first
-        generatePlayerInfo(starmapOptions)
-        generateAgents(starmapOptions)
-
         'initialise xwrt
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
@@ -125,7 +121,7 @@ Public Class starmap
 
         xwrt.WriteEndElement()  '/planet
     End Sub
-    Private Sub generateAgents(ByRef starmapOptions As starmapOptions)
+    Public Sub generateAgents(ByRef starmapOptions As starmapOptions)
         'populate home with default agents
 
         Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
@@ -155,7 +151,7 @@ Public Class starmap
         xwrt.Close()
         xwrt = Nothing
     End Sub
-    Private Sub generatePlayerInfo(ByRef starmapoptions As starmapOptions)
+    Public Sub generatePlayerInfo(ByRef starmapoptions As starmapOptions)
         Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
