@@ -1,6 +1,8 @@
 ﻿Imports System.IO
 Imports System.Xml
 Imports System.Text
+Imports Microsoft.VisualBasic.CallType
+
 
 Public Module xmlGhost
 
@@ -168,7 +170,7 @@ Public Module xmlGhost
         Return tempStr
     End Function
 
-    'ghostWriters update whatever element they are passed into the XML file
+    'ghostWriters update whatever element is passed to them into the XML file
     Sub ghostWriteStar(ByRef star As star)
         'edits basic star details
 
@@ -232,7 +234,7 @@ Public Module xmlGhost
         hashFxn = Nothing
     End Sub
     Sub ghostWritePlanetSub(ByRef planet As planet, ByVal typename As String)
-        'edits planet's supply
+        'edits planet's supply, demand and anything else that has sub nodes
 
         Const filename As String = "starmap.xml"
 
@@ -241,7 +243,85 @@ Public Module xmlGhost
         Dim xpath As String = "/starmap/star[@name='" & planet.starName & "']/planet[@number='" & planet.number & "']/" & typename
         Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
 
+        If xNode Is Nothing Then
+            'throw error because node is invalid
+        Else
+            xNode.RemoveAll()                                                       'clear all entries from XML
+            For Each item In CallByName(planet, typename, [Get])                    'add entries back from planet object
+                Dim str As String = "<good>" & item & "</good>"
+                Dim xFrag As XmlDocumentFragment = xDoc.CreateDocumentFragment
+                xFrag.InnerXml = str
+                Dim root As XmlNode = xDoc.SelectSingleNode(xpath)
+                root.AppendChild(xFrag)
+            Next
 
+            'save and close
+            xDoc.Save(filename)
+            xDoc = Nothing
+
+            'change hash
+            Dim hashFxn As New sharedHashFunctions
+            hashFxn.addHashFile("starmap")
+            hashFxn = Nothing
+        End If
+    End Sub
+    Sub ghostWriteHomeAgents(ByRef agentList As List(Of String))
+        'updates homeagent list in starmap.xml
+        Const filename As String = "starmap.xml"
+
+        Dim xDoc As New XmlDocument
+        xDoc.Load(filename)
+        Dim xpath As String = "/starmap/homeagents"
+        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+
+        If xNode Is Nothing Then
+            'throw error because node is invalid
+        Else
+            xNode.RemoveAll()                                   'clear all entries
+            For Each item As String In agentList                'add back each agent
+                Dim str As String = "<agent>" & item & "</agent>"
+                Dim xFrag As XmlDocumentFragment = xDoc.CreateDocumentFragment
+                xFrag.InnerXml = str
+                Dim root As XmlNode = xDoc.SelectSingleNode(xpath)
+                root.AppendChild(xFrag)
+            Next
+
+            'save and close
+            xDoc.Save(filename)
+            xDoc = Nothing
+
+            'change hash
+            Dim hashFxn As New sharedHashFunctions
+            hashFxn.addHashFile("starmap")
+            hashFxn = Nothing
+        End If
+    End Sub
+    Sub ghostWriteAgent(ByRef agent As agent)
+        Const filename As String = "agents.xml"
+
+        Dim xDoc As New XmlDocument
+        xDoc.Load(filename)
+        Dim xpath As String = "/agents/agent[@id='" & agent.id & "']"
+        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+
+        If xNode Is Nothing Then
+            'throw error because node is invalid
+        Else
+            xNode.ChildNodes(0).InnerText = agent.name
+            xNode.ChildNodes(1).InnerText = agent.type
+            xNode.ChildNodes(2).InnerText = agent.starName
+            xNode.ChildNodes(3).InnerText = agent.planetNumber
+        End If
+
+        'save and close
+        xDoc.Save(filename)
+        xDoc = Nothing
+
+
+        'change hash
+        Dim hashFxn As New sharedHashFunctions
+        hashFxn.addHashFile("agents")
+        hashFxn = Nothing
     End Sub
 
     'ghostGrabbers grab stars and planets based on search criteria
@@ -273,6 +353,17 @@ Public Module xmlGhost
 
         Dim planet As planet = ghostGrabPlanetFromFile(starname, planetNumber)
         Return planet.stationedAgents
+    End Function
+    Function ghostGrabAgentFromID(ByVal ID As String) As agent
+        'returns the agent object from agents.xml based on ID
+        'used primarily for checking if an agent is somewhere
+
+        Dim agentlist As List(Of agent) = ghostLoadAgents()
+        For Each agent As agent In agentlist
+            If agent.id = ID Then Return agent
+        Next
+
+        Return Nothing
     End Function
 
     'ghostTextList grab and return textfiles in a list

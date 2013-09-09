@@ -25,11 +25,11 @@ Partial Class frmAgents
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAgents))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colClass = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,6 +49,8 @@ Partial Class frmAgents
         '
         Me.TabPage1.BackColor = System.Drawing.Color.White
         Me.TabPage1.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.greenBG
+        Me.TabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage1.Controls.Add(Me.DataGridView1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -57,16 +59,6 @@ Partial Class frmAgents
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Oubliette"
         '
-        'TabPage2
-        '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(512, 249)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Agent Details"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -74,12 +66,12 @@ Partial Class frmAgents
         Me.DataGridView1.AllowUserToResizeRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colName, Me.colClass, Me.colLocation})
-        Me.DataGridView1.Location = New System.Drawing.Point(22, 32)
+        Me.DataGridView1.Location = New System.Drawing.Point(22, 97)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(440, 197)
+        Me.DataGridView1.Size = New System.Drawing.Size(412, 132)
         Me.DataGridView1.TabIndex = 7
         '
         'colName
@@ -100,11 +92,23 @@ Partial Class frmAgents
         '
         'colLocation
         '
-        Me.colLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.colLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.colLocation.HeaderText = "Current Location"
         Me.colLocation.Name = "colLocation"
         Me.colLocation.ReadOnly = True
-        Me.colLocation.Width = 150
+        '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.Color.White
+        Me.TabPage2.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.greenBG
+        Me.TabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(512, 249)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Agent Details"
         '
         'frmAgents
         '

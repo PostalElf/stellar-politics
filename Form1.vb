@@ -33,6 +33,9 @@
         'menu activations
         ToolsToolStripMenuItem.Enabled = True
         ManageToolStripMenuItem.Enabled = True
+
+        'switch tabpage
+        TabControl1.SelectTab(0)
     End Sub
     Private Sub displayStar(ByRef star As star, ByVal index As Integer)
         refreshTabPage2()
@@ -327,5 +330,11 @@
         Else
 
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        Dim planet As planet = ghostGrabPlanetFromFile("Hyperion", 1)
+
+        planet.addGoodAndSave("Metal", "supply")
     End Sub
 End Class

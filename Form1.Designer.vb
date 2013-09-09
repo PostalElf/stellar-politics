@@ -52,11 +52,12 @@ Partial Class Form1
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ManageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AgentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -287,6 +288,7 @@ Partial Class Form1
         '
         Me.TabPage4.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.detailsBG
         Me.TabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage4.Controls.Add(Me.Button1)
         Me.TabPage4.Controls.Add(Me.picDescription)
         Me.TabPage4.Controls.Add(Me.lblDescription)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
@@ -352,15 +354,29 @@ Partial Class Form1
         '
         Me.LoadToolStripMenuItem.Name = "LoadToolStripMenuItem"
         Me.LoadToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
-        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.LoadToolStripMenuItem.Text = "&Load"
         '
         'NewToolStripMenuItem
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(150, 22)
         Me.NewToolStripMenuItem.Text = "&New..."
+        '
+        'ManageToolStripMenuItem
+        '
+        Me.ManageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem})
+        Me.ManageToolStripMenuItem.Name = "ManageToolStripMenuItem"
+        Me.ManageToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
+        Me.ManageToolStripMenuItem.Text = "&Manage"
+        '
+        'AgentsToolStripMenuItem
+        '
+        Me.AgentsToolStripMenuItem.Name = "AgentsToolStripMenuItem"
+        Me.AgentsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.AgentsToolStripMenuItem.Text = "&Agents"
         '
         'ToolsToolStripMenuItem
         '
@@ -383,19 +399,14 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
-        'ManageToolStripMenuItem
+        'Button1
         '
-        Me.ManageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem})
-        Me.ManageToolStripMenuItem.Name = "ManageToolStripMenuItem"
-        Me.ManageToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
-        Me.ManageToolStripMenuItem.Text = "&Manage"
-        '
-        'AgentsToolStripMenuItem
-        '
-        Me.AgentsToolStripMenuItem.Name = "AgentsToolStripMenuItem"
-        Me.AgentsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
-        Me.AgentsToolStripMenuItem.Text = "&Agents"
+        Me.Button1.Location = New System.Drawing.Point(40, 198)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(45, 58)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -454,5 +465,6 @@ Partial Class Form1
     Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AgentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

@@ -1,4 +1,5 @@
 ﻿Imports System.Xml
+Imports Microsoft.VisualBasic.CallType
 
 Public Class starmap
     Public stars As List(Of star)
@@ -459,8 +460,33 @@ Public Class planet
         If stationedAgents Is Nothing Then stationedAgents = New List(Of String)
     End Sub
 
-    Public Sub clearGoods(ByVal type As String)
-        Select Case type.ToLower
+    Public Sub addGoodAndSave(ByVal item As String, ByVal targetListName As String)
+        Select Case targetListName.ToLower
+            Case "supply"
+                If supply.Contains(item) = False Then supply.Add(targetListName)
+            Case "demand"
+                If demand.Contains(item) = False Then supply.Add(targetListName)
+            Case Else
+                'bugcatch
+        End Select
+
+        ghostWritePlanetSub(Me, targetListName)
+    End Sub
+    Public Sub removeGoodAndSave(ByVal item As String, ByVal targetListName As String)
+        Select Case targetListName.ToLower
+            Case "supply"
+                supply.Remove(item)
+                If supply.Count = 0 Then clearGoodsAndSave("supply") Else ghostWritePlanetSub(Me, targetListName)
+            Case "demand"
+                demand.Remove(item)
+                If demand.Count = 0 Then clearGoodsAndSave("demand") Else ghostWritePlanetSub(Me, targetListName)
+            Case Else
+                ' do nothing because invalid type
+        End Select
+
+    End Sub
+    Public Sub clearGoodsAndSave(ByVal targetListName As String)
+        Select Case targetListName.ToLower
             Case "supply"
                 supply.Clear()
                 supply.Add("None")
@@ -470,19 +496,28 @@ Public Class planet
             Case Else
                 ' do nothing because invalid type
         End Select
+
+        ghostWritePlanetSub(Me, targetListName)
     End Sub
-    Public Sub removeGood(ByVal good As String, ByVal type As String)
-        Select Case type.ToLower
-            Case "supply"
-                supply.Remove(good)
-                If supply.Count = 0 Then clearGoods("supply")
-            Case "demand"
-                demand.Remove(good)
-                If demand.Count = 0 Then clearGoods("demand")
-            Case Else
-                ' do nothing because invalid type
-        End Select
-    End Sub
+    Public Function moveAgentToCurrentPlanet(ByVal agentID As String) As Boolean
+        Dim agent As agent = ghostGrabAgentFromID(agentID)
+        If stationedAgents.Contains(agentID) = True Then
+            'return false as agent already here
+            MsgBox("Agent already on the planet!", MsgBoxStyle.Exclamation, "Error!")
+            Return False
+        End If
+
+        If agent.starName = "Oubliette" Then
+            'remove agent from home
+            Dim stationedAgents As List(Of String) = ghostGrabStationedAgentsFromFile("Oubliette", 0)
+            stationedAgents.Remove(agentID)
+            ghostWriteHomeAgents(stationedAgents)
+
+            'add agent to starmap
+
+        End If
+    End Function
+
 End Class
 
 
