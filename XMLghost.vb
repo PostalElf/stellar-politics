@@ -13,9 +13,11 @@ Public Module xmlGhost
     '    `~~~'
 
     Public Const starmapFilename = "starmap.xml"
+    Public Const agentFilename As String = "agents.xml"
+    Public Const playerFilename As String = "playerinfo.xml"
 
-    'ghostLoaders read XML and turn them into objects
-    Function ghostLoadStarmap() As starmap
+    'ghostLoaders read XML and turn them into objects; no ghostLoadPlayerinfo as the New() automatically loads it
+    Public Function ghostLoadStarmap() As starmap
         Dim starmap As New starmap
 
         Dim xsettings As New XmlReaderSettings
@@ -80,62 +82,66 @@ Public Module xmlGhost
             End While
         End If
 
-        If xr.ReadToFollowing("agents") = True Then
-            xr.ReadToDescendant("agent")
-            While xr.Name = "agent"
-                planet.stationedAgents.Add(xr.ReadString)
-                xr.Read()
-            End While
-        End If
-
         ' exit out to /planet; put at the end, after all sub-elements have been read
         xr.ReadEndElement()
 
         Return planet
     End Function
-    Private Function ghostLoadHomeagents(ByRef xr As XmlReader) As List(Of String)
-        Dim homeagentlist As New List(Of String)
-
-        If xr.ReadToFollowing("agent") = True Then
-            While xr.Name = "agent"
-                homeagentlist.Add(xr.ReadString)
-                xr.Read()
-            End While
-        End If
-
-        Return homeagentlist
-    End Function
-    Public Function ghostLoadAgents() As List(Of agent)
-        Dim agentlist As New List(Of agent)
+    Public Function ghostLoadAgentList() As agentList
+        Dim agentList As New agentList
 
         Dim xsettings As New XmlReaderSettings
         xsettings.IgnoreWhitespace = True
         xsettings.IgnoreComments = True
-        Dim xr As XmlReader = XmlReader.Create("agents.xml", xsettings)
+        Dim xr As XmlReader = XmlReader.Create(agentFilename, xsettings)
         While xr.Read()
             If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "agent" Then
-                Dim agent As New agent
-
-                agent.id = xr.GetAttribute("id")
-                xr.ReadToFollowing("name")
-                agent.name = xr.ReadString
-                xr.ReadToFollowing("type")
-                agent.type = xr.ReadString
-                xr.ReadToFollowing("starname")
-                agent.starName = xr.ReadString
-                xr.ReadToFollowing("planetnumber")
-                agent.planetNumber = Convert.ToInt32(xr.ReadString)
-
-                agentlist.Add(agent)
+                agentList.agents.Add(ghostLoadAgent(xr))
             End If
         End While
+
+        xr.Close()
+        Return agentList
+    End Function
+    Private Function ghostLoadAgent(ByRef xr As XmlReader) As agent
+        Dim agent As New agent
+
+        agent.id = xr.GetAttribute("id")
+        xr.ReadToFollowing("name")
+        agent.name = xr.ReadString
+        xr.ReadToFollowing("type")
+        agent.type = xr.ReadString
+        xr.ReadToFollowing("starname")
+        agent.starName = xr.ReadString
+        xr.ReadToFollowing("planetnumber")
+        agent.planetNumber = Convert.ToInt32(xr.ReadString)
+
+        Return agent
+    End Function
+    Public Function ghostLoadPlayerinfo() As playerinfo
+        Dim playerinfo As New playerinfo
+
+        Dim xsettings As New XmlReaderSettings
+        xsettings.IgnoreWhitespace = True
+        xsettings.IgnoreComments = True
+        Dim xr As XmlReader = XmlReader.Create(playerFilename, xsettings)
+        While xr.Read()
+            If xr.NodeType = XmlNodeType.Element Then
+                Select Case xr.Name
+                    Case "faction" : playerinfo.faction = xr.ReadString
+                    Case Else
+                        'do nothing
+                End Select
+            End If
+        End While
+
         xr.Close()
 
-        Return agentlist
+        Return playerinfo
     End Function
 
     'ghostInfoLoaders read XML files ending with info and return the appropriate information in string
-    Function ghostInfoLoad(ByVal filename As String, ByVal rootElement As String, ByVal childElement As String) As String
+    Public Function ghostInfoLoad(ByVal filename As String, ByVal rootElement As String, ByVal childElement As String) As String
         'the info XML file should not be more complex than /filename/rootElement/childElement/
         'eg. within planetinfo.xml, /planetinfo/prefix/cultural
 
@@ -165,8 +171,20 @@ Public Module xmlGhost
         Return tempStr
     End Function
 
-    'ghostWriters update whatever element is passed to them into the XML file
-    Sub ghostWriteStarmap(ByRef starmap As starmap)
+    'ghostWriters update whatever element is passed to them into the XML file; use only ghostWriteAll()
+    Public Sub ghostWriteAll(ByRef starmap As starmap, ByRef agentList As agentList, ByRef playerinfo As playerinfo)
+        ghostWriteStarmap(starmap)
+        ghostWriteAgents(agentList)
+        ghostWritePlayerinfo(playerinfo)
+
+        'store starmap hash into hashstarmap.txt
+        Dim txtFxn As New sharedHashFunctions
+        txtFxn.addHashFile("starmap")
+        txtFxn.addHashFile("agents")
+        txtFxn.addHashFile("playerinfo")
+        txtFxn = Nothing
+    End Sub
+    Private Sub ghostWriteStarmap(ByRef starmap As starmap)
         Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
@@ -181,11 +199,6 @@ Public Module xmlGhost
         xwrt.WriteEndDocument()
         xwrt.Close()
         xwrt = Nothing
-
-        'store starmap hash into hashstarmap.txt
-        Dim txtFxn As New sharedHashFunctions
-        txtFxn.addHashFile("starmap")
-        txtFxn = Nothing
     End Sub
     Private Sub ghostWriteStar(ByRef xwrt As XmlTextWriter, ByRef star As star)
         xwrt.WriteStartElement("star")
@@ -227,16 +240,14 @@ Public Module xmlGhost
 
         xwrt.WriteEndElement()  '/planet
     End Sub
-    Sub ghostWriteAgents(ByRef agentList As List(Of agent))
-        Const agentFilename As String = "agents.xml"
-
+    Private Sub ghostWriteAgents(ByRef agentList As agentList)
         Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
         xwrt.Indentation = 2
         xwrt.WriteStartElement("agents")
 
-        For Each agent As agent In agentList
+        For Each agent As agent In agentList.agents
             xwrt.WriteStartElement("agent")
             xwrt.WriteAttributeString("id", agent.id)
             xwrt.WriteElementString("name", agent.name)
@@ -251,48 +262,20 @@ Public Module xmlGhost
         xwrt.Close()
         xwrt = Nothing
     End Sub
+    Private Sub ghostWritePlayerinfo(ByRef playerinfo As playerinfo)
+        Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("playerinfo")
 
-    'ghostGrabbers grab stars and planets based on search criteria
-    Function ghostGrabStar(ByRef starmap As starmap, ByVal starname As String) As star
-        For Each star As star In starmap.stars
-            If star.name = starname Then Return star
-        Next
+        xwrt.WriteElementString("faction", playerinfo.faction)
 
-        Return Nothing
-    End Function
-    Function ghostGrabPlanet(ByRef star As star, ByVal planetNumber As Integer) As planet
-        For Each planet As planet In star.planets
-            If planet.number = planetNumber Then Return planet
-        Next
-
-        Return Nothing
-    End Function
-    Function ghostGrabPlanetFromFile(ByVal starName As String, ByVal planetNumber As Integer) As planet
-        'ghostLoads starmap and runs search for a particular planet based on star name and planet number
-
-        Dim starmap As starmap = ghostLoadStarmap()
-        Dim star As star = ghostGrabStar(starmap, starName)
-        Return ghostGrabPlanet(star, planetNumber)
-    End Function
-    Function ghostGrabStationedAgentsFromFile(ByVal starname As String, ByVal planetNumber As Integer) As List(Of String)
-        'each agent is identified by a unique 3 digit number, eg. 001, 002
-        'this function returns a list with all the identifiers
-        'agent 000 is always reserved as a null string, eg. no agent
-
-        Dim planet As planet = ghostGrabPlanetFromFile(starname, planetNumber)
-        Return planet.stationedAgents
-    End Function
-    Function ghostGrabAgentFromID(ByVal ID As String) As agent
-        'returns the agent object from agents.xml based on ID
-        'used primarily for checking if an agent is somewhere
-
-        Dim agentlist As List(Of agent) = ghostLoadAgents()
-        For Each agent As agent In agentlist
-            If agent.id = ID Then Return agent
-        Next
-
-        Return Nothing
-    End Function
+        xwrt.WriteEndElement()  '/playerinfo
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
+    End Sub
 
     'ghostTextList grab and return textfiles in a list
     Function ghostTextList(ByVal filename As String)

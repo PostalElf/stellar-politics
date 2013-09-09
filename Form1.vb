@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     Public starmap As New starmap
-    Public agentList As New List(Of agent)
+    Public agentList As New agentList
     Public playerinfo As New playerinfo
 
     Private Sub displayStarmap(starmap As starmap)
@@ -17,7 +17,8 @@
 
             Dim starLoc As New Panel
             starLoc.Location = systemXYDictionary(star.location)
-            starLoc.BackgroundImage = My.Resources.ResourceManager.GetObject("star" & star.type)
+            Dim picName As String = "star" & star.type
+            starLoc.BackgroundImage = My.Resources.ResourceManager.GetObject(picName)
             starLoc.BackColor = Color.Transparent
             starLoc.Size = New Size(30, 30)
             starLoc.Tag = counter
@@ -113,10 +114,11 @@
             counter += 1
         Next
         counter = 0
-        For Each agent As String In planet.stationedAgents
-            addGoodsPic(agent, counter, "agent")
-            counter += 1
+        For Each agent In starmap.grabStationedAgents(planet.starName, planet.number)
+            addGoodsPic(agent.id, counter, "agent")
         Next
+
+        TabControl1.SelectTab(2)
     End Sub
     Private Sub refreshTabPage1()
         TabPage1.Controls.Clear()
@@ -154,11 +156,8 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
-        starmap = Nothing
         starmap.generateStarmap(starmapOptions)
-        starmap = ghostLoadStarmap()
-
-        displayStarmap(starmap)
+        loadGalaxy()
     End Sub
     Private Sub loadGalaxy()
         ' check hash
@@ -175,14 +174,17 @@
         Else
             hashFxn = Nothing
 
-            ' load starmap into memory
-            starmap = Nothing
-            starmap = ghostLoadStarmap()
-            displayStarmap(starmap)
+            'load playerinfo into memory
+            playerinfo = ghostLoadPlayerinfo()
 
-            ' load agents into memory
-            agentList = Nothing
-            agentList = ghostLoadAgents()
+            'load agents into memory
+            agentList = ghostLoadAgentList()
+
+            'load starmap into memory
+            starmap = ghostLoadStarmap()
+
+            'display starmap
+            displayStarmap(starmap)
         End If
     End Sub
     Private Function getPlanetLocTag(ByVal index As Integer, ByVal planetNumber As Integer) As String
@@ -225,10 +227,11 @@
         goodpic.BackgroundImage = My.Resources.ResourceManager.GetObject("ico" & good)
         AddHandler goodpic.Click, AddressOf goodPic_Click
     End Sub
-    Private Sub addAgentDetails(ByRef goodPic As Panel, ByVal agentNumber As String)
-        'when details for the agents are released, run a dictionary check for correct picture and type
-        'for now use placeholder icoGenAgent for all agents
-        Tooltip2.SetToolTip(goodPic, "Agent " & agentNumber)
+    Private Sub addAgentDetails(ByRef goodPic As Panel, ByVal agentID As String)
+        'use dictionary to select correct picture; for now use placeholder icoGenAgent for all agents
+
+        Dim agent As agent = agentList.grabAgent(agentID)
+        Tooltip2.SetToolTip(goodPic, agent.name & " (" & agent.type & ")")
         goodPic.BackgroundImage = My.Resources.ResourceManager.GetObject("icoGenAgent")
         AddHandler goodPic.Click, AddressOf agentPic_Click
     End Sub
@@ -302,6 +305,9 @@
         ToolsToolStripMenuItem.Enabled = False
         ManageToolStripMenuItem.Enabled = False
     End Sub
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        ghostWriteAll(starmap, agentList, playerinfo)
+    End Sub
     Private Sub NewToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewToolStripMenuItem.Click
         If frmNew.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
             newGalaxy(frmNew.starmapOpt)
@@ -338,4 +344,5 @@
 
         End If
     End Sub
+
 End Class

@@ -3,12 +3,10 @@ Imports Microsoft.VisualBasic.CallType
 
 Public Class starmap
     Public stars As List(Of star)
-    Public homeagentIDs As List(Of String)
 
     Sub New()
         Randomize()
         If stars Is Nothing Then stars = New List(Of star)
-        If homeagentIDs Is Nothing Then homeagentIDs = New List(Of String)
     End Sub
 
     'generators create stars and planets and writes them into the appropriate XML file.  Note: they do NOT load the object into memroy
@@ -130,9 +128,6 @@ Public Class starmap
     Private Sub generateAgents(ByRef starmapOptions As starmapOptions)
         'populate home with default agents
 
-        Const agentFilename As String = "agents.xml"
-        Dim playerinfo As New playerinfo
-
         Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
@@ -140,19 +135,18 @@ Public Class starmap
         xwrt.WriteStartElement("agents")
 
         For i As Integer = 1 To 5
-            Dim agent As New agent
-            agent.id = processAgentID(i)
-            agent.name = randomAgentName()
-            agent.type = randomAgentType(playerinfo)
-            agent.starName = "Oubliette"
-            agent.planetNumber = 0
+            Dim agentID As String = processAgentID(i)
+            Dim agentName As String = randomAgentName()
+            Dim agentType As String = randomAgentType(Form1.playerinfo)
+            Dim agentStarName As String = "Oubliette"
+            Dim agentPlanetNumber As Integer = 0
 
             xwrt.WriteStartElement("agent")
-            xwrt.WriteAttributeString("id", agent.id)
-            xwrt.WriteElementString("name", agent.name)
-            xwrt.WriteElementString("type", agent.type)
-            xwrt.WriteElementString("starname", agent.starName)
-            xwrt.WriteElementString("planetnumber", agent.planetNumber)
+            xwrt.WriteAttributeString("id", agentID)
+            xwrt.WriteElementString("name", agentName)
+            xwrt.WriteElementString("type", agentType)
+            xwrt.WriteElementString("starname", agentStarName)
+            xwrt.WriteElementString("planetnumber", agentPlanetNumber)
             xwrt.WriteEndElement()  '/agent
         Next
 
@@ -162,8 +156,6 @@ Public Class starmap
         xwrt = Nothing
     End Sub
     Private Sub generatePlayerInfo(ByRef starmapoptions As starmapOptions)
-        Const playerFilename As String = "playerinfo.xml"
-
         Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
@@ -413,6 +405,39 @@ Public Class starmap
     Private Function determinePlanetPrefix(ByVal planetSupply As String) As String
         If planetSupply = "None" Then Return "Tourist" Else Return planetPrefixDictionary(planetSupply)
     End Function
+
+    Public Function grabStar(ByVal starName As String) As star
+        For Each star As star In stars
+            If star.name = starName Then Return star
+        Next
+
+        Return Nothing
+    End Function
+    Public Function grabPlanet(ByVal starName As String, ByVal planetNumber As Integer) As planet
+        Dim star As star = grabStar(starName)
+
+        If star Is Nothing Then
+            'star not found due to invalid starName
+            Return Nothing
+        Else
+            For Each planet As planet In star.planets
+                If planet.number = planetNumber Then Return planet
+            Next
+        End If
+
+        Return Nothing
+    End Function
+    Public Function grabStationedAgents(ByVal starName As String, ByVal planetNumber As Integer) As List(Of agent)
+        Dim tempList As New List(Of agent)
+        Dim planet As planet = grabPlanet(starName, planetNumber)
+        Dim agentList As agentList = Form1.agentList
+
+        For Each agent As agent In agentList.agents
+            If agent.starName = planet.starName AndAlso agent.planetNumber = planet.number Then tempList.Add(agent)
+        Next
+
+        Return tempList
+    End Function
 End Class
 
 
@@ -441,12 +466,71 @@ Public Class planet
     Public supply As List(Of String)
     Public demand As List(Of String)
 
-    Public stationedAgents As List(Of String)
+    Public stationedAgents As List(Of agent)        'used only within certain methods, not globally initiated
 
     Sub New()
         If supply Is Nothing Then supply = New List(Of String)
         If demand Is Nothing Then demand = New List(Of String)
-        If stationedAgents Is Nothing Then stationedAgents = New List(Of String)
+        If stationedAgents Is Nothing Then stationedAgents = New List(Of agent)
+    End Sub
+
+    Sub addSupply(ByVal good As String)
+        If supply.Contains(good) = True Then
+            ' do nothing as it already exists
+        Else
+            supply.Add(good)
+        End If
+    End Sub
+    Sub addDemand(ByVal good As String)
+        If demand.Contains(good) = True Then
+            ' do nothing as it already exists
+        Else
+            demand.Add(good)
+        End If
+    End Sub
+    Sub removeSupply(ByVal good As String)
+        If supply.Contains(good) = False Then
+            ' do nothing as item does not exist
+        Else
+            supply.Remove(good)
+        End If
+
+        If supply.Count = 0 Then supply.Add("None")
+    End Sub
+    Sub removeDemand(ByVal good As String)
+        If demand.Contains(good) = False Then
+            ' do nothing as item does not eist
+        Else
+            demand.Remove(good)
+        End If
+
+        If demand.Count = 0 Then demand.Add("None")
+    End Sub
+End Class
+
+
+Public Class agentList
+    Public agents As List(Of agent)
+
+    Sub New()
+        If agents Is Nothing Then agents = New List(Of agent)
+    End Sub
+
+    'all private functions with prefix really is used to call a byref to the object in question for changing
+    Public Function grabAgent(ByVal agentID As String) As agent
+        For Each agent As agent In agents
+            If agent.id = agentID Then Return agent
+        Next
+
+        Return Nothing
+    End Function
+    Public Sub moveAgent(ByVal agentID As String, ByVal destinationStarName As String, ByVal destinationPlanetNumber As Integer)
+        Dim agent As agent = grabAgent(agentID)
+        reallyMoveAgent(agent, destinationStarName, destinationPlanetNumber)
+    End Sub
+    Private Sub reallyMoveAgent(ByRef agent As agent, ByVal destinationStarName As String, ByVal destinationPlanetNumber As Integer)
+        agent.starName = destinationStarName
+        agent.planetNumber = destinationPlanetNumber
     End Sub
 End Class
 
@@ -465,24 +549,4 @@ End Class
 
 Public Class playerinfo
     Public faction As String
-
-    Sub New()
-        Const playerinfoFilename As String = "playerinfo.xml"
-
-        Dim xsettings As New XmlReaderSettings
-        xsettings.IgnoreWhitespace = True
-        xsettings.IgnoreComments = True
-        Dim xr As XmlReader = XmlReader.Create(playerinfoFilename, xsettings)
-        While xr.Read()
-            If xr.NodeType = XmlNodeType.Element Then
-                Select Case xr.Name
-                    Case "faction" : faction = xr.ReadString
-                    Case Else
-                        'do nothing
-                End Select
-            End If
-        End While
-
-        xr.Close()
-    End Sub
 End Class

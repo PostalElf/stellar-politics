@@ -2,6 +2,7 @@
 
 Public Class frmSearch
     Dim starmap As starmap = Form1.starmap
+    Dim agentList As agentList = Form1.agentList
     Dim goodsList As List(Of String)
     Dim planetList As List(Of planet)
     Dim comboboxlist As New List(Of ComboBox)
@@ -60,16 +61,25 @@ Public Class frmSearch
         For Each star As star In starmap.stars
             If star.type <> "Blackhole" Then
                 For Each planet As planet In star.planets
+                    'create a list of agents that reside on the planet
+                    Dim stationedAgents As New List(Of agent)
+                    For Each agent As agent In agentList.agents
+                        If agent.starName = star.name AndAlso agent.planetNumber = planet.number Then stationedAgents.Add(agent)
+                    Next
+
                     'every planet that meets the search criteria goes into planetList
                     'if nothing is selected for a particular criteria the function automatically returns True
                     If isStar(planet.starName) = True AndAlso _
-                        isSupply(planet.supply) = True AndAlso _
-                        isDemand(planet.demand) = True AndAlso _
-                        isCities(planet.size) = True AndAlso _
-                        isGovernment(planet.government) = True AndAlso _
-                        isPrefix(planet.prefix) = True AndAlso _
-                        isSuffix(planet.suffix) = True AndAlso _
-                        isAgent(planet.stationedAgents) = True Then planetList.Add(planet)
+                            isSupply(planet.supply) = True AndAlso _
+                            isDemand(planet.demand) = True AndAlso _
+                            isCities(planet.size) = True AndAlso _
+                            isGovernment(planet.government) = True AndAlso _
+                            isPrefix(planet.prefix) = True AndAlso _
+                            isSuffix(planet.suffix) = True AndAlso _
+                            isAgent(stationedAgents) = True Then
+                        planet.stationedAgents = stationedAgents
+                        planetList.Add(planet)
+                    End If
                 Next
             End If
         Next
@@ -90,7 +100,7 @@ Public Class frmSearch
                 str = str & demand & " "
             Next
             DataGridView1.Rows.Item(n).Cells(5).Value = str
-            DataGridView1.Rows.Item(n).Cells(6).Value = realNumberofAgents(planet.stationedAgents)
+            DataGridView1.Rows.Item(n).Cells(6).Value = planet.stationedAgents.Count
         Next
     End Sub
     Private Function allIsEmpty(comboboxlist As List(Of ComboBox)) As Boolean
@@ -156,21 +166,21 @@ Public Class frmSearch
             If cmbSuffix.SelectedItem.ToString = suffix Then Return True Else Return False
         End If
     End Function
-    Private Function isAgent(ByVal stationedAgents As List(Of String)) As Boolean
+    Private Function isAgent(ByVal stationedAgents As List(Of agent)) As Boolean
         If cmbAgents.SelectedItem = Nothing Then Return True
 
         Select Case cmbAgents.SelectedIndex
             Case 1
                 ' no agents
-                If stationedAgents.Item(0) = "000" Then Return True Else Return False
+                If stationedAgents.Count = 0 Then Return True Else Return False
 
             Case 2
                 'at least 1
-                If stationedAgents.Count > 1 Then Return True Else Return False
+                If stationedAgents.Count > 0 Then Return True Else Return False
 
             Case 3
                 'more than 1
-                If stationedAgents.Count > 2 Then Return True Else Return False
+                If stationedAgents.Count > 1 Then Return True Else Return False
 
             Case Else
                 'bugcatch
