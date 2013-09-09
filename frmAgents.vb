@@ -1,7 +1,7 @@
 ﻿Public Class frmAgents
-    Dim agents As List(Of agent) = ghostLoadAgents()
+    Dim starmap As starmap = Form1.starmap
+    Dim agents As List(Of agent) = Form1.agentList
     Dim agentIndex As Integer
-    Dim starmap As starmap = ghostLoadStarmap()
 
     Private Sub frmAgents_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         For Each agent In agents

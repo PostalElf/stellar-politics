@@ -23,11 +23,6 @@ Public Module xmlGhost
         xsettings.IgnoreComments = True
         Dim xr As XmlReader = XmlReader.Create(starmapFilename, xsettings)
         While xr.Read()
-            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "homeagents" Then
-                For Each entry As String In ghostLoadHomeagents(xr)
-                    starmap.homeagentIDs.Add(entry)
-                Next
-            End If
             If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "star" Then
                 Dim star As star = ghostLoadStar(xr)
                 starmap.stars.Add(star)
@@ -171,157 +166,90 @@ Public Module xmlGhost
     End Function
 
     'ghostWriters update whatever element is passed to them into the XML file
-    Sub ghostWriteStar(ByRef star As star)
-        'edits basic star details
+    Sub ghostWriteStarmap(ByRef starmap As starmap)
+        Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("starmap")
 
-        Const filename As String = "starmap.xml"
+        For Each star As star In starmap.stars
+            ghostWriteStar(xwrt, star)
+        Next
 
-        Dim xDoc As New XmlDocument
-        xDoc.Load(filename)
-        Dim xpath As String = "/starmap/star[@name='" & star.name & "']"
-        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+        xwrt.WriteEndElement()  '/starmap
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
 
-        If xNode Is Nothing Then
-            'throw error because node is invalid
-        Else
-            Dim xAtt As XmlAttribute = xNode.Attributes("name")
-            xAtt.Value = star.name
-            xAtt = xNode.Attributes("type")
-            xAtt.Value = star.type
-        End If
-
-
-        'save and close
-        xDoc.Save(filename)
-        xDoc = Nothing
-
-
-        'change hash
-        Dim hashFxn As New sharedHashFunctions
-        hashFxn.addHashFile("starmap")
-        hashFxn = Nothing
+        'store starmap hash into hashstarmap.txt
+        Dim txtFxn As New sharedHashFunctions
+        txtFxn.addHashFile("starmap")
+        txtFxn = Nothing
     End Sub
-    Sub ghostWritePlanetBasic(ByRef planet As planet)
-        'edits the basic planet details: size, prefix, suffix, habitation, government
-        'does not edit supply or demand
+    Private Sub ghostWriteStar(ByRef xwrt As XmlTextWriter, ByRef star As star)
+        xwrt.WriteStartElement("star")
+        xwrt.WriteAttributeString("name", star.name)
+        xwrt.WriteAttributeString("location", star.location)
+        xwrt.WriteAttributeString("type", star.type)
 
-        Const filename As String = "starmap.xml"
-
-        Dim xDoc As New XmlDocument
-        xDoc.Load(filename)
-        Dim xpath As String = "/starmap/star[@name='" & planet.starName & "']/planet[@number='" & planet.number & "']"
-        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
-
-        If xNode Is Nothing Then
-            'throw error because node is invalid
+        If star.type = "Blackhole" Then
+            'do nothing else
         Else
-            xNode.ChildNodes(0).InnerText = planet.size
-            xNode.ChildNodes(1).InnerText = planet.prefix
-            xNode.ChildNodes(2).InnerText = planet.suffix
-            xNode.ChildNodes(3).InnerText = planet.habitation
-            xNode.ChildNodes(4).InnerText = planet.government
-        End If
-
-
-        'save and close
-        xDoc.Save(filename)
-        xDoc = Nothing
-
-
-        'change hash
-        Dim hashFxn As New sharedHashFunctions
-        hashFxn.addHashFile("starmap")
-        hashFxn = Nothing
-    End Sub
-    Sub ghostWritePlanetSub(ByRef planet As planet, ByVal typename As String)
-        'edits planet's supply, demand and anything else that has sub nodes
-
-        Const filename As String = "starmap.xml"
-
-        Dim xDoc As New XmlDocument
-        xDoc.Load(filename)
-        Dim xpath As String = "/starmap/star[@name='" & planet.starName & "']/planet[@number='" & planet.number & "']/" & typename
-        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
-
-        If xNode Is Nothing Then
-            'throw error because node is invalid
-        Else
-            xNode.RemoveAll()                                                       'clear all entries from XML
-            For Each item In CallByName(planet, typename, [Get])                    'add entries back from planet object
-                Dim str As String = "<good>" & item & "</good>"
-                Dim xFrag As XmlDocumentFragment = xDoc.CreateDocumentFragment
-                xFrag.InnerXml = str
-                Dim root As XmlNode = xDoc.SelectSingleNode(xpath)
-                root.AppendChild(xFrag)
+            For Each planet As planet In star.planets
+                ghostWritePlanet(xwrt, planet)
             Next
-
-            'save and close
-            xDoc.Save(filename)
-            xDoc = Nothing
-
-            'change hash
-            Dim hashFxn As New sharedHashFunctions
-            hashFxn.addHashFile("starmap")
-            hashFxn = Nothing
         End If
+
+        xwrt.WriteEndElement()      '/star
     End Sub
-    Sub ghostWriteHomeAgents(ByRef agentList As List(Of String))
-        'updates homeagent list in starmap.xml
-        Const filename As String = "starmap.xml"
+    Private Sub ghostWritePlanet(ByRef xwrt As XmlTextWriter, ByRef planet As planet)
+        xwrt.WriteStartElement("planet")
+        xwrt.WriteAttributeString("starName", planet.starName)
+        xwrt.WriteAttributeString("number", planet.number)
+        xwrt.WriteAttributeString("location", planet.location)
+        xwrt.WriteElementString("size", planet.size)
+        xwrt.WriteElementString("prefix", planet.prefix)
+        xwrt.WriteElementString("suffix", planet.suffix)
+        xwrt.WriteElementString("habitation", planet.habitation)
+        xwrt.WriteElementString("government", planet.government)
 
-        Dim xDoc As New XmlDocument
-        xDoc.Load(filename)
-        Dim xpath As String = "/starmap/homeagents"
-        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+        xwrt.WriteStartElement("supply")
+        For Each supply As String In planet.supply
+            xwrt.WriteElementString("good", supply)
+        Next
+        xwrt.WriteEndElement()  '/supply
+        xwrt.WriteStartElement("demand")
+        For Each demand As String In planet.demand
+            xwrt.WriteElementString("good", demand)
+        Next
+        xwrt.WriteEndElement()  '/demand
 
-        If xNode Is Nothing Then
-            'throw error because node is invalid
-        Else
-            xNode.RemoveAll()                                   'clear all entries
-            For Each item As String In agentList                'add back each agent
-                Dim str As String = "<agent>" & item & "</agent>"
-                Dim xFrag As XmlDocumentFragment = xDoc.CreateDocumentFragment
-                xFrag.InnerXml = str
-                Dim root As XmlNode = xDoc.SelectSingleNode(xpath)
-                root.AppendChild(xFrag)
-            Next
-
-            'save and close
-            xDoc.Save(filename)
-            xDoc = Nothing
-
-            'change hash
-            Dim hashFxn As New sharedHashFunctions
-            hashFxn.addHashFile("starmap")
-            hashFxn = Nothing
-        End If
+        xwrt.WriteEndElement()  '/planet
     End Sub
-    Sub ghostWriteAgent(ByRef agent As agent)
-        Const filename As String = "agents.xml"
+    Sub ghostWriteAgents(ByRef agentList As List(Of agent))
+        Const agentFilename As String = "agents.xml"
 
-        Dim xDoc As New XmlDocument
-        xDoc.Load(filename)
-        Dim xpath As String = "/agents/agent[@id='" & agent.id & "']"
-        Dim xNode As XmlNode = xDoc.SelectSingleNode(xpath)
+        Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("agents")
 
-        If xNode Is Nothing Then
-            'throw error because node is invalid
-        Else
-            xNode.ChildNodes(0).InnerText = agent.name
-            xNode.ChildNodes(1).InnerText = agent.type
-            xNode.ChildNodes(2).InnerText = agent.starName
-            xNode.ChildNodes(3).InnerText = agent.planetNumber
-        End If
+        For Each agent As agent In agentList
+            xwrt.WriteStartElement("agent")
+            xwrt.WriteAttributeString("id", agent.id)
+            xwrt.WriteElementString("name", agent.name)
+            xwrt.WriteElementString("type", agent.type)
+            xwrt.WriteElementString("starname", agent.starName)
+            xwrt.WriteElementString("planetnumber", agent.planetNumber)
+            xwrt.WriteEndElement()  '/agent
+        Next
 
-        'save and close
-        xDoc.Save(filename)
-        xDoc = Nothing
-
-
-        'change hash
-        Dim hashFxn As New sharedHashFunctions
-        hashFxn.addHashFile("agents")
-        hashFxn = Nothing
+        xwrt.WriteEndElement()        '/agents
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
     End Sub
 
     'ghostGrabbers grab stars and planets based on search criteria

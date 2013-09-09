@@ -1,5 +1,5 @@
 ﻿Public Class frmDistance
-    Dim starmap As starmap = ghostLoadStarmap()
+    Dim starmap As starmap = Form1.starmap
 
     Private Sub frmDistance_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         'populate star comboboxes

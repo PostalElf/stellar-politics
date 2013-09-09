@@ -1,4 +1,8 @@
 ﻿Public Class Form1
+    Public starmap As New starmap
+    Public agentList As New List(Of agent)
+    Public playerinfo As New playerinfo
+
     Private Sub displayStarmap(starmap As starmap)
         'display starmap in form and perform menu activations
         Dim counter As Integer = 0
@@ -41,7 +45,7 @@
         refreshTabPage2()
 
         If star.type = "Blackhole" Then
-
+            'do nothing, blackholes have nothing to display
         Else
             For Each planet In star.planets
                 Dim planetLoc As New Panel
@@ -150,7 +154,7 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
-        Dim starmap As New starmap
+        starmap = Nothing
         starmap.generateStarmap(starmapOptions)
         starmap = ghostLoadStarmap()
 
@@ -171,14 +175,17 @@
         Else
             hashFxn = Nothing
 
-            ' load starmap into object
-            Dim starmap As New starmap
+            ' load starmap into memory
+            starmap = Nothing
             starmap = ghostLoadStarmap()
-
             displayStarmap(starmap)
+
+            ' load agents into memory
+            agentList = Nothing
+            agentList = ghostLoadAgents()
         End If
     End Sub
-    Private Function getPlanetLocTag(ByVal index As Integer, planetNumber As Integer) As String
+    Private Function getPlanetLocTag(ByVal index As Integer, ByVal planetNumber As Integer) As String
         'stores both planetNumber as well as index of current star in starmap.stars()
         'index required to pull the correct star out of starmap.stars()
         'planetLocTag only viable when index and planetNumber < 99
@@ -228,7 +235,7 @@
 
     Private Sub starLocClick(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim index As Integer = Convert.ToInt32(DirectCast(sender, Panel).Tag)
-        Dim star As star = ghostLoadStarmap().stars(index)
+        Dim star As star = starmap.stars(index)
 
         displayStar(star, index)
         TabControl1.SelectTab(1)
@@ -238,7 +245,7 @@
 
         Dim index As Integer = Convert.ToInt32(Mid(planetLocTag, 1, 2))
         Dim planetNumber As Integer = Convert.ToInt32(Mid(planetLocTag, 4, 2))
-        Dim planet As planet = ghostLoadStarmap.stars(index).planets(planetNumber)
+        Dim planet As planet = starmap.stars(index).planets(planetNumber)
 
         refreshTabPage3()
         displayPlanet(planet)
@@ -330,11 +337,5 @@
         Else
 
         End If
-    End Sub
-
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        Dim planet As planet = ghostGrabPlanetFromFile("Hyperion", 1)
-
-        planet.addGoodAndSave("Metal", "supply")
     End Sub
 End Class

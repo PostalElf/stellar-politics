@@ -1,7 +1,7 @@
 ﻿Option Explicit On
 
 Public Class frmSearch
-    Dim starmap As starmap = ghostLoadStarmap()
+    Dim starmap As starmap = Form1.starmap
     Dim goodsList As List(Of String)
     Dim planetList As List(Of planet)
     Dim comboboxlist As New List(Of ComboBox)
