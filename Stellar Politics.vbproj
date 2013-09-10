@@ -103,6 +103,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agentList.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +123,12 @@
     <Compile Include="frmDistance.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmInvestments.Designer.vb">
+      <DependentUpon>frmInvestments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvestments.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmNew.Designer.vb">
       <DependentUpon>frmNew.vb</DependentUpon>
     </Compile>
@@ -134,6 +141,7 @@
     <Compile Include="frmSearch.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="playerinfo.vb" />
     <Compile Include="sharedHashFunctions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -164,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDistance.resx">
       <DependentUpon>frmDistance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvestments.resx">
+      <DependentUpon>frmInvestments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNew.resx">
       <DependentUpon>frmNew.vb</DependentUpon>

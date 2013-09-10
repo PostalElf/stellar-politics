@@ -28,6 +28,8 @@ Partial Class Form1
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.butInvestments = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblSuffix = New System.Windows.Forms.Label()
         Me.picPlanetForward = New System.Windows.Forms.Panel()
@@ -54,11 +56,14 @@ Partial Class Form1
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InvestmentsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -108,6 +113,7 @@ Partial Class Form1
         Me.TabPage3.BackColor = System.Drawing.Color.Black
         Me.TabPage3.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.binaryStarBG
         Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage3.Controls.Add(Me.Panel1)
         Me.TabPage3.Controls.Add(Me.Label7)
         Me.TabPage3.Controls.Add(Me.lblSuffix)
         Me.TabPage3.Controls.Add(Me.picPlanetForward)
@@ -129,6 +135,28 @@ Partial Class Form1
         Me.TabPage3.Size = New System.Drawing.Size(514, 373)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Planet"
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.butInvestments)
+        Me.Panel1.Location = New System.Drawing.Point(364, 14)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(136, 186)
+        Me.Panel1.TabIndex = 19
+        Me.Panel1.Visible = False
+        '
+        'butInvestments
+        '
+        Me.butInvestments.BackColor = System.Drawing.Color.DimGray
+        Me.butInvestments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butInvestments.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.butInvestments.ForeColor = System.Drawing.Color.White
+        Me.butInvestments.Location = New System.Drawing.Point(15, 19)
+        Me.butInvestments.Name = "butInvestments"
+        Me.butInvestments.Size = New System.Drawing.Size(108, 25)
+        Me.butInvestments.TabIndex = 0
+        Me.butInvestments.Text = "Manage Investments"
+        Me.butInvestments.UseVisualStyleBackColor = False
         '
         'Label7
         '
@@ -287,6 +315,7 @@ Partial Class Form1
         '
         Me.TabPage4.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.detailsBG
         Me.TabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage4.Controls.Add(Me.Button1)
         Me.TabPage4.Controls.Add(Me.picDescription)
         Me.TabPage4.Controls.Add(Me.lblDescription)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
@@ -364,7 +393,7 @@ Partial Class Form1
         '
         'ManageToolStripMenuItem
         '
-        Me.ManageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem})
+        Me.ManageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgentsToolStripMenuItem, Me.InvestmentsToolStripMenuItem})
         Me.ManageToolStripMenuItem.Name = "ManageToolStripMenuItem"
         Me.ManageToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
         Me.ManageToolStripMenuItem.Text = "&Manage"
@@ -373,8 +402,15 @@ Partial Class Form1
         '
         Me.AgentsToolStripMenuItem.Name = "AgentsToolStripMenuItem"
         Me.AgentsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
-        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(153, 22)
+        Me.AgentsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.AgentsToolStripMenuItem.Text = "&Agents"
+        '
+        'InvestmentsToolStripMenuItem
+        '
+        Me.InvestmentsToolStripMenuItem.Name = "InvestmentsToolStripMenuItem"
+        Me.InvestmentsToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
+        Me.InvestmentsToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
+        Me.InvestmentsToolStripMenuItem.Text = "&Investments"
         '
         'ToolsToolStripMenuItem
         '
@@ -397,6 +433,15 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(38, 197)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 62)
+        Me.Button1.TabIndex = 19
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -414,6 +459,7 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -454,5 +500,9 @@ Partial Class Form1
     Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AgentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents butInvestments As System.Windows.Forms.Button
+    Friend WithEvents InvestmentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

@@ -129,6 +129,7 @@ Public Module xmlGhost
             If xr.NodeType = XmlNodeType.Element Then
                 Select Case xr.Name
                     Case "faction" : playerinfo.faction = xr.ReadString
+                    Case "investment" : playerinfo.investments.Add(ghostLoadInvestment(xr))
                     Case Else
                         'do nothing
                 End Select
@@ -138,6 +139,20 @@ Public Module xmlGhost
         xr.Close()
 
         Return playerinfo
+    End Function
+    Private Function ghostLoadInvestment(ByRef xr As XmlReader) As investment
+        Dim investment As New investment
+
+        xr.ReadToDescendant("name")
+        investment.name = xr.ReadString
+        xr.ReadToFollowing("starname")
+        investment.starName = xr.ReadString
+        xr.ReadToFollowing("planetnumber")
+        investment.planetNumber = Convert.ToInt32(xr.ReadString)
+        xr.ReadToFollowing("wealthperturn")
+        investment.wealthPerTurn = Convert.ToInt32(xr.ReadString)
+
+        Return investment
     End Function
 
     'ghostInfoLoaders read XML files ending with info and return the appropriate information in string
@@ -262,7 +277,7 @@ Public Module xmlGhost
         xwrt.Close()
         xwrt = Nothing
     End Sub
-    Private Sub ghostWritePlayerinfo(ByRef playerinfo As playerinfo)
+    Public Sub ghostWritePlayerinfo(ByRef playerinfo As playerinfo)
         Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
@@ -271,10 +286,24 @@ Public Module xmlGhost
 
         xwrt.WriteElementString("faction", playerinfo.faction)
 
+        xwrt.WriteStartElement("investments")
+        For Each item As investment In playerinfo.investments
+            ghostWriteInvestment(xwrt, item)
+        Next
+        xwrt.WriteEndElement()    '/investments
+
         xwrt.WriteEndElement()  '/playerinfo
         xwrt.WriteEndDocument()
         xwrt.Close()
         xwrt = Nothing
+    End Sub
+    Private Sub ghostWriteInvestment(ByRef xwrt As XmlTextWriter, ByRef investment As investment)
+        xwrt.WriteStartElement("investment")
+        xwrt.WriteElementString("name", investment.name)
+        xwrt.WriteElementString("starname", investment.starName)
+        xwrt.WriteElementString("planetnumber", investment.planetNumber)
+        xwrt.WriteElementString("wealthperturn", investment.wealthPerTurn)
+        xwrt.WriteEndElement()  '/investment
     End Sub
 
     'ghostTextList grab and return textfiles in a list

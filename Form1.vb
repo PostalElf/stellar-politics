@@ -119,6 +119,7 @@
             addGoodsPic(agent.id, counter, "agent")
         Next
 
+        Panel1.Visible = True
         TabControl1.SelectTab(2)
     End Sub
     Private Sub refreshTabPage1()
@@ -357,5 +358,15 @@
 
         End If
     End Sub
+    Private Sub InvestmentsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InvestmentsToolStripMenuItem.Click
+        If frmInvestments.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
+        Else
+
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        playerinfo.addInvestment("Real Estate Development", "Sleipnir", 2, -1)
+    End Sub
 End Class
