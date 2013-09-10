@@ -367,6 +367,7 @@
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        playerinfo.addInvestment("Real Estate Development", "Sleipnir", 2, -1)
+        Dim investment As investment = playerinfo.getInvestment("Real Estate Development", "Sleipnir", 2)
+        playerinfo.removeInvestment(investment)
     End Sub
 End Class

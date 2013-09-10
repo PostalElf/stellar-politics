@@ -38,6 +38,22 @@
 
         Return tempList
     End Function
+    Public Function getInvestment(ByVal name As String, ByVal starName As String, ByVal planetNumber As Integer)
+        For Each investment As investment In investments
+            If investment.name = name AndAlso investment.starName = starName AndAlso investment.planetNumber = planetNumber Then Return investment
+        Next
+
+        Return Nothing
+    End Function
+    Public Function getInvestmentsOnPlanet(ByVal starName As String, ByVal planetNumber As Integer) As List(Of investment)
+        Dim tempList As New List(Of investment)
+
+        For Each item As investment In investments
+            If item.starName = starName AndAlso item.planetNumber = planetNumber Then tempList.Add(item)
+        Next
+
+        Return tempList
+    End Function
     Public Function addInvestment(ByVal iName As String, ByVal iStarName As String, ByVal iPlanetNumber As Integer, ByVal iWealthPerTurn As Integer) As Boolean
         'check to see if investment exists: if it does, return false
         'if not, add investment to investments and return true
@@ -61,13 +77,25 @@
         investments.Add(investment)
         Return True
     End Function
+    Public Sub removeInvestment(ByRef investment As investment)
+        'remove investment that is passed to it from investments list and set it to nothing
+        'this should leave no identifable trace of the investment; when garbage collector calls it should be destroyed
+
+        If investments.Contains(investment) = True Then
+            investments.Remove(investment)
+        Else
+            'do nothing
+        End If
+        investment = Nothing
+    End Sub
 End Class
 
 
 Public Class investment
     'investments are held here, stored in playerinfo and retrieved on an adhoc basis
     'not all investments need to return positive wealthPerTurn; indeed, many are negative
-    'universal investments are stored as starName = "Obliette", planetNumber = 0
+    'universal investments are stored as starName = "Oubliette", planetNumber = 0
+
     Public name As String
     Public starName As String
     Public planetNumber As Integer
