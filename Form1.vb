@@ -363,7 +363,7 @@
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
         Dim investment As investment = playerinfo.getInvestment("Real Estate Development", "Sleipnir", 2)
         playerinfo.removeInvestment(investment)
     End Sub

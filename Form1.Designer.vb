@@ -60,7 +60,6 @@ Partial Class Form1
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -315,7 +314,6 @@ Partial Class Form1
         '
         Me.TabPage4.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.detailsBG
         Me.TabPage4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage4.Controls.Add(Me.Button1)
         Me.TabPage4.Controls.Add(Me.picDescription)
         Me.TabPage4.Controls.Add(Me.lblDescription)
         Me.TabPage4.Location = New System.Drawing.Point(4, 4)
@@ -433,15 +431,6 @@ Partial Class Form1
         Me.DistanceToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.DistanceToolStripMenuItem.Text = "&Distance"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(38, 197)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(54, 62)
-        Me.Button1.TabIndex = 19
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -503,6 +492,5 @@ Partial Class Form1
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents butInvestments As System.Windows.Forms.Button
     Friend WithEvents InvestmentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

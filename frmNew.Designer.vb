@@ -32,6 +32,7 @@ Partial Class frmNew
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -39,7 +40,9 @@ Partial Class frmNew
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(32, 33)
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(32, 41)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
         Me.Label1.TabIndex = 0
@@ -47,7 +50,9 @@ Partial Class frmNew
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(83, 62)
+        Me.NumericUpDown1.BackColor = System.Drawing.Color.Black
+        Me.NumericUpDown1.ForeColor = System.Drawing.Color.White
+        Me.NumericUpDown1.Location = New System.Drawing.Point(83, 70)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
@@ -62,10 +67,13 @@ Partial Class frmNew
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.chkBlackholes)
-        Me.GroupBox1.Location = New System.Drawing.Point(243, 12)
+        Me.GroupBox1.ForeColor = System.Drawing.Color.White
+        Me.GroupBox1.Location = New System.Drawing.Point(243, 38)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(142, 124)
+        Me.GroupBox1.Size = New System.Drawing.Size(142, 209)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Options"
@@ -75,7 +83,7 @@ Partial Class frmNew
         Me.chkBlackholes.AutoSize = True
         Me.chkBlackholes.Checked = True
         Me.chkBlackholes.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkBlackholes.Location = New System.Drawing.Point(6, 20)
+        Me.chkBlackholes.Location = New System.Drawing.Point(15, 48)
         Me.chkBlackholes.Name = "chkBlackholes"
         Me.chkBlackholes.Size = New System.Drawing.Size(78, 17)
         Me.chkBlackholes.TabIndex = 0
@@ -86,13 +94,17 @@ Partial Class frmNew
         '
         'Button1
         '
-        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(258, 158)
+        Me.Button1.BackColor = System.Drawing.Color.Black
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Times New Roman", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(11, 184)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(110, 50)
+        Me.Button1.Size = New System.Drawing.Size(222, 50)
         Me.Button1.TabIndex = 3
-        Me.Button1.Text = """Dixitque deus fiat lux et facta est lux"""
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Text = "'Dixitque deus fiat lux et facta est lux'"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'ToolTip1
         '
@@ -103,7 +115,9 @@ Partial Class frmNew
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 64)
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(12, 72)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 13)
         Me.Label2.TabIndex = 4
@@ -111,19 +125,37 @@ Partial Class frmNew
         '
         'ComboBox1
         '
+        Me.ComboBox1.BackColor = System.Drawing.Color.Black
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.ForeColor = System.Drawing.Color.White
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Random", "House Illys", "House Nyos", "House Sen"})
-        Me.ComboBox1.Location = New System.Drawing.Point(83, 30)
+        Me.ComboBox1.Location = New System.Drawing.Point(83, 38)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(99, 21)
         Me.ComboBox1.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.ComboBox1, resources.GetString("ComboBox1.ToolTip"))
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(15, 25)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(61, 17)
+        Me.CheckBox1.TabIndex = 1
+        Me.CheckBox1.Text = "Tutorial"
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "If this is your first time playing, we " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "suggest you turn the tutorial on. The" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "t" & _
+        "utorial starmap is fixed and introduces" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "most major high concepts to you " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "piece" & _
+        "meal.")
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'frmNew
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(397, 220)
+        Me.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.detailsBG
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(400, 259)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
@@ -150,4 +182,5 @@ Partial Class frmNew
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 End Class
