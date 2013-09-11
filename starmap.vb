@@ -9,28 +9,20 @@ Public Class starmap
         If stars Is Nothing Then stars = New List(Of star)
     End Sub
 
-    'generators create stars and planets and writes them into the appropriate XML file.  Note: they do NOT load the object into memroy
-    Public Sub generateStarmap(ByRef starmapOptions As starmapOptions)
-        ' create a new starmap and write it to starmap.xml
-        ' also writes the hashdata for starmap.xml into hashStarmap.txt
-        ' galaxySize = min number of times systemSupply will be repopped
+    'generators create stars and planets and writes them into the appropriate XML file.
+    Public Sub generateAll(ByRef starmapOptions As starmapOptions)
+        'create them as objects
+        Dim playerinfo As playerinfo = generatePlayerInfo(starmapOptions)
+        Dim agentlist As agentList = generateAgents(starmapOptions, playerinfo)
+        Dim starmap As starmap = generateStarmap(starmapOptions)
 
-        'initialise xwrt
-        Dim xwrt As New XmlTextWriter(starmapFilename, System.Text.Encoding.UTF8)
-        xwrt.WriteStartDocument(True)
-        xwrt.Formatting = Formatting.Indented
-        xwrt.Indentation = 2
-        xwrt.WriteStartElement("starmap")
+        'write them into files
+        ghostWriteAll(starmap, agentlist, playerinfo)
 
-        'generate the galaxy's stars
-        While starmapOptions.galaxySize > 0
-            generateStar(xwrt, starmapOptions)
-        End While
-
-        xwrt.WriteEndElement()  '/starmap
-        xwrt.WriteEndDocument()
-        xwrt.Close()
-        xwrt = Nothing
+        'load into memory
+        Form1.playerinfo = playerinfo
+        Form1.agentList = agentlist
+        Form1.starmap = starmap
 
         'store starmap hash into hashstarmap.txt
         Dim txtFxn As New sharedHashFunctions
@@ -39,141 +31,118 @@ Public Class starmap
         txtFxn.addHashFile("playerinfo")
         txtFxn = Nothing
     End Sub
-    Private Sub generateStar(ByRef xwrt As XmlTextWriter, ByRef starmapOptions As starmapOptions)
-        Dim starName As String = randomStarName()
-        Dim blackholes As Integer = Int(starmapOptions.galaxySize / 2)
+    Private Function generatePlayerInfo(ByRef starmapoptions As starmapOptions) As playerinfo
+        Dim playerinfo As New playerinfo
 
-        xwrt.WriteStartElement("star")
-        xwrt.WriteAttributeString("name", starName)
-        xwrt.WriteAttributeString("location", randomStarXY())
+        playerinfo.faction = starmapoptions.faction
+        Dim investment As New investment
+        With investment
+            .name = "Oubliette"
+            .starName = "Oubliette"
+            .planetNumber = 0
+            .wealthPerTurn = 3
+        End With
+        playerinfo.investments.Add(investment)
+
+        Return playerinfo
+    End Function
+    Private Function generateAgents(ByRef starmapOptions As starmapOptions, ByRef playerinfo As playerinfo) As agentList
+        'populate home with default agents
+
+        Dim agentList As New agentList
+
+        For i As Integer = 1 To 5
+            Dim agent As New agent
+            With agent
+                .id = processAgentID(i)
+                .name = randomAgentName()
+                .type = randomAgentType(playerinfo)
+                .starName = "Oubliette"
+                .planetNumber = 0
+            End With
+            agentList.agents.Add(agent)
+        Next
+
+        Return agentList
+    End Function
+    Private Function generateStarmap(ByRef starmapOptions As starmapOptions) As starmap
+        ' create a new starmap and write it to starmap.xml
+        ' also writes the hashdata for starmap.xml into hashStarmap.txt
+        ' galaxySize = min number of times systemSupply will be repopped
+
+        Dim starmap As New starmap
+        While starmapOptions.galaxySize > 0
+            starmap.stars.Add(generateStar(starmap, starmapOptions))
+        End While
+
+        Return starmap
+    End Function
+    Private Function generateStar(ByRef starmap As starmap, ByRef starmapOptions As starmapOptions) As star
+        Dim blackholes As Integer = Int(starmapOptions.galaxySize / 2)
+        Dim star As New star
+
+        star.name = randomStarName()
+        star.location = randomStarXY()
 
         If blackholes > 0 AndAlso starmapOptions.blackholes = True AndAlso Int(Rnd() * 100 + 1) > 86 Then
-            ' Generate blackhole (10% chance) if menu is ticked
+            ' Generate blackhole (15% chance) if menu is ticked
             ' Can generate a maximum number of blackholes = galaxySize/2 (rounded down)
-            xwrt.WriteAttributeString("type", "Blackhole")
+            star.type = "Blackhole"
             blackholes -= 1
         Else
             ' Generate normal star
             Dim planetNumber As Integer = 1
             Dim starSize As Integer = Int(Rnd() * 4) + 6    'measures total planetSize in star
-            xwrt.WriteAttributeString("type", randomStarType(starSize))
+
+            star.type = randomStarType(starSize)
+
             While starSize > 0
-                generatePlanet(xwrt, starmapOptions.galaxySize, starSize, planetNumber, starName)
+                star.planets.Add(generatePlanet(star, starmapOptions.galaxySize, starSize, planetNumber, star.name))
             End While
-            repopSystemPlanetLocationList()
+
+            repopSystemPlanetLocationList()     'reset systemplanetlocationlist
         End If
 
-        xwrt.WriteEndElement()
-    End Sub
-    Private Sub generatePlanet(ByRef xwrt As XmlTextWriter, ByRef galaxySize As Integer, ByRef starSize As Integer, ByRef planetNumber As Integer, ByVal starName As String)
-        Dim planetLocation As Integer = randomPlanetLocation()
-        Dim planetSize As Integer = randomPlanetSize(starSize)
-        Dim planetPrefix As String
-        Dim planetSuffix As String = randomPlanetSuffix()
-        Dim planetGovernment As String = randomPlanetGovernment()
-        Dim planetHabitation As String = randomPlanetHabitation(planetSuffix)
-        Dim planetSupply As New List(Of String)
-        Dim planetDemand As New List(Of String)
+        Return star
+    End Function
+    Private Function generatePlanet(ByRef star As star, _
+                                    ByRef galaxySize As Integer, _
+                                    ByRef starSize As Integer, _
+                                    ByRef planetNumber As Integer, _
+                                    ByVal starName As String) As planet
+
+        starSize -= 1
+        Dim planet As New planet
+
+        planet.starName = starName
+        planet.number = planetNumber
+        planet.location = randomPlanetLocation()
+        planet.size = randomPlanetSize(starSize)
+        'planet.prefix is not determined here
+        planet.suffix = randomPlanetSuffix()
+        planet.habitation = randomPlanetHabitation(planet.suffix)
+        planet.government = randomPlanetGovernment()
 
         'Generate prefix and supply
         Dim tempPlanetSupply As String = randomPlanetSupply(galaxySize)       ' pull random supply from remaining systemSupply list
         If tempPlanetSupply = "Tourist" Then
-            planetSupply.Add("None")
-            planetPrefix = "Tourist"
+            planet.supply.Add("None")
+            planet.prefix = "Tourist"
         ElseIf tempPlanetSupply = "Commercial" Then
-            planetSupply.Add(defaultSystemSupply.Item(Int(Rnd() * (defaultSystemSupply.Count - 1))))    ' adds a pure random roll supply
-            planetPrefix = "Commercial"
+            planet.supply.Add(defaultSystemSupply.Item(Int(Rnd() * (defaultSystemSupply.Count - 1))))    ' adds a pure random roll supply
+            planet.prefix = "Commercial"
         Else
-            planetSupply.Add(tempPlanetSupply)
-            planetPrefix = determinePlanetPrefix(tempPlanetSupply)
+            planet.supply.Add(tempPlanetSupply)
+            planet.prefix = determinePlanetPrefix(tempPlanetSupply)
         End If
 
         'Generate demand
-        For Each demand In randomPlanetDemand(planetPrefix, planetSupply)
-            planetDemand.Add(demand)
+        For Each demand In randomPlanetDemand(planet.prefix, planet.supply)
+            planet.demand.Add(demand)
         Next
 
-        '------
-
-        ' Write into XML
-        xwrt.WriteStartElement("planet")
-        xwrt.WriteAttributeString("starName", starName)
-        xwrt.WriteAttributeString("number", planetNumber)
-        xwrt.WriteAttributeString("location", planetLocation)
-        planetNumber += 1
-        xwrt.WriteElementString("size", planetSize)
-        starSize -= planetSize
-        xwrt.WriteElementString("prefix", planetPrefix)
-        xwrt.WriteElementString("suffix", planetSuffix)
-        xwrt.WriteElementString("habitation", planetHabitation)
-        xwrt.WriteElementString("government", planetGovernment)
-
-        xwrt.WriteStartElement("supply")
-        For Each supply As String In planetSupply
-            xwrt.WriteElementString("good", supply)
-        Next
-        xwrt.WriteEndElement()  '/supply
-        xwrt.WriteStartElement("demand")
-        For Each demand As String In planetDemand
-            xwrt.WriteElementString("good", demand)
-        Next
-        xwrt.WriteEndElement()  '/demand
-
-        xwrt.WriteEndElement()  '/planet
-    End Sub
-    Public Sub generateAgents(ByRef starmapOptions As starmapOptions)
-        'populate home with default agents
-
-        Dim xwrt As New XmlTextWriter(agentFilename, System.Text.Encoding.UTF8)
-        xwrt.WriteStartDocument(True)
-        xwrt.Formatting = Formatting.Indented
-        xwrt.Indentation = 2
-        xwrt.WriteStartElement("agents")
-
-        For i As Integer = 1 To 5
-            Dim agentID As String = processAgentID(i)
-            Dim agentName As String = randomAgentName()
-            Dim agentType As String = randomAgentType(Form1.playerinfo)
-            Dim agentStarName As String = "Oubliette"
-            Dim agentPlanetNumber As Integer = 0
-
-            xwrt.WriteStartElement("agent")
-            xwrt.WriteAttributeString("id", agentID)
-            xwrt.WriteElementString("name", agentName)
-            xwrt.WriteElementString("type", agentType)
-            xwrt.WriteElementString("starname", agentStarName)
-            xwrt.WriteElementString("planetnumber", agentPlanetNumber)
-            xwrt.WriteEndElement()  '/agent
-        Next
-
-        xwrt.WriteEndElement()        '/agents
-        xwrt.WriteEndDocument()
-        xwrt.Close()
-        xwrt = Nothing
-    End Sub
-    Public Sub generatePlayerInfo(ByRef starmapoptions As starmapOptions)
-        Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
-        xwrt.WriteStartDocument(True)
-        xwrt.Formatting = Formatting.Indented
-        xwrt.Indentation = 2
-        xwrt.WriteStartElement("playerinfo")
-
-        xwrt.WriteElementString("faction", starmapoptions.faction)
-
-        xwrt.WriteStartElement("investments")
-        xwrt.WriteStartElement("investment")
-        xwrt.WriteElementString("name", "Oubliette")
-        xwrt.WriteElementString("starname", "Oubliette")
-        xwrt.WriteElementString("planetnumber", "0")
-        xwrt.WriteElementString("wealthperturn", "3")
-        xwrt.WriteEndElement()     '/investment
-        xwrt.WriteEndElement()     '/investments
-
-        xwrt.WriteEndElement()    '/playerinfo
-        xwrt.WriteEndDocument()
-        xwrt.Close()
-        xwrt = Nothing
-    End Sub
+        Return planet
+    End Function
 
     Private Function randomStarName() As String
         Dim x As Integer = Int(Rnd() * (starNameList.Count - 1))

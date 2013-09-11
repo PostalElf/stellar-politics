@@ -1,561 +1,555 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <starmap>
-  <star name="Sleipnir" location="17" type="OrangeRed">
-    <planet starName="Sleipnir" number="1" location="4">
-      <size>2</size>
-      <prefix>Research</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Undersea Domes</habitation>
+  <star name="Phoebe" location="33" type="BlueWhite">
+    <planet starName="Phoebe" number="1" location="7">
+      <size>4</size>
+      <prefix>Industrial</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Floating Platforms</habitation>
       <government>Democracy</government>
       <supply>
-        <good>Blueprints</good>
-      </supply>
-      <demand>
         <good>Electronics</good>
-      </demand>
-    </planet>
-    <planet starName="Sleipnir" number="2" location="7">
-      <size>5</size>
-      <prefix>Cultural</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>Media</good>
       </supply>
       <demand>
-        <good>Food</good>
+        <good>Blueprints</good>
       </demand>
     </planet>
-  </star>
-  <star name="Dilmun" location="16" type="BlueWhite">
-    <planet starName="Dilmun" number="1" location="5">
-      <size>2</size>
-      <prefix>Tourist</prefix>
+    <planet starName="Phoebe" number="1" location="5">
+      <size>4</size>
+      <prefix>Mining</prefix>
       <suffix>Sprawl</suffix>
       <habitation>Hivecities</habitation>
       <government>Democracy</government>
       <supply>
-        <good>None</good>
-      </supply>
-      <demand>
-        <good>Blueprints</good>
-        <good>Food</good>
-      </demand>
-    </planet>
-    <planet starName="Dilmun" number="2" location="0">
-      <size>4</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Plants</good>
-      </supply>
-      <demand>
-        <good>Blueprints</good>
-      </demand>
-    </planet>
-    <planet starName="Dilmun" number="3" location="1">
-      <size>2</size>
-      <prefix>Mining</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
-      <supply>
         <good>Metal</good>
       </supply>
       <demand>
-        <good>Food</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Hyperion" location="2" type="Red">
-    <planet starName="Hyperion" number="1" location="0">
-      <size>2</size>
-      <prefix>Research</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Savants</good>
-      </supply>
-      <demand>
-        <good>Metal</good>
-      </demand>
-    </planet>
-    <planet starName="Hyperion" number="2" location="1">
-      <size>3</size>
-      <prefix>Prison</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>Slaves</good>
-      </supply>
-      <demand>
-        <good>Food</good>
-      </demand>
-    </planet>
-    <planet starName="Hyperion" number="3" location="4">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Azoth</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Nibelung" location="22" type="BlueWhite">
-    <planet starName="Nibelung" number="1" location="1">
-      <size>4</size>
-      <prefix>Industrial</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Weapons</good>
-      </supply>
-      <demand>
-        <good>Azoth</good>
-      </demand>
-    </planet>
-    <planet starName="Nibelung" number="2" location="5">
-      <size>5</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Blueprints</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Themis" location="7" type="BlueWhite">
-    <planet starName="Themis" number="1" location="3">
-      <size>2</size>
-      <prefix>Industrial</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Electronics</good>
-      </supply>
-      <demand>
-        <good>Slaves</good>
-      </demand>
-    </planet>
-    <planet starName="Themis" number="2" location="6">
-      <size>5</size>
-      <prefix>Mining</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Chemicals</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-    </planet>
-    <planet starName="Themis" number="3" location="7">
-      <size>1</size>
-      <prefix>Cultural</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Art</good>
-      </supply>
-      <demand>
-        <good>Electronics</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Cronus" location="9" type="OrangeRed">
-    <planet starName="Cronus" number="1" location="8">
-      <size>3</size>
-      <prefix>Commercial</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Blueprints</good>
-      </supply>
-      <demand>
         <good>Media</good>
       </demand>
     </planet>
-    <planet starName="Cronus" number="2" location="4">
-      <size>3</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Plants</good>
-      </supply>
-      <demand>
-        <good>Azoth</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Ninhursag" location="20" type="BlueWhite">
-    <planet starName="Ninhursag" number="1" location="4">
-      <size>4</size>
-      <prefix>Mining</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Chemicals</good>
-      </supply>
-      <demand>
-        <good>Food</good>
-      </demand>
-    </planet>
-    <planet starName="Ninhursag" number="2" location="6">
-      <size>2</size>
-      <prefix>Mining</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Metal</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-    </planet>
-    <planet starName="Ninhursag" number="3" location="8">
-      <size>3</size>
-      <prefix>Prison</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Azoth</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Enlil" location="17" type="OrangeRed">
-    <planet starName="Enlil" number="1" location="0">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Media</good>
-      </supply>
-      <demand>
-        <good>Chemicals</good>
-      </demand>
-    </planet>
-    <planet starName="Enlil" number="2" location="7">
-      <size>2</size>
-      <prefix>Prison</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>Slaves</good>
-      </supply>
-      <demand>
-        <good>Chemicals</good>
-      </demand>
-    </planet>
-    <planet starName="Enlil" number="3" location="8">
-      <size>1</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-    </planet>
-    <planet starName="Enlil" number="4" location="3">
-      <size>1</size>
-      <prefix>Research</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Savants</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Ninlil" location="27" type="OrangeRed">
-    <planet starName="Ninlil" number="1" location="5">
-      <size>2</size>
-      <prefix>Tourist</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Undersea Domes</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>None</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-        <good>Media</good>
-      </demand>
-    </planet>
-    <planet starName="Ninlil" number="2" location="7">
-      <size>1</size>
-      <prefix>Research</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Blueprints</good>
-      </supply>
-      <demand>
-        <good>Slaves</good>
-      </demand>
-    </planet>
-    <planet starName="Ninlil" number="3" location="8">
-      <size>3</size>
-      <prefix>Industrial</prefix>
-      <suffix>Sprawl</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Electronics</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Tethys" location="8" type="Blackhole" />
-  <star name="Freia" location="21" type="WhiteYellow">
-    <planet starName="Freia" number="1" location="3">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Art</good>
-      </supply>
-      <demand>
-        <good>Food</good>
-      </demand>
-    </planet>
-    <planet starName="Freia" number="2" location="6">
-      <size>3</size>
-      <prefix>Industrial</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Weapons</good>
-      </supply>
-      <demand>
-        <good>Food</good>
-      </demand>
-    </planet>
-    <planet starName="Freia" number="3" location="5">
-      <size>2</size>
-      <prefix>Commercial</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Slaves</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Fricka" location="2" type="Blue">
-    <planet starName="Fricka" number="1" location="3">
-      <size>5</size>
-      <prefix>Tourist</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Anarchy</government>
-      <supply>
-        <good>None</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-        <good>Azoth</good>
-      </demand>
-    </planet>
-    <planet starName="Fricka" number="2" location="7">
-      <size>2</size>
-      <prefix>Cultural</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Art</good>
-      </supply>
-      <demand>
-        <good>Electronics</good>
-      </demand>
-    </planet>
-    <planet starName="Fricka" number="3" location="6">
-      <size>2</size>
-      <prefix>Industrial</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Cubecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Weapons</good>
-      </supply>
-      <demand>
-        <good>Slaves</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Iapetus" location="7" type="WhiteYellow">
-    <planet starName="Iapetus" number="1" location="6">
-      <size>3</size>
-      <prefix>Research</prefix>
-      <suffix>Gaseous</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Blueprints</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-      </demand>
-    </planet>
-    <planet starName="Iapetus" number="2" location="0">
-      <size>5</size>
-      <prefix>Mining</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Underground Complex</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Metal</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Anu" location="23" type="OrangeRed">
-    <planet starName="Anu" number="1" location="3">
-      <size>4</size>
-      <prefix>Prison</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Azoth</good>
-      </supply>
-      <demand>
-        <good>Plants</good>
-      </demand>
-    </planet>
-    <planet starName="Anu" number="2" location="1">
-      <size>2</size>
-      <prefix>Research</prefix>
-      <suffix>Wasteland</suffix>
-      <habitation>Orbital Ring</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Savants</good>
-      </supply>
-      <demand>
-        <good>Weapons</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Wotan" location="8" type="BlueWhite">
-    <planet starName="Wotan" number="1" location="6">
-      <size>3</size>
-      <prefix>Mining</prefix>
-      <suffix>Volcanic</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Chemicals</good>
-      </supply>
-      <demand>
-        <good>Blueprints</good>
-      </demand>
-    </planet>
-    <planet starName="Wotan" number="2" location="4">
-      <size>3</size>
-      <prefix>Prison</prefix>
-      <suffix>Ocean</suffix>
-      <habitation>Floating Platforms</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Slaves</good>
-      </supply>
-      <demand>
-        <good>Media</good>
-      </demand>
-    </planet>
-    <planet starName="Wotan" number="3" location="7">
-      <size>1</size>
-      <prefix>Industrial</prefix>
-      <suffix>Barren</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Electronics</good>
-      </supply>
-      <demand>
-        <good>Metal</good>
-      </demand>
-    </planet>
-    <planet starName="Wotan" number="4" location="2">
-      <size>2</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Eden</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Autocracy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Electronics</good>
-      </demand>
-    </planet>
-  </star>
-  <star name="Phoebe" location="14" type="Red">
     <planet starName="Phoebe" number="1" location="3">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Azoth</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Phoebe" number="1" location="2">
+      <size>1</size>
+      <prefix>Tourist</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>None</good>
+      </supply>
+      <demand>
+        <good>Food</good>
+        <good>Plants</good>
+      </demand>
+    </planet>
+    <planet starName="Phoebe" number="1" location="0">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Slaves</good>
+      </supply>
+      <demand>
+        <good>Metal</good>
+      </demand>
+    </planet>
+    <planet starName="Phoebe" number="1" location="1">
+      <size>2</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Phoebe" number="1" location="8">
+      <size>1</size>
+      <prefix>Industrial</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Phoebe" number="1" location="4">
+      <size>2</size>
+      <prefix>Research</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Savants</good>
+      </supply>
+      <demand>
+        <good>Weapons</good>
+      </demand>
+    </planet>
+  </star>
+  <star name="Nibelung" location="29" type="Blue">
+    <planet starName="Nibelung" number="1" location="2">
       <size>5</size>
       <prefix>Cultural</prefix>
-      <suffix>Eden</suffix>
+      <suffix>Barren</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Media</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="5">
+      <size>4</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Sprawl</suffix>
       <habitation>Hivecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Plants</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="7">
+      <size>5</size>
+      <prefix>Cultural</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Art</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="1">
+      <size>2</size>
+      <prefix>Research</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Blueprints</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="3">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Chemicals</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="4">
+      <size>1</size>
+      <prefix>Commercial</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Chemicals</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="0">
+      <size>2</size>
+      <prefix>Tourist</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>None</good>
+      </supply>
+      <demand>
+        <good>Metal</good>
+        <good>Savants</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="6">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Nibelung" number="1" location="8">
+      <size>3</size>
+      <prefix>Research</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Savants</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+  </star>
+  <star name="Utu" location="31" type="WhiteYellow">
+    <planet starName="Utu" number="1" location="2">
+      <size>5</size>
+      <prefix>Research</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Blueprints</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="6">
+      <size>4</size>
+      <prefix>Industrial</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Electronics</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="1">
+      <size>3</size>
+      <prefix>Prison</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Slaves</good>
+      </supply>
+      <demand>
+        <good>Chemicals</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="7">
+      <size>3</size>
+      <prefix>Cultural</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
       <government>Autocracy</government>
       <supply>
         <good>Media</good>
       </supply>
       <demand>
+        <good>Chemicals</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="5">
+      <size>2</size>
+      <prefix>Mining</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Metal</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="3">
+      <size>1</size>
+      <prefix>Mining</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Chemicals</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Utu" number="1" location="8">
+      <size>4</size>
+      <prefix>Industrial</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+      </demand>
+    </planet>
+  </star>
+  <star name="Fricka" location="7" type="OrangeRed">
+    <planet starName="Fricka" number="1" location="5">
+      <size>5</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Plants</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="4">
+      <size>3</size>
+      <prefix>Cultural</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Art</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="3">
+      <size>2</size>
+      <prefix>Prison</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Hivecities</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Azoth</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="7">
+      <size>1</size>
+      <prefix>Commercial</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="1">
+      <size>1</size>
+      <prefix>Agrarian</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>Plants</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="6">
+      <size>1</size>
+      <prefix>Tourist</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Oligarchy</government>
+      <supply>
+        <good>None</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Fricka" number="1" location="8">
+      <size>3</size>
+      <prefix>Industrial</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Electronics</good>
+      </supply>
+      <demand>
+        <good>Plants</good>
+      </demand>
+    </planet>
+  </star>
+  <star name="Donner" location="7" type="WhiteYellow">
+    <planet starName="Donner" number="1" location="5">
+      <size>4</size>
+      <prefix>Prison</prefix>
+      <suffix>Sprawl</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Azoth</good>
+      </supply>
+      <demand>
+        <good>Metal</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="6">
+      <size>4</size>
+      <prefix>Research</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Underground Complex</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Blueprints</good>
+      </supply>
+      <demand>
+        <good>Plants</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="0">
+      <size>2</size>
+      <prefix>Cultural</prefix>
+      <suffix>Barren</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Art</good>
+      </supply>
+      <demand>
         <good>Food</good>
       </demand>
     </planet>
-    <planet starName="Phoebe" number="2" location="5">
+    <planet starName="Donner" number="1" location="2">
+      <size>1</size>
+      <prefix>Industrial</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="7">
+      <size>1</size>
+      <prefix>Research</prefix>
+      <suffix>Eden</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Anarchy</government>
+      <supply>
+        <good>Savants</good>
+      </supply>
+      <demand>
+        <good>Electronics</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="4">
+      <size>1</size>
+      <prefix>Cultural</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Media</good>
+      </supply>
+      <demand>
+        <good>Azoth</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="8">
+      <size>1</size>
+      <prefix>Prison</prefix>
+      <suffix>Desert</suffix>
+      <habitation>Cubecities</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Slaves</good>
+      </supply>
+      <demand>
+        <good>Weapons</good>
+      </demand>
+    </planet>
+    <planet starName="Donner" number="1" location="1">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Chemicals</good>
+      </supply>
+      <demand>
+        <good>Plants</good>
+      </demand>
+    </planet>
+  </star>
+  <star name="Coeus" location="19" type="OrangeRed">
+    <planet starName="Coeus" number="1" location="6">
       <size>1</size>
       <prefix>Agrarian</prefix>
+      <suffix>Volcanic</suffix>
+      <habitation>Orbital Ring</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Food</good>
+      </supply>
+      <demand>
+        <good>Media</good>
+      </demand>
+    </planet>
+    <planet starName="Coeus" number="1" location="4">
+      <size>3</size>
+      <prefix>Mining</prefix>
+      <suffix>Gaseous</suffix>
+      <habitation>Floating Platforms</habitation>
+      <government>Democracy</government>
+      <supply>
+        <good>Metal</good>
+      </supply>
+      <demand>
+        <good>Savants</good>
+      </demand>
+    </planet>
+    <planet starName="Coeus" number="1" location="8">
+      <size>2</size>
+      <prefix>Commercial</prefix>
       <suffix>Gaseous</suffix>
       <habitation>Orbital Ring</habitation>
       <government>Democracy</government>
@@ -566,45 +560,44 @@
         <good>Electronics</good>
       </demand>
     </planet>
-  </star>
-  <star name="Donner" location="14" type="WhiteYellow">
-    <planet starName="Donner" number="1" location="6">
+    <planet starName="Coeus" number="1" location="3">
       <size>2</size>
-      <prefix>Commercial</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Hivecities</habitation>
-      <government>Oligarchy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Azoth</good>
-      </demand>
-    </planet>
-    <planet starName="Donner" number="2" location="2">
-      <size>4</size>
-      <prefix>Agrarian</prefix>
-      <suffix>Desert</suffix>
-      <habitation>Sealed Arcologies</habitation>
-      <government>Democracy</government>
-      <supply>
-        <good>Food</good>
-      </supply>
-      <demand>
-        <good>Savants</good>
-      </demand>
-    </planet>
-    <planet starName="Donner" number="3" location="0">
-      <size>1</size>
-      <prefix>Prison</prefix>
-      <suffix>Sprawl</suffix>
+      <prefix>Mining</prefix>
+      <suffix>Eden</suffix>
       <habitation>Cubecities</habitation>
-      <government>Anarchy</government>
+      <government>Autocracy</government>
       <supply>
-        <good>Slaves</good>
+        <good>Chemicals</good>
       </supply>
       <demand>
-        <good>Plants</good>
+        <good>Weapons</good>
+      </demand>
+    </planet>
+    <planet starName="Coeus" number="1" location="0">
+      <size>1</size>
+      <prefix>Tourist</prefix>
+      <suffix>Ocean</suffix>
+      <habitation>Undersea Domes</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>None</good>
+      </supply>
+      <demand>
+        <good>Slaves</good>
+        <good>Metal</good>
+      </demand>
+    </planet>
+    <planet starName="Coeus" number="1" location="5">
+      <size>5</size>
+      <prefix>Industrial</prefix>
+      <suffix>Wasteland</suffix>
+      <habitation>Sealed Arcologies</habitation>
+      <government>Autocracy</government>
+      <supply>
+        <good>Weapons</good>
+      </supply>
+      <demand>
+        <good>Blueprints</good>
       </demand>
     </planet>
   </star>

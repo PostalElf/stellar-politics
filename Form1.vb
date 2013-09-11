@@ -159,14 +159,10 @@
         'clear tabpage1
         TabPage1.Controls.Clear()
 
-        'generate playerinfo and agents first
-        starmap.generatePlayerInfo(starmapOptions)
-        playerinfo = ghostLoadPlayerinfo()
-        starmap.generateAgents(starmapOptions)
-        agentList = ghostLoadAgentList()
-        starmap.generateStarmap(starmapOptions)
-        starmap = ghostLoadStarmap()
+        'generate everything
+        starmap.generateAll(starmapOptions)
 
+        'display starmap
         displayStarmap(starmap)
     End Sub
     Private Sub loadGalaxy()
