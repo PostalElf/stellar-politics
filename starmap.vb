@@ -432,17 +432,6 @@ Public Class starmap
 
         Return Nothing
     End Function
-    Public Function grabStationedAgents(ByVal starName As String, ByVal planetNumber As Integer) As List(Of agent)
-        Dim tempList As New List(Of agent)
-        Dim planet As planet = grabPlanet(starName, planetNumber)
-        Dim agentList As agentList = Form1.agentList
-
-        For Each agent As agent In agentList.agents
-            If agent.starName = planet.starName AndAlso agent.planetNumber = planet.number Then tempList.Add(agent)
-        Next
-
-        Return tempList
-    End Function
 End Class
 
 
@@ -470,13 +459,27 @@ Public Class planet
 
     Public supply As List(Of String)
     Public demand As List(Of String)
+    ReadOnly Property stationedAgents As List(Of agent)
+        Get
+            Dim tempList As New List(Of agent)
+            Dim agentList As agentList = Form1.agentList
 
-    Public stationedAgents As List(Of agent)        'used only within certain methods, not globally initiated
+            For Each agent As agent In agentList.agents
+                If agent.starName = starName AndAlso agent.planetNumber = number Then tempList.Add(agent)
+            Next
+
+            Return tempList
+        End Get
+    End Property
+    ReadOnly Property agentCapacityRemaining(ByVal agentlist As agentList) As Integer
+        Get
+            Return size - stationedAgents.Count
+        End Get
+    End Property
 
     Sub New()
         If supply Is Nothing Then supply = New List(Of String)
         If demand Is Nothing Then demand = New List(Of String)
-        If stationedAgents Is Nothing Then stationedAgents = New List(Of agent)
     End Sub
 
     Sub addSupply(ByVal good As String)

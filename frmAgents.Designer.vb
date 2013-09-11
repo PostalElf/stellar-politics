@@ -30,14 +30,18 @@ Partial Class frmAgents
         Me.colClass = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.butGo = New System.Windows.Forms.Button()
+        Me.lblDetails = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmbPlanetNumber = New System.Windows.Forms.ComboBox()
         Me.lblName = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.cmbStarName = New System.Windows.Forms.ComboBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -108,10 +112,11 @@ Partial Class frmAgents
         Me.TabPage2.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.greenBG
         Me.TabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage2.Controls.Add(Me.ComboBox2)
-        Me.TabPage2.Controls.Add(Me.Button1)
+        Me.TabPage2.Controls.Add(Me.Panel1)
+        Me.TabPage2.Controls.Add(Me.Label1)
+        Me.TabPage2.Controls.Add(Me.cmbPlanetNumber)
         Me.TabPage2.Controls.Add(Me.lblName)
-        Me.TabPage2.Controls.Add(Me.ComboBox1)
+        Me.TabPage2.Controls.Add(Me.cmbStarName)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -119,23 +124,58 @@ Partial Class frmAgents
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Agent Details"
         '
-        'ComboBox2
+        'Panel1
         '
-        Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(168, 61)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(44, 21)
-        Me.ComboBox2.TabIndex = 3
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.butGo)
+        Me.Panel1.Controls.Add(Me.lblDetails)
+        Me.Panel1.ForeColor = System.Drawing.Color.White
+        Me.Panel1.Location = New System.Drawing.Point(317, 17)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(179, 213)
+        Me.Panel1.TabIndex = 5
         '
-        'Button1
+        'butGo
         '
-        Me.Button1.Location = New System.Drawing.Point(218, 55)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(49, 31)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Move"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.butGo.Enabled = False
+        Me.butGo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butGo.ForeColor = System.Drawing.Color.White
+        Me.butGo.Location = New System.Drawing.Point(44, 180)
+        Me.butGo.Name = "butGo"
+        Me.butGo.Size = New System.Drawing.Size(98, 25)
+        Me.butGo.TabIndex = 1
+        Me.butGo.Text = "Go"
+        Me.butGo.UseVisualStyleBackColor = True
+        Me.butGo.Visible = False
+        '
+        'lblDetails
+        '
+        Me.lblDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDetails.Location = New System.Drawing.Point(9, 10)
+        Me.lblDetails.Name = "lblDetails"
+        Me.lblDetails.Size = New System.Drawing.Size(161, 161)
+        Me.lblDetails.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(37, 64)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
+        Me.Label1.TabIndex = 4
+        Me.Label1.Text = "Move:"
+        '
+        'cmbPlanetNumber
+        '
+        Me.cmbPlanetNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPlanetNumber.FormattingEnabled = True
+        Me.cmbPlanetNumber.Location = New System.Drawing.Point(208, 61)
+        Me.cmbPlanetNumber.Name = "cmbPlanetNumber"
+        Me.cmbPlanetNumber.Size = New System.Drawing.Size(44, 21)
+        Me.cmbPlanetNumber.TabIndex = 3
         '
         'lblName
         '
@@ -149,14 +189,14 @@ Partial Class frmAgents
         Me.lblName.TabIndex = 1
         Me.lblName.Text = "Agent Name"
         '
-        'ComboBox1
+        'cmbStarName
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(42, 61)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(120, 21)
-        Me.ComboBox1.TabIndex = 0
+        Me.cmbStarName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStarName.FormattingEnabled = True
+        Me.cmbStarName.Location = New System.Drawing.Point(82, 61)
+        Me.cmbStarName.Name = "cmbStarName"
+        Me.cmbStarName.Size = New System.Drawing.Size(120, 21)
+        Me.cmbStarName.TabIndex = 0
         '
         'frmAgents
         '
@@ -174,6 +214,7 @@ Partial Class frmAgents
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -184,8 +225,11 @@ Partial Class frmAgents
     Friend WithEvents colName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colClass As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colLocation As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents cmbStarName As System.Windows.Forms.ComboBox
     Friend WithEvents lblName As System.Windows.Forms.Label
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents cmbPlanetNumber As System.Windows.Forms.ComboBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents lblDetails As System.Windows.Forms.Label
+    Friend WithEvents butGo As System.Windows.Forms.Button
 End Class

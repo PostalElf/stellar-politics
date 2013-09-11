@@ -284,6 +284,14 @@ Module sharedStarmapFunctions
 
         Return processedID
     End Function
+    Public Function processRomanNumber(ByVal romanNumber As String) As Integer
+        For Each entry As KeyValuePair(Of Integer, String) In romanNumeralDictionary
+            If romanNumber = entry.Value Then Return entry.Key
+        Next
+
+        Return Nothing
+    End Function
+
 
 
     'calculators

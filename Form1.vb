@@ -2,6 +2,7 @@
     Public starmap As New starmap
     Public agentList As New agentList
     Public playerinfo As New playerinfo
+    Public turnticker As New turnticker
     Public settingDoNotSave As Boolean = False
 
     Private Sub displayStarmap(starmap As starmap)
@@ -115,7 +116,7 @@
             counter += 1
         Next
         counter = 0
-        For Each agent In starmap.grabStationedAgents(planet.starName, planet.number)
+        For Each agent In planet.stationedAgents
             addGoodsPic(agent.id, counter, "agent")
         Next
 

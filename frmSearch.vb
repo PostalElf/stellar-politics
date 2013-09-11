@@ -61,12 +61,6 @@ Public Class frmSearch
         For Each star As star In starmap.stars
             If star.type <> "Blackhole" Then
                 For Each planet As planet In star.planets
-                    'create a list of agents that reside on the planet
-                    Dim stationedAgents As New List(Of agent)
-                    For Each agent As agent In agentList.agents
-                        If agent.starName = star.name AndAlso agent.planetNumber = planet.number Then stationedAgents.Add(agent)
-                    Next
-
                     'every planet that meets the search criteria goes into planetList
                     'if nothing is selected for a particular criteria the function automatically returns True
                     If isStar(planet.starName) = True AndAlso _
@@ -76,8 +70,7 @@ Public Class frmSearch
                             isGovernment(planet.government) = True AndAlso _
                             isPrefix(planet.prefix) = True AndAlso _
                             isSuffix(planet.suffix) = True AndAlso _
-                            isAgent(stationedAgents) = True Then
-                        planet.stationedAgents = stationedAgents
+                            isAgent(planet.stationedAgents) = True Then
                         planetList.Add(planet)
                     End If
                 Next

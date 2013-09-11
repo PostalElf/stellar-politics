@@ -1,6 +1,4 @@
 ﻿Public Class frmAgents
-    Dim starmap As starmap = Form1.starmap
-    Dim agentList As agentList = Form1.agentList
     Dim agentIndex As Integer
 
     Private Sub frmAgents_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -12,42 +10,56 @@
         agentIndex = e.RowIndex
 
         TabControl1.SelectTab(1)
-        displayAgent(agentList.agents(agentIndex))
+        displayAgent(Form1.agentList.agents(agentIndex))
     End Sub
-    Private Sub ComboBox1_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
-        ComboBox2.Items.Clear()
+    Private Sub cmbStarName_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbStarName.SelectedIndexChanged
+        cmbPlanetNumber.Items.Clear()
 
-        For Each planet As planet In starmap.stars(ComboBox1.SelectedIndex).planets
-            ComboBox2.Items.Add(romanNumeralDictionary(planet.number))
-        Next
+        If cmbStarName.SelectedItem = "Oubliette" Then
+            cmbPlanetNumber.Items.Add("0")
+            lblDetails.Text = "French for 'the forgotten place', the leaders of each Great House operates from an Oubliette, a secret barge " & _
+                                "located in the depths of realspace that has only one subspace portal leading in and out of the location.  " & _
+                                "Agents in the Oubliette are perfectly safe but, alas, also perfectly ineffectual."
+            butGo.Visible = True
+            butGo.Enabled = False
+            butGo.Text = "Move"
+        ElseIf cmbStarName.SelectedItem = "" Then
+            lblDetails.Text = ""
+            butGo.Visible = False
+        Else
+            For Each planet As planet In Form1.starmap.stars(cmbStarName.SelectedIndex).planets
+                cmbPlanetNumber.Items.Add(romanNumeralDictionary(planet.number))
+            Next
+            lblDetails.Text = "Thanks to advances in subspace technology, it only takes one turn for an Agent to " & _
+                                "travel between any star or planet. Whilst in transit, however, agents may not be " & _
+                                "contacted until they reach their destination."
+            butGo.Visible = True
+            butGo.Enabled = False
+            butGo.Text = "Move"
+        End If
     End Sub
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        Dim agent As agent = agentList.agents(agentIndex)
-        Dim destinationStarname As String = ComboBox1.SelectedItem
-        Dim destinationPlanetnumber As Integer = 0
-        For Each entry As KeyValuePair(Of Integer, String) In romanNumeralDictionary
-            If ComboBox2.SelectedItem = entry.Value Then destinationPlanetnumber = entry.Key
-        Next
+    Private Sub cmbPlanetNumber_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPlanetNumber.SelectedIndexChanged
+        If cmbPlanetNumber.SelectedItem <> "" Then butGo.Enabled = True
+    End Sub
+    Private Sub butGo_Click(sender As System.Object, e As System.EventArgs) Handles butGo.Click
 
-        agentList.moveAgent(agent.id, destinationStarname, destinationPlanetnumber)
-
-        refreshDataGridView1()
-        TabControl1.SelectTab(0)
     End Sub
 
     Private Sub displayAgent(ByRef agent As agent)
-        ComboBox1.Items.Clear()
-        ComboBox2.Items.Clear()
+        cmbStarName.Items.Clear()
+        cmbPlanetNumber.Items.Clear()
 
         lblName.Text = agent.name
-        For Each star As star In starmap.stars
-            ComboBox1.Items.Add(star.name)
+        cmbStarName.Items.Add("")
+        cmbStarName.Items.Add("Oubliette")
+        For Each star As star In Form1.starmap.stars
+            cmbStarName.Items.Add(star.name)
         Next
     End Sub
     Private Sub refreshDataGridView1()
         DataGridView1.Rows.Clear()
 
-        For Each agent In agentList.agents
+        For Each agent In Form1.agentList.agents
             Dim n As Integer = DataGridView1.Rows.Add()
             Dim str As String = ""
             DataGridView1.Rows.Item(n).Cells(0).Value = agent.name
@@ -58,6 +70,40 @@
                 DataGridView1.Rows.Item(n).Cells(2).Value = agent.starName & " " & romanNumeralDictionary(agent.planetNumber)
             End If
         Next
+    End Sub
+    Private Function checkDestination(ByRef destination As destination) As Boolean
+        Dim planet As planet = Form1.starmap.grabPlanet(destination.destStarName, destination.destPlanetNumber)
+
+        'check if valid location
+        If planet Is Nothing Then Return False
+
+        'check for space
+        Dim planetCapacity As Integer = planet.agentCapacityRemaining(Form1.agentList)
+        If planetCapacity < 1 Then Return False Else Return True
+    End Function
+    Private Sub moveAgentToPlanet(ByVal destinationStarName As String, ByVal destinationPlanetNumber As Integer)
+        Dim destination As New destination
+        destination.destAgent = Form1.agentList.agents(agentIndex)
+        destination.destStarName = destinationStarName
+        destination.destPlanetNumber = destinationPlanetnumber
+
+        'check if destination is OK
+        If checkDestination(destination) = True Then
+            Form1.turnticker.agentsToMove.Add(destination)
+            Form1.agentList.agents.RemoveAt(agentIndex)
+        Else
+            'display error
+            Dim str As String = "BY IMPERIAL EDICT:" & vbCrLf & _
+                                "------------------" & vbCrLf & vbCrLf & _
+                                "No more than one Guild representative may be deployed" & vbCrLf & _
+                                "to a city at any time. Any Great House caught disobeying" & vbCrLf & _
+                                "this edict will have all rights and privilleges previously" & vbCrLf & _
+                                "accorded immediately revoked."
+            MsgBox(str, MsgBoxStyle.Exclamation, "Error!")
+        End If
+
+        refreshDataGridView1()
+        TabControl1.SelectTab(0)
     End Sub
 
 End Class

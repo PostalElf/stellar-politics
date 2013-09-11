@@ -161,6 +161,7 @@
     <Compile Include="starmap.vb" />
     <Compile Include="sharedStarmapFunctions.vb" />
     <Compile Include="starmapOptions.vb" />
+    <Compile Include="turnticker.vb" />
     <Compile Include="XMLghost.vb" />
   </ItemGroup>
   <ItemGroup>
