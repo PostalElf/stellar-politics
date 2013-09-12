@@ -293,7 +293,6 @@ Module sharedStarmapFunctions
     End Function
 
 
-
     'calculators
     Public Function calculateDistanceBetween(ByVal Point1 As Point, ByVal Point2 As Point) As Integer
         'use pythogaras theorem to get distance between two points

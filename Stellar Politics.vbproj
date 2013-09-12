@@ -289,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Mini-3-Globe.ico" />
+    <None Include="Resources\houseSen.PNG" />
+    <None Include="Resources\houseNyos.PNG" />
+    <None Include="Resources\houseIllys.png" />
     <None Include="Resources\greenBG.JPG" />
     <None Include="Resources\icoGenAgent.PNG" />
     <None Include="Resources\icoMetal.png" />

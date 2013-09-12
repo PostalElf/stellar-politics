@@ -97,7 +97,7 @@ Public Class starmap
             star.type = randomStarType(starSize)
 
             While starSize > 0
-                star.planets.Add(generatePlanet(star, starmapOptions.galaxySize, starSize, planetNumber, star.name))
+                star.planets.Add(generatePlanet(star, starmapOptions, starSize, planetNumber, star.name))
             End While
 
             repopSystemPlanetLocationList()     'reset systemplanetlocationlist
@@ -106,12 +106,11 @@ Public Class starmap
         Return star
     End Function
     Private Function generatePlanet(ByRef star As star, _
-                                    ByRef galaxySize As Integer, _
+                                    ByRef starmapoptions As starmapOptions, _
                                     ByRef starSize As Integer, _
                                     ByRef planetNumber As Integer, _
                                     ByVal starName As String) As planet
 
-        starSize -= 1
         Dim planet As New planet
 
         planet.starName = starName
@@ -124,7 +123,7 @@ Public Class starmap
         planet.government = randomPlanetGovernment()
 
         'Generate prefix and supply
-        Dim tempPlanetSupply As String = randomPlanetSupply(galaxySize)       ' pull random supply from remaining systemSupply list
+        Dim tempPlanetSupply As String = randomPlanetSupply(starmapoptions)       ' pull random supply from remaining systemSupply list
         If tempPlanetSupply = "Tourist" Then
             planet.supply.Add("None")
             planet.prefix = "Tourist"
@@ -140,6 +139,10 @@ Public Class starmap
         For Each demand In randomPlanetDemand(planet.prefix, planet.supply)
             planet.demand.Add(demand)
         Next
+
+        'alter starsize and planetNumber
+        starSize -= planet.size
+        planetNumber += 1
 
         Return planet
     End Function
@@ -273,13 +276,13 @@ Public Class starmap
                 Return Nothing
         End Select
     End Function
-    Private Function randomPlanetSupply(ByRef galaxySize As Integer) As String
+    Private Function randomPlanetSupply(ByRef starmapoptions As starmapOptions) As String
         Dim x As Integer = Int(Rnd() * (systemSupply.Count - 1))
         randomPlanetSupply = systemSupply.Item(x)
         systemSupply.RemoveAt(x)
         If systemSupply.Count = 0 Then
             repopSystemSupply()
-            galaxySize -= 1
+            starmapoptions.galaxySize -= 1
         End If
     End Function
     Private Function randomPlanetDemand(ByVal planetPrefix As String, ByVal planetSupply As List(Of String)) As List(Of String)

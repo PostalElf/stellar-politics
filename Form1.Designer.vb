@@ -28,7 +28,7 @@ Partial Class Form1
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.panelPlanet = New System.Windows.Forms.Panel()
         Me.butInvestments = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblSuffix = New System.Windows.Forms.Label()
@@ -61,11 +61,16 @@ Partial Class Form1
         Me.SearchToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DistanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.butEndturn = New System.Windows.Forms.Button()
+        Me.picHouseLogo = New System.Windows.Forms.PictureBox()
+        Me.panelSidebar = New System.Windows.Forms.Panel()
+        Me.butTravelPlans = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.panelPlanet.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.picHouseLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panelSidebar.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -113,7 +118,7 @@ Partial Class Form1
         Me.TabPage3.BackColor = System.Drawing.Color.Black
         Me.TabPage3.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.binaryStarBG
         Me.TabPage3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage3.Controls.Add(Me.Panel1)
+        Me.TabPage3.Controls.Add(Me.panelPlanet)
         Me.TabPage3.Controls.Add(Me.Label7)
         Me.TabPage3.Controls.Add(Me.lblSuffix)
         Me.TabPage3.Controls.Add(Me.picPlanetForward)
@@ -136,14 +141,14 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Planet"
         '
-        'Panel1
+        'panelPlanet
         '
-        Me.Panel1.Controls.Add(Me.butInvestments)
-        Me.Panel1.Location = New System.Drawing.Point(364, 14)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(136, 186)
-        Me.Panel1.TabIndex = 19
-        Me.Panel1.Visible = False
+        Me.panelPlanet.Controls.Add(Me.butInvestments)
+        Me.panelPlanet.Location = New System.Drawing.Point(362, 14)
+        Me.panelPlanet.Name = "panelPlanet"
+        Me.panelPlanet.Size = New System.Drawing.Size(136, 186)
+        Me.panelPlanet.TabIndex = 19
+        Me.panelPlanet.Visible = False
         '
         'butInvestments
         '
@@ -212,6 +217,7 @@ Partial Class Form1
         'picPlanetType
         '
         Me.picPlanetType.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.bigplanetEden
+        Me.picPlanetType.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picPlanetType.Location = New System.Drawing.Point(16, 17)
         Me.picPlanetType.Name = "picPlanetType"
         Me.picPlanetType.Size = New System.Drawing.Size(100, 100)
@@ -327,6 +333,7 @@ Partial Class Form1
         'picDescription
         '
         Me.picDescription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picDescription.Cursor = System.Windows.Forms.Cursors.Hand
         Me.picDescription.Location = New System.Drawing.Point(19, 46)
         Me.picDescription.Name = "picDescription"
         Me.picDescription.Size = New System.Drawing.Size(100, 100)
@@ -364,7 +371,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ManageToolStripMenuItem, Me.ToolsToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(674, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(675, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -436,20 +443,54 @@ Partial Class Form1
         '
         Me.butEndturn.BackColor = System.Drawing.Color.White
         Me.butEndturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.butEndturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.butEndturn.Location = New System.Drawing.Point(569, 349)
+        Me.butEndturn.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.butEndturn.Location = New System.Drawing.Point(6, 347)
         Me.butEndturn.Name = "butEndturn"
-        Me.butEndturn.Size = New System.Drawing.Size(93, 72)
+        Me.butEndturn.Size = New System.Drawing.Size(94, 38)
         Me.butEndturn.TabIndex = 5
-        Me.butEndturn.Text = "Caelum plena stellarum"
+        Me.butEndturn.Text = "End Turn"
         Me.butEndturn.UseVisualStyleBackColor = False
+        '
+        'picHouseLogo
+        '
+        Me.picHouseLogo.BackColor = System.Drawing.Color.White
+        Me.picHouseLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picHouseLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picHouseLogo.Location = New System.Drawing.Point(13, 12)
+        Me.picHouseLogo.Name = "picHouseLogo"
+        Me.picHouseLogo.Size = New System.Drawing.Size(80, 80)
+        Me.picHouseLogo.TabIndex = 6
+        Me.picHouseLogo.TabStop = False
+        '
+        'panelSidebar
+        '
+        Me.panelSidebar.Controls.Add(Me.butTravelPlans)
+        Me.panelSidebar.Controls.Add(Me.picHouseLogo)
+        Me.panelSidebar.Controls.Add(Me.butEndturn)
+        Me.panelSidebar.Location = New System.Drawing.Point(561, 38)
+        Me.panelSidebar.Name = "panelSidebar"
+        Me.panelSidebar.Size = New System.Drawing.Size(106, 393)
+        Me.panelSidebar.TabIndex = 7
+        Me.panelSidebar.Visible = False
+        '
+        'butTravelPlans
+        '
+        Me.butTravelPlans.BackColor = System.Drawing.Color.White
+        Me.butTravelPlans.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butTravelPlans.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.butTravelPlans.Location = New System.Drawing.Point(10, 107)
+        Me.butTravelPlans.Name = "butTravelPlans"
+        Me.butTravelPlans.Size = New System.Drawing.Size(87, 23)
+        Me.butTravelPlans.TabIndex = 7
+        Me.butTravelPlans.Text = "Travel Plans"
+        Me.butTravelPlans.UseVisualStyleBackColor = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(674, 444)
-        Me.Controls.Add(Me.butEndturn)
+        Me.ClientSize = New System.Drawing.Size(675, 444)
+        Me.Controls.Add(Me.panelSidebar)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -462,10 +503,12 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
+        Me.panelPlanet.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.picHouseLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panelSidebar.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -503,9 +546,12 @@ Partial Class Form1
     Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AgentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents panelPlanet As System.Windows.Forms.Panel
     Friend WithEvents butInvestments As System.Windows.Forms.Button
     Friend WithEvents InvestmentsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents butEndturn As System.Windows.Forms.Button
+    Friend WithEvents picHouseLogo As System.Windows.Forms.PictureBox
+    Friend WithEvents panelSidebar As System.Windows.Forms.Panel
+    Friend WithEvents butTravelPlans As System.Windows.Forms.Button
 
 End Class

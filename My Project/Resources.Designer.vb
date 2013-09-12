@@ -144,6 +144,27 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property houseIllys() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("houseIllys", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property houseNyos() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("houseNyos", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property houseSen() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("houseSen", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property icoArt() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("icoArt", resourceCulture)

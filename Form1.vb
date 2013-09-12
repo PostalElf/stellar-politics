@@ -5,8 +5,8 @@
     Public turnticker As New turnticker
     Public settingDoNotSave As Boolean = False
 
-    Private Sub displayStarmap(starmap As starmap)
-        'display starmap in form and perform menu activations
+    Private Sub displayStarmap()
+        'display starmap in form
         Dim counter As Integer = 0
 
         For Each star In starmap.stars
@@ -23,6 +23,7 @@
             starLoc.BackgroundImage = My.Resources.ResourceManager.GetObject(picName)
             starLoc.BackColor = Color.Transparent
             starLoc.Size = New Size(30, 30)
+            starLoc.Cursor = Cursors.Cross
             starLoc.Tag = counter
             If star.type = "Blackhole" Then
                 Tooltip2.SetToolTip(starLoc, star.name & " (Blackhole)")
@@ -43,6 +44,9 @@
 
         'switch tabpage
         TabControl1.SelectTab(0)
+
+        'change sidebar
+        displaySidebar()
     End Sub
     Private Sub displayStar(ByRef star As star, ByVal index As Integer)
         refreshTabPage2()
@@ -59,6 +63,7 @@
                 planetLoc.Size = New Size(40, 40)
                 planetLoc.BackgroundImageLayout = ImageLayout.Stretch
                 planetLoc.Visible = True
+                planetLoc.Cursor = Cursors.Cross
                 planetLoc.Tag = getPlanetLocTag(index, planet.number - 1)       ' planet.number - 1 because stars() is a 0-based list
 
                 Dim str As String = planet.starName & " " & romanNumeralDictionary(planet.number) & vbCrLf & _
@@ -120,8 +125,30 @@
             addGoodsPic(agent.id, counter, "agent")
         Next
 
-        Panel1.Visible = True
-        TabControl1.SelectTab(2)
+        panelPlanet.Visible = True
+    End Sub
+    Private Sub displaySidebar()
+        Dim str As String = ""
+
+        Select Case playerinfo.faction
+            Case "House Illys"
+                picHouseLogo.BackgroundImage = My.Resources.houseIllys
+                picHouseLogo.BackColor = Color.DarkGreen
+                str = "'Viribus Omnibus Supereminet'"
+            Case "House Sen"
+                picHouseLogo.BackgroundImage = My.Resources.houseSen
+                picHouseLogo.BackColor = Color.Purple
+                str = "'Intellectus, Gratiam, Dignitas.'"
+            Case "House Nyos"
+                picHouseLogo.BackgroundImage = My.Resources.houseNyos
+                picHouseLogo.BackColor = Color.Maroon
+                str = "'Medius Potentia Est'"
+            Case Else
+                'bugcatch
+        End Select
+
+        Tooltip2.SetToolTip(picHouseLogo, playerinfo.faction & vbCrLf & str)
+        panelSidebar.Visible = True
     End Sub
     Private Sub refreshTabPage1()
         TabPage1.Controls.Clear()
@@ -133,6 +160,7 @@
         buttonBack.Size = New Size(60, 60)
         buttonBack.Location = New Point(116, 224)
         buttonBack.BackColor = Color.Transparent
+        buttonBack.Cursor = Cursors.Hand
         AddHandler buttonBack.Click, AddressOf buttonBackClickStar
         TabPage2.Controls.Add(buttonBack)
     End Sub
@@ -150,7 +178,9 @@
                 'clear all goodPics (aka supply and demand icons)
                 'ignore certain panels (prefix pic)
 
-                If ctrl.Name <> "picPlanetType" AndAlso ctrl.Name <> "picPlanetForward" Then TabPage3.Controls.Remove(ctrl)
+                If ctrl.Name <> "picPlanetType" AndAlso _
+                    ctrl.Name <> "picPlanetForward" AndAlso _
+                    ctrl.Name <> "panelPlanet" Then TabPage3.Controls.Remove(ctrl)
             End If
         Next
     End Sub
@@ -163,7 +193,7 @@
         starmap.generateAll(starmapOptions)
 
         'display starmap
-        displayStarmap(starmap)
+        displayStarmap()
     End Sub
     Private Sub loadGalaxy()
         ' check hash
@@ -191,7 +221,7 @@
             starmap = ghostLoadStarmap()
 
             'display starmap
-            displayStarmap(starmap)
+            displayStarmap()
         End If
     End Sub
     Private Function getPlanetLocTag(ByVal index As Integer, ByVal planetNumber As Integer) As String
@@ -220,6 +250,7 @@
         goodPic.Size = New Size(30, 30)
         goodPic.Location = New Point((64 + counter * 30), picY)
         goodPic.BackgroundImageLayout = ImageLayout.Stretch
+        goodPic.Cursor = Cursors.Cross
         goodPic.Tag = good
         Select Case type
             Case "agent"
@@ -257,7 +288,6 @@
         Dim planetNumber As Integer = Convert.ToInt32(Mid(planetLocTag, 4, 2))
         Dim planet As planet = starmap.stars(index).planets(planetNumber)
 
-        refreshTabPage3()
         displayPlanet(planet)
         TabControl1.SelectTab(2)
     End Sub
