@@ -7,6 +7,10 @@
         If agentsToMove Is Nothing Then agentsToMove = New List(Of destination)
     End Sub
     Public Sub turnEnd()
+        moveAllAgents()
+    End Sub
+
+    Private Sub moveAllAgents()
         For Each destination As destination In agentsToMove
             'moving agents are removed from agentlist (as they can no longer be interacted with until they finish moving)
             'they are added back when they successfully move at turn's end
@@ -15,6 +19,8 @@
             agent.moveAgent(destination.destStarName, destination.destPlanetNumber)
             Form1.agentList.agents.Add(agent)
         Next
+
+        agentsToMove.Clear()            'onced moved, all agents are removed from turnticker.agentstomove
     End Sub
 End Class
 

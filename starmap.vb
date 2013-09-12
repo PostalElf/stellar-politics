@@ -17,20 +17,23 @@ Public Class starmap
         Dim playerinfo As playerinfo = generatePlayerInfo(starmapOptions)
         Dim agentlist As agentList = generateAgents(starmapOptions, playerinfo)
         Dim starmap As starmap = generateStarmap(starmapOptions)
+        Dim turnticker As New turnticker
 
         'write them into files
-        ghostWriteAll(starmap, agentlist, playerinfo)
+        ghostWriteAll(starmap, agentlist, playerinfo, turnticker)
 
         'load into memory
         Form1.playerinfo = playerinfo
         Form1.agentList = agentlist
         Form1.starmap = starmap
+        'ignore turnticker as it will always be empty at the start
 
         'store starmap hash into hashstarmap.txt
         Dim txtFxn As New sharedHashFunctions
         txtFxn.addHashFile("starmap")
         txtFxn.addHashFile("agents")
         txtFxn.addHashFile("playerinfo")
+        txtFxn.addHashFile("turnticker")
         txtFxn = Nothing
     End Sub
     Private Function generatePlayerInfo(ByRef starmapoptions As starmapOptions) As playerinfo
