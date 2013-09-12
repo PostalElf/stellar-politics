@@ -26,21 +26,25 @@ Partial Class frmInvestments
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.viewLiabilities = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.viewAssets = New System.Windows.Forms.DataGridView()
         Me.colInvestment = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colWPT = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cmbFilter = New System.Windows.Forms.ComboBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.viewLiabilities, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.viewAssets, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -59,9 +63,11 @@ Partial Class frmInvestments
         Me.TabPage1.BackgroundImage = Global.Stellar_Politics.My.Resources.Resources.greenBG
         Me.TabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.DataGridView2)
-        Me.TabPage1.Controls.Add(Me.DataGridView1)
+        Me.TabPage1.Controls.Add(Me.Panel1)
+        Me.TabPage1.Controls.Add(Me.cmbFilter)
+        Me.TabPage1.Controls.Add(Me.Label4)
+        Me.TabPage1.Controls.Add(Me.viewLiabilities)
+        Me.TabPage1.Controls.Add(Me.viewAssets)
         Me.TabPage1.Controls.Add(Me.Label2)
         Me.TabPage1.Controls.Add(Me.Label1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
@@ -78,27 +84,27 @@ Partial Class frmInvestments
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(14, 259)
+        Me.Label3.Location = New System.Drawing.Point(19, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(87, 29)
         Me.Label3.TabIndex = 10
         Me.Label3.Text = "Total: "
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'DataGridView2
+        'viewLiabilities
         '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AllowUserToResizeRows = False
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
-        Me.DataGridView2.Location = New System.Drawing.Point(340, 64)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.ReadOnly = True
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(281, 162)
-        Me.DataGridView2.TabIndex = 9
+        Me.viewLiabilities.AllowUserToAddRows = False
+        Me.viewLiabilities.AllowUserToDeleteRows = False
+        Me.viewLiabilities.AllowUserToResizeRows = False
+        Me.viewLiabilities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.viewLiabilities.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
+        Me.viewLiabilities.Location = New System.Drawing.Point(324, 64)
+        Me.viewLiabilities.Name = "viewLiabilities"
+        Me.viewLiabilities.ReadOnly = True
+        Me.viewLiabilities.RowHeadersVisible = False
+        Me.viewLiabilities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.viewLiabilities.Size = New System.Drawing.Size(281, 162)
+        Me.viewLiabilities.TabIndex = 9
         '
         'DataGridViewTextBoxColumn1
         '
@@ -121,20 +127,20 @@ Partial Class frmInvestments
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
         Me.DataGridViewTextBoxColumn3.Width = 50
         '
-        'DataGridView1
+        'viewAssets
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToResizeRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colInvestment, Me.colLocation, Me.colWPT})
-        Me.DataGridView1.Location = New System.Drawing.Point(19, 64)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(281, 162)
-        Me.DataGridView1.TabIndex = 8
+        Me.viewAssets.AllowUserToAddRows = False
+        Me.viewAssets.AllowUserToDeleteRows = False
+        Me.viewAssets.AllowUserToResizeRows = False
+        Me.viewAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.viewAssets.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colInvestment, Me.colLocation, Me.colWPT})
+        Me.viewAssets.Location = New System.Drawing.Point(19, 64)
+        Me.viewAssets.Name = "viewAssets"
+        Me.viewAssets.ReadOnly = True
+        Me.viewAssets.RowHeadersVisible = False
+        Me.viewAssets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.viewAssets.Size = New System.Drawing.Size(281, 162)
+        Me.viewAssets.TabIndex = 8
         '
         'colInvestment
         '
@@ -163,7 +169,7 @@ Partial Class frmInvestments
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(336, 29)
+        Me.Label2.Location = New System.Drawing.Point(320, 29)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(79, 21)
         Me.Label2.TabIndex = 1
@@ -194,6 +200,36 @@ Partial Class frmInvestments
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Investment Details"
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.ForeColor = System.Drawing.Color.White
+        Me.Label4.Location = New System.Drawing.Point(28, 264)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(32, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Filter:"
+        '
+        'cmbFilter
+        '
+        Me.cmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbFilter.FormattingEnabled = True
+        Me.cmbFilter.Location = New System.Drawing.Point(66, 261)
+        Me.cmbFilter.Name = "cmbFilter"
+        Me.cmbFilter.Size = New System.Drawing.Size(146, 21)
+        Me.cmbFilter.TabIndex = 12
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Location = New System.Drawing.Point(381, 244)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(241, 65)
+        Me.Panel1.TabIndex = 13
+        '
         'frmInvestments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -208,8 +244,10 @@ Partial Class frmInvestments
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.viewLiabilities, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.viewAssets, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -218,8 +256,8 @@ Partial Class frmInvestments
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents viewAssets As System.Windows.Forms.DataGridView
+    Friend WithEvents viewLiabilities As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -227,4 +265,7 @@ Partial Class frmInvestments
     Friend WithEvents colLocation As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents colWPT As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents cmbFilter As System.Windows.Forms.ComboBox
 End Class

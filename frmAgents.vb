@@ -1,8 +1,20 @@
 ﻿Public Class frmAgents
     Dim agentIndex As Integer
+    Sub New(Optional ByVal planet As planet = Nothing)
 
-    Private Sub frmAgents_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
         refreshDataGridView1()
+        popCmbFilterStarName()
+
+        If planet IsNot Nothing Then
+            cmbFilterStarName.SelectedItem = planet.starName
+            popCmbFilterPlanetNumber()
+            cmbFilterPlanetNumber.SelectedItem = romanNumeralDictionary(planet.number)
+        End If
     End Sub
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         If e.RowIndex = -1 Then Return
@@ -39,10 +51,24 @@
         End If
     End Sub
     Private Sub cmbPlanetNumber_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbPlanetNumber.SelectedIndexChanged
-        If cmbPlanetNumber.SelectedItem <> "" Then butGo.Enabled = True
+        If cmbPlanetNumber.SelectedItem <> "" Then
+            butGo.Enabled = True
+            butGo.Tag = "move"
+        End If
+    End Sub
+    Private Sub cmbFilterStarName_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbFilterStarName.SelectedIndexChanged
+        popCmbFilterPlanetNumber()
+    End Sub
+    Private Sub cmbFilterPlanetNumber_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbFilterPlanetNumber.SelectedIndexChanged
+        Dim filterStarName As String = cmbFilterStarName.SelectedItem.ToString
+        Dim filterPlanetNumber As Integer = processRomanNumber(cmbFilterPlanetNumber.SelectedItem.ToString)
+        refreshDataGridView1(filterStarName, filterPlanetNumber)
     End Sub
     Private Sub butGo_Click(sender As System.Object, e As System.EventArgs) Handles butGo.Click
-
+        Select Case butGo.Tag
+            Case "move" : moveAgentToPlanet(cmbStarName.SelectedItem.ToString, cmbPlanetNumber.SelectedItem.ToString)
+            Case Else : Exit Sub
+        End Select
     End Sub
 
     Private Sub displayAgent(ByRef agent As agent)
@@ -56,18 +82,45 @@
             cmbStarName.Items.Add(star.name)
         Next
     End Sub
-    Private Sub refreshDataGridView1()
+    Private Sub popCmbFilterStarName()
+        cmbFilterStarName.Items.Clear()
+
+        cmbFilterStarName.Items.Add("")
+        cmbFilterStarName.Items.Add("Oubliette")
+        For Each star In Form1.starmap.stars
+            cmbFilterStarName.Items.Add(star.name)
+        Next
+    End Sub
+    Private Sub popCmbFilterPlanetNumber()
+        cmbFilterPlanetNumber.Items.Clear()
+
+        cmbFilterPlanetNumber.Items.Add("")
+        If cmbFilterStarName.SelectedItem.ToString = "" Then
+            'do nothing
+        ElseIf cmbFilterStarName.SelectedItem.ToString = "Oubliette" Then
+            cmbFilterPlanetNumber.Items.Add("0")
+        Else
+            Dim star As star = Form1.starmap.grabStar(cmbFilterStarName.SelectedItem.ToString)
+            For Each planet As planet In star.planets
+                cmbFilterPlanetNumber.Items.Add(romanNumeralDictionary(planet.number))
+            Next
+        End If
+    End Sub
+    Private Sub refreshDataGridView1(Optional ByVal filterStarName As String = "", Optional ByVal filterPlanetNumber As Integer = -1)
         DataGridView1.Rows.Clear()
 
         For Each agent In Form1.agentList.agents
-            Dim n As Integer = DataGridView1.Rows.Add()
-            Dim str As String = ""
-            DataGridView1.Rows.Item(n).Cells(0).Value = agent.name
-            DataGridView1.Rows.Item(n).Cells(1).Value = agent.type
-            If agent.starName = "Oubliette" Then
-                DataGridView1.Rows.Item(n).Cells(2).Value = agent.starName
-            Else
-                DataGridView1.Rows.Item(n).Cells(2).Value = agent.starName & " " & romanNumeralDictionary(agent.planetNumber)
+            If (filterStarName = "" AndAlso filterPlanetNumber = -1) OrElse _
+                    (agent.starName = filterStarName AndAlso agent.planetNumber = filterPlanetNumber) Then
+                Dim n As Integer = DataGridView1.Rows.Add()
+                Dim str As String = ""
+                DataGridView1.Rows.Item(n).Cells(0).Value = agent.name
+                DataGridView1.Rows.Item(n).Cells(1).Value = agent.type
+                If agent.starName = "Oubliette" Then
+                    DataGridView1.Rows.Item(n).Cells(2).Value = agent.starName
+                Else
+                    DataGridView1.Rows.Item(n).Cells(2).Value = agent.starName & " " & romanNumeralDictionary(agent.planetNumber)
+                End If
             End If
         Next
     End Sub

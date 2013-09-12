@@ -276,9 +276,9 @@
 
     Private Sub starLocClick(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim index As Integer = Convert.ToInt32(DirectCast(sender, Panel).Tag)
-        Dim star As star = starmap.stars(index)
+        starmap.activeStar = starmap.stars(index)
 
-        displayStar(star, index)
+        displayStar(starmap.activeStar, index)
         TabControl1.SelectTab(1)
     End Sub
     Private Sub planetLocClick(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -286,9 +286,9 @@
 
         Dim index As Integer = Convert.ToInt32(Mid(planetLocTag, 1, 2))
         Dim planetNumber As Integer = Convert.ToInt32(Mid(planetLocTag, 4, 2))
-        Dim planet As planet = starmap.stars(index).planets(planetNumber)
+        starmap.activePlanet = starmap.stars(index).planets(planetNumber)
 
-        displayPlanet(planet)
+        displayPlanet(starmap.activePlanet)
         TabControl1.SelectTab(2)
     End Sub
     Private Sub buttonBackClickStar(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -337,6 +337,31 @@
         TabControl1.SelectTab(3)
     End Sub
 
+    Private Sub butInvestments_Click(sender As System.Object, e As System.EventArgs) Handles butInvestments.Click
+        Dim planet As planet = starmap.activePlanet
+        Dim investmentDialog As New frmInvestments(planet.starName)
+        If investmentDialog.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+        Else
+
+        End If
+
+        investmentDialog.Close()
+        investmentDialog = Nothing
+    End Sub
+    Private Sub butAgents_Click(sender As System.Object, e As System.EventArgs) Handles butAgents.Click
+        Dim planet As planet = starmap.activePlanet
+        Dim agentsDialog As New frmAgents(planet)
+        If agentsDialog.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+
+        Else
+
+        End If
+
+        agentsDialog.Close()
+        agentsDialog = Nothing
+    End Sub
+
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         initialiseStarmapFunctions()
         ToolsToolStripMenuItem.Enabled = False
@@ -379,22 +404,31 @@
         frmDistance.Dispose()
     End Sub
     Private Sub AgentsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AgentsToolStripMenuItem.Click
-        If frmAgents.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        Dim agentsDialog As New frmAgents()
+        If agentsDialog.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
         Else
 
         End If
+
+        agentsDialog.Close()
+        agentsDialog = Nothing
     End Sub
     Private Sub InvestmentsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InvestmentsToolStripMenuItem.Click
-        If frmInvestments.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
+        Dim investmentDialog As New frmInvestments()
+        If investmentDialog.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
 
         Else
 
         End If
+
+        investmentDialog.Close()
+        investmentDialog = Nothing
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
         Dim investment As investment = playerinfo.getInvestment("Real Estate Development", "Sleipnir", 2)
         playerinfo.removeInvestment(investment)
     End Sub
+
 End Class

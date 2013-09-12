@@ -1,41 +1,67 @@
 ﻿Public Class frmInvestments
-    Private Sub frmInvestments_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Dim playerinfo As playerinfo = Form1.playerinfo
+    Sub New(Optional ByVal filterStarname As String = "")
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
 
         'refresh datagrids
-        refreshDataGridView1(playerinfo)
-        refreshDataGridView2(playerinfo)
+        refreshDataGridView1(Form1.playerinfo)
+        refreshDataGridView2(Form1.playerinfo)
 
         'update totalwealthperturn
-        Label3.Text = processTWPT(playerinfo.totalWealthPerTurn)
+        Label3.Text = processTWPT(Form1.playerinfo.totalWealthPerTurn)
+
+        'populate filter
+        cmbFilter.Items.Add("")
+        cmbFilter.Items.Add("Oubliette")
+        For Each star As star In Form1.starmap.stars
+            cmbFilter.Items.Add(star.name)
+        Next
+
+        'select item
+        cmbFilter.SelectedItem = filterStarname
+    End Sub
+    Private Sub cmbFilter_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbFilter.SelectedIndexChanged
+        refreshDataGridView1(Form1.playerinfo, cmbFilter.SelectedItem.ToString)
+        refreshDataGridView2(Form1.playerinfo, cmbFilter.SelectedItem.ToString)
     End Sub
 
-    Private Sub refreshDataGridView1(ByRef playerinfo As playerinfo)
-        DataGridView1.Rows.Clear()
+    Private Sub refreshDataGridView1(ByRef playerinfo As playerinfo, Optional ByVal filter As String = "")
+        viewAssets.Rows.Clear()
 
         For Each asset In playerinfo.getAssetList
-            Dim n As Integer = DataGridView1.Rows.Add()
-            DataGridView1.Rows.Item(n).Cells(0).Value = asset.name
-            If asset.starName = "Oubliette" Then
-                DataGridView1.Rows.Item(n).Cells(1).Value = asset.starName
+            If filter = "" OrElse asset.starName = filter Then
+                Dim n As Integer = viewAssets.Rows.Add()
+                viewAssets.Rows.Item(n).Cells(0).Value = asset.name
+                If asset.starName = "Oubliette" Then
+                    viewAssets.Rows.Item(n).Cells(1).Value = asset.starName
+                Else
+                    viewAssets.Rows.Item(n).Cells(1).Value = asset.starName & " " & romanNumeralDictionary(asset.planetNumber)
+                End If
+                viewAssets.Rows.Item(n).Cells(2).Value = asset.wealthPerTurn
             Else
-                DataGridView1.Rows.Item(n).Cells(1).Value = asset.starName & " " & romanNumeralDictionary(asset.planetNumber)
+                'do nothing
             End If
-            DataGridView1.Rows.Item(n).Cells(2).Value = asset.wealthPerTurn
         Next
     End Sub
-    Private Sub refreshDataGridView2(ByRef playerinfo As playerinfo)
-        DataGridView2.Rows.Clear()
+    Private Sub refreshDataGridView2(ByRef playerinfo As playerinfo, Optional ByVal filter As String = "")
+        viewLiabilities.Rows.Clear()
 
         For Each liability In playerinfo.getLiabilityList
-            Dim n As Integer = DataGridView2.Rows.Add()
-            DataGridView2.Rows.Item(n).Cells(0).Value = liability.name
-            If liability.starName = "Oubliette" Then
-                DataGridView2.Rows.Item(n).Cells(1).Value = liability.starName
+            If filter = "" OrElse liability.starName = filter Then
+                Dim n As Integer = viewLiabilities.Rows.Add()
+                viewLiabilities.Rows.Item(n).Cells(0).Value = liability.name
+                If liability.starName = "Oubliette" Then
+                    viewLiabilities.Rows.Item(n).Cells(1).Value = liability.starName
+                Else
+                    viewLiabilities.Rows.Item(n).Cells(1).Value = liability.starName & " " & romanNumeralDictionary(liability.planetNumber)
+                End If
+                viewLiabilities.Rows.Item(n).Cells(2).Value = liability.wealthPerTurn
             Else
-                DataGridView2.Rows.Item(n).Cells(1).Value = liability.starName & " " & romanNumeralDictionary(liability.planetNumber)
+                'do nothing
             End If
-            DataGridView2.Rows.Item(n).Cells(2).Value = liability.wealthPerTurn
         Next
     End Sub
     Private Function processTWPT(ByVal TWPT As Integer) As String
@@ -47,4 +73,5 @@
         End If
         Return "Total WPT: " & str
     End Function
+
 End Class

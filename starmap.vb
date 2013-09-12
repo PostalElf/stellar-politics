@@ -3,6 +3,8 @@ Imports Microsoft.VisualBasic.CallType
 
 Public Class starmap
     Public stars As List(Of star)
+    Public activeStar As star
+    Public activePlanet As planet
 
     Sub New()
         Randomize()

@@ -64,6 +64,7 @@ Partial Class Form1
         Me.picHouseLogo = New System.Windows.Forms.PictureBox()
         Me.panelSidebar = New System.Windows.Forms.Panel()
         Me.butTravelPlans = New System.Windows.Forms.Button()
+        Me.butAgents = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.panelPlanet.SuspendLayout()
@@ -143,6 +144,7 @@ Partial Class Form1
         '
         'panelPlanet
         '
+        Me.panelPlanet.Controls.Add(Me.butAgents)
         Me.panelPlanet.Controls.Add(Me.butInvestments)
         Me.panelPlanet.Location = New System.Drawing.Point(362, 14)
         Me.panelPlanet.Name = "panelPlanet"
@@ -156,7 +158,7 @@ Partial Class Form1
         Me.butInvestments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.butInvestments.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.butInvestments.ForeColor = System.Drawing.Color.White
-        Me.butInvestments.Location = New System.Drawing.Point(15, 19)
+        Me.butInvestments.Location = New System.Drawing.Point(15, 51)
         Me.butInvestments.Name = "butInvestments"
         Me.butInvestments.Size = New System.Drawing.Size(108, 25)
         Me.butInvestments.TabIndex = 0
@@ -485,6 +487,19 @@ Partial Class Form1
         Me.butTravelPlans.Text = "Travel Plans"
         Me.butTravelPlans.UseVisualStyleBackColor = False
         '
+        'butAgents
+        '
+        Me.butAgents.BackColor = System.Drawing.Color.DimGray
+        Me.butAgents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butAgents.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.butAgents.ForeColor = System.Drawing.Color.White
+        Me.butAgents.Location = New System.Drawing.Point(15, 20)
+        Me.butAgents.Name = "butAgents"
+        Me.butAgents.Size = New System.Drawing.Size(108, 25)
+        Me.butAgents.TabIndex = 1
+        Me.butAgents.Text = "Manage Agents"
+        Me.butAgents.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -553,5 +568,6 @@ Partial Class Form1
     Friend WithEvents picHouseLogo As System.Windows.Forms.PictureBox
     Friend WithEvents panelSidebar As System.Windows.Forms.Panel
     Friend WithEvents butTravelPlans As System.Windows.Forms.Button
+    Friend WithEvents butAgents As System.Windows.Forms.Button
 
 End Class

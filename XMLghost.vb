@@ -277,7 +277,7 @@ Public Module xmlGhost
         xwrt.Close()
         xwrt = Nothing
     End Sub
-    Public Sub ghostWritePlayerinfo(ByRef playerinfo As playerinfo)
+    Private Sub ghostWritePlayerinfo(ByRef playerinfo As playerinfo)
         Dim xwrt As New XmlTextWriter(playerFilename, System.Text.Encoding.UTF8)
         xwrt.WriteStartDocument(True)
         xwrt.Formatting = Formatting.Indented
