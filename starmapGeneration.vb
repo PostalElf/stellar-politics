@@ -1,7 +1,6 @@
-﻿Imports System.Math
-Imports System.IO
+﻿Imports System.IO
 
-Module sharedStarmapFunctions
+Public Class starmapGeneration
     Public starNameList As New List(Of String)
     Public defaultSystemSupply As New List(Of String)
     Public systemSupply As New List(Of String)
@@ -272,39 +271,6 @@ Module sharedStarmapFunctions
     End Sub
 
 
-    'processors convert data into an appropriate format
-    Public Function processAgentID(ByVal id As Integer) As String
-        Dim processedID As String
-
-        Select Case id
-            Case 1 To 9 : processedID = "00" & id.ToString
-            Case 10 To 99 : processedID = "0" & id.ToString
-            Case Else : processedID = id
-        End Select
-
-        Return processedID
-    End Function
-    Public Function processRomanNumber(ByVal romanNumber As String) As Integer
-        For Each entry As KeyValuePair(Of Integer, String) In romanNumeralDictionary
-            If romanNumber = entry.Value Then Return entry.Key
-        Next
-
-        Return Nothing
-    End Function
-
-
-    'calculators
-    Public Function calculateDistanceBetween(ByVal Point1 As Point, ByVal Point2 As Point) As Integer
-        'use pythogaras theorem to get distance between two points
-
-        Dim x1 As Integer = Point1.X
-        Dim x2 As Integer = Point2.X
-        Dim y1 As Integer = Point1.Y
-        Dim y2 As Integer = Point2.Y
-
-        Return Sqrt((Abs(x2 - x1) ^ 2) + (Abs(y2 - y1) ^ 2))
-    End Function
-
 
     'crawlers search for certain data
-End Module
+End Class

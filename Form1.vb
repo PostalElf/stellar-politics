@@ -104,7 +104,7 @@
         Dim str As String = "bigplanet" & planet.suffix
         picPlanetType.BackgroundImage = My.Resources.ResourceManager.GetObject(str)
         lblPlanetName.Text = planet.starName & " " & romanNumeralDictionary(planet.number)
-        lblSize.Text = planetSizeDictionary(planet.size)
+        lblSize.Text = planet.size
         lblGovernment.Text = planet.government
         lblHabitation.Text = planet.habitation
         lblPrefix.Text = planet.prefix
@@ -123,6 +123,7 @@
         counter = 0
         For Each agent In planet.stationedAgents
             addGoodsPic(agent.id, counter, "agent")
+            counter += 1
         Next
 
         panelPlanet.Visible = True
@@ -211,14 +212,10 @@
         Else
             hashFxn = Nothing
 
-            'load playerinfo into memory
             playerinfo = ghostLoadPlayerinfo()
-
-            'load agents into memory
             agentList = ghostLoadAgentList()
-
-            'load starmap into memory
             starmap = ghostLoadStarmap()
+            turnticker = ghostLoadTurnticker()
 
             'display starmap
             displayStarmap()
@@ -363,7 +360,7 @@
     End Sub
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        initialiseStarmapFunctions()
+        initialiseUniversalFunctions()
         ToolsToolStripMenuItem.Enabled = False
         ManageToolStripMenuItem.Enabled = False
     End Sub
@@ -371,8 +368,11 @@
         If settingDoNotSave = True Then
             ' do nothing
         Else
-            ghostWriteAll(starmap, agentList, playerinfo)
+            ghostWriteAll(starmap, agentList, playerinfo, turnticker)
         End If
+    End Sub
+    Private Sub butEndturn_Click(sender As System.Object, e As System.EventArgs) Handles butEndturn.Click
+        turnticker.turnEnd()
     End Sub
     Private Sub NewToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles NewToolStripMenuItem.Click
         If frmNew.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then
@@ -424,11 +424,6 @@
 
         investmentDialog.Close()
         investmentDialog = Nothing
-    End Sub
-
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
-        Dim investment As investment = playerinfo.getInvestment("Real Estate Development", "Sleipnir", 2)
-        playerinfo.removeInvestment(investment)
     End Sub
 
 End Class

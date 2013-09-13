@@ -15,6 +15,7 @@ Public Module xmlGhost
     Public Const starmapFilename = "starmap.xml"
     Public Const agentFilename As String = "agents.xml"
     Public Const playerFilename As String = "playerinfo.xml"
+    Public Const turntickerFilename As String = "turnticker.xml"
 
     'ghostLoaders read XML and turn them into objects; no ghostLoadPlayerinfo as the New() automatically loads it
     Public Function ghostLoadStarmap() As starmap
@@ -154,6 +155,33 @@ Public Module xmlGhost
 
         Return investment
     End Function
+    Public Function ghostLoadTurnticker() As turnticker
+        Dim turnticker As New turnticker
+
+        Dim xsettings As New XmlReaderSettings
+        xsettings.IgnoreWhitespace = True
+        xsettings.IgnoreComments = True
+        Dim xr As XmlReader = XmlReader.Create(turntickerFilename, xsettings)
+        While xr.Read()
+            If xr.NodeType = XmlNodeType.Element AndAlso xr.Name = "agentstomove" Then
+                turnticker.agentsToMove.Add(ghostLoadDestination(xr))
+            End If
+        End While
+
+        xr.Close()
+        Return turnticker
+    End Function
+    Private Function ghostLoadDestination(ByRef xr As XmlReader) As destination
+        Dim destination As New destination
+
+        destination.destAgent = ghostLoadAgent(xr)
+        xr.ReadToFollowing("deststarname")
+        destination.destStarName = xr.ReadString
+        xr.ReadToFollowing("destplanetnumber")
+        destination.destPlanetNumber = Convert.ToInt32(xr.ReadString)
+
+        Return destination
+    End Function
 
     'ghostInfoLoaders read XML files ending with info and return the appropriate information in string
     Public Function ghostInfoLoad(ByVal filename As String, ByVal rootElement As String, ByVal childElement As String) As String
@@ -187,16 +215,18 @@ Public Module xmlGhost
     End Function
 
     'ghostWriters update whatever element is passed to them into the XML file; use only ghostWriteAll()
-    Public Sub ghostWriteAll(ByRef starmap As starmap, ByRef agentList As agentList, ByRef playerinfo As playerinfo)
+    Public Sub ghostWriteAll(ByRef starmap As starmap, ByRef agentList As agentList, ByRef playerinfo As playerinfo, ByRef turnticker As turnticker)
         ghostWriteStarmap(starmap)
         ghostWriteAgents(agentList)
         ghostWritePlayerinfo(playerinfo)
+        ghostWriteTurnticker(turnticker)
 
         'store starmap hash into hashstarmap.txt
         Dim txtFxn As New sharedHashFunctions
         txtFxn.addHashFile("starmap")
         txtFxn.addHashFile("agents")
         txtFxn.addHashFile("playerinfo")
+        txtFxn.addHashFile("turnticker")
         txtFxn = Nothing
     End Sub
     Private Sub ghostWriteStarmap(ByRef starmap As starmap)
@@ -304,6 +334,35 @@ Public Module xmlGhost
         xwrt.WriteElementString("planetnumber", investment.planetNumber)
         xwrt.WriteElementString("wealthperturn", investment.wealthPerTurn)
         xwrt.WriteEndElement()  '/investment
+    End Sub
+    Private Sub ghostWriteTurnticker(ByRef turnticker As turnticker)
+        Dim xwrt As New XmlTextWriter(turntickerFilename, System.Text.Encoding.UTF8)
+        xwrt.WriteStartDocument(True)
+        xwrt.Formatting = Formatting.Indented
+        xwrt.Indentation = 2
+        xwrt.WriteStartElement("turnticker")
+
+        For Each destination As destination In turnticker.agentsToMove
+            xwrt.WriteStartElement("agentstomove")
+
+            xwrt.WriteStartElement("agent")
+            xwrt.WriteAttributeString("id", destination.destAgent.id)
+            xwrt.WriteElementString("name", destination.destAgent.name)
+            xwrt.WriteElementString("type", destination.destAgent.type)
+            xwrt.WriteElementString("starname", destination.destAgent.starName)
+            xwrt.WriteElementString("planetnumber", destination.destAgent.planetNumber)
+            xwrt.WriteEndElement()  '/agent
+
+            xwrt.WriteElementString("deststarname", destination.destStarName)
+            xwrt.WriteElementString("destplanetnumber", destination.destPlanetNumber)
+
+            xwrt.WriteEndElement()  '/agentstomove
+        Next
+
+        xwrt.WriteEndElement()  '/turnticker
+        xwrt.WriteEndDocument()
+        xwrt.Close()
+        xwrt = Nothing
     End Sub
 
     'ghostTextList grab and return textfiles in a list

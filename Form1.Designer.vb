@@ -29,6 +29,7 @@ Partial Class Form1
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.panelPlanet = New System.Windows.Forms.Panel()
+        Me.butAgents = New System.Windows.Forms.Button()
         Me.butInvestments = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblSuffix = New System.Windows.Forms.Label()
@@ -64,7 +65,6 @@ Partial Class Form1
         Me.picHouseLogo = New System.Windows.Forms.PictureBox()
         Me.panelSidebar = New System.Windows.Forms.Panel()
         Me.butTravelPlans = New System.Windows.Forms.Button()
-        Me.butAgents = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.panelPlanet.SuspendLayout()
@@ -151,6 +151,19 @@ Partial Class Form1
         Me.panelPlanet.Size = New System.Drawing.Size(136, 186)
         Me.panelPlanet.TabIndex = 19
         Me.panelPlanet.Visible = False
+        '
+        'butAgents
+        '
+        Me.butAgents.BackColor = System.Drawing.Color.DimGray
+        Me.butAgents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.butAgents.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.butAgents.ForeColor = System.Drawing.Color.White
+        Me.butAgents.Location = New System.Drawing.Point(15, 20)
+        Me.butAgents.Name = "butAgents"
+        Me.butAgents.Size = New System.Drawing.Size(108, 25)
+        Me.butAgents.TabIndex = 1
+        Me.butAgents.Text = "Manage Agents"
+        Me.butAgents.UseVisualStyleBackColor = False
         '
         'butInvestments
         '
@@ -486,19 +499,6 @@ Partial Class Form1
         Me.butTravelPlans.TabIndex = 7
         Me.butTravelPlans.Text = "Travel Plans"
         Me.butTravelPlans.UseVisualStyleBackColor = False
-        '
-        'butAgents
-        '
-        Me.butAgents.BackColor = System.Drawing.Color.DimGray
-        Me.butAgents.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.butAgents.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.butAgents.ForeColor = System.Drawing.Color.White
-        Me.butAgents.Location = New System.Drawing.Point(15, 20)
-        Me.butAgents.Name = "butAgents"
-        Me.butAgents.Size = New System.Drawing.Size(108, 25)
-        Me.butAgents.TabIndex = 1
-        Me.butAgents.Text = "Manage Agents"
-        Me.butAgents.UseVisualStyleBackColor = False
         '
         'Form1
         '

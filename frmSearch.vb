@@ -13,9 +13,11 @@ Public Class frmSearch
     End Sub
 
     Private Sub initialiseFrmSearch()
+        Dim starmapGen As New starmapGenerator
+
         'populate comboboxes
         If goodsList Is Nothing Then goodsList = New List(Of String)
-        repopGoodsList()
+        repopGoodsList(starmapGen)
         For Each good In goodsList
             cmbSupply.Items.Add(good)
             cmbDemand.Items.Add(good)
@@ -29,8 +31,8 @@ Public Class frmSearch
             cmbCities.Items.Add(i)
         Next
         cmbSuffix.Items.Add("")
-        For i As Integer = 1 To planetSuffixDictionary.Count Step 1
-            cmbSuffix.Items.Add(planetSuffixDictionary(i))
+        For i As Integer = 1 To starmapGen.planetSuffixDictionary.Count Step 1
+            cmbSuffix.Items.Add(starmapGen.planetSuffixDictionary(i))
         Next
         'cmbGovernment and cmbPrefix are all added manually
 
@@ -40,9 +42,9 @@ Public Class frmSearch
             If (TypeOf control Is ComboBox) Then comboboxlist.Add(control)
         Next
     End Sub
-    Private Sub repopGoodsList()
+    Private Sub repopGoodsList(ByRef starmapGen As starmapGenerator)
         goodsList.Add("")
-        For Each item In defaultSystemSupply
+        For Each item In starmapGen.defaultSystemSupply
             goodsList.Add(item)
         Next
         goodsList.Add("None")
@@ -181,13 +183,6 @@ Public Class frmSearch
         End Select
 
         Return False
-    End Function
-    Private Function realNumberofAgents(ByVal stationedAgents As List(Of String)) As Integer
-        If stationedAgents.Item(0) = "000" Then
-            Return 0
-        Else
-            Return stationedAgents.Count
-        End If
     End Function
 
     Private Sub ComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbSupply.SelectedIndexChanged, _

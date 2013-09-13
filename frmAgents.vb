@@ -66,7 +66,7 @@
     End Sub
     Private Sub butGo_Click(sender As System.Object, e As System.EventArgs) Handles butGo.Click
         Select Case butGo.Tag
-            Case "move" : moveAgentToPlanet(cmbStarName.SelectedItem.ToString, cmbPlanetNumber.SelectedItem.ToString)
+            Case "move" : moveAgentToPlanet(cmbStarName.SelectedItem.ToString, processRomanNumber(cmbPlanetNumber.SelectedItem.ToString))
             Case Else : Exit Sub
         End Select
     End Sub
@@ -88,7 +88,7 @@
         cmbFilterStarName.Items.Add("")
         cmbFilterStarName.Items.Add("Oubliette")
         For Each star In Form1.starmap.stars
-            cmbFilterStarName.Items.Add(star.name)
+            If star.type <> "Blackhole" Then cmbFilterStarName.Items.Add(star.name)
         Next
     End Sub
     Private Sub popCmbFilterPlanetNumber()
@@ -132,6 +132,11 @@
 
         'check for space
         Dim planetCapacity As Integer = planet.agentCapacityRemaining(Form1.agentList)
+        Dim agentsMovingToPlanet As Integer = 0
+        For Each dest As destination In Form1.turnticker.agentsToMove
+            If dest.destStarName = destination.destStarName AndAlso dest.destPlanetNumber = destination.destPlanetNumber Then agentsMovingToPlanet += 1
+        Next
+        planetCapacity -= agentsMovingToPlanet
         If planetCapacity < 1 Then Return False Else Return True
     End Function
     Private Sub moveAgentToPlanet(ByVal destinationStarName As String, ByVal destinationPlanetNumber As Integer)
@@ -147,7 +152,7 @@
         Else
             'display error
             Dim str As String = "BY IMPERIAL EDICT:" & vbCrLf & _
-                                "------------------" & vbCrLf & vbCrLf & _
+                                "-----------------------" & vbCrLf & vbCrLf & _
                                 "No more than one Guild representative may be deployed" & vbCrLf & _
                                 "to a city at any time. Any Great House caught disobeying" & vbCrLf & _
                                 "this edict will have all rights and privilleges previously" & vbCrLf & _
@@ -158,5 +163,4 @@
         refreshDataGridView1()
         TabControl1.SelectTab(0)
     End Sub
-
 End Class

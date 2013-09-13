@@ -159,9 +159,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="starmap.vb" />
-    <Compile Include="sharedStarmapFunctions.vb" />
+    <Compile Include="starmapGenerator.vb" />
     <Compile Include="starmapOptions.vb" />
     <Compile Include="turnticker.vb" />
+    <Compile Include="universalFunctions.vb" />
     <Compile Include="XMLghost.vb" />
   </ItemGroup>
   <ItemGroup>
