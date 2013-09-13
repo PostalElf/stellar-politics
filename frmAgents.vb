@@ -57,7 +57,12 @@
         End If
     End Sub
     Private Sub cmbFilterStarName_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbFilterStarName.SelectedIndexChanged
-        popCmbFilterPlanetNumber()
+        If (cmbFilterStarName.SelectedIndex = -1 OrElse cmbFilterStarName.SelectedIndex = 0) Then
+            cmbFilterPlanetNumber.Items.Clear()
+            refreshDataGridView1()
+        Else
+            popCmbFilterPlanetNumber()
+        End If
     End Sub
     Private Sub cmbFilterPlanetNumber_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cmbFilterPlanetNumber.SelectedIndexChanged
         Dim filterStarName As String = cmbFilterStarName.SelectedItem.ToString
@@ -108,6 +113,10 @@
     End Sub
     Private Sub refreshDataGridView1(Optional ByVal filterStarName As String = "", Optional ByVal filterPlanetNumber As Integer = -1)
         DataGridView1.Rows.Clear()
+        If cmbFilterStarName.SelectedIndex = -1 Then
+            filterStarName = ""
+            filterPlanetNumber = -1
+        End If
 
         For Each agent In Form1.agentList.agents
             If (filterStarName = "" AndAlso filterPlanetNumber = -1) OrElse _
